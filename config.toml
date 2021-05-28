@@ -1,0 +1,48 @@
+baseURL = "/"
+languageCode = "zh-cn"
+title = "Ying ZHANG"
+theme = "bingo"
+themesDir = "./themes/"
+paginate = 100
+summaryLength = 120
+relativeURLs = true
+# uglyURLs = true # 无法显示目录列表！
+# disablePathToLower = true
+
+disableHugoGeneratorInject = true
+enableEmoji = true
+footnoteReturnLinkContents = "↩"
+hasCJKLanguage = true
+googleAnalytics = "G-64NZP9N2DV"
+
+disableKinds = ["taxonomy", "taxonomyTerm", "sitemap", "robotsTXT"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "time"
+    name = "Time&Sync"
+    url = "/time/"
+    weight = 20
+
+  # [[menu.main]]
+  #   identifier = "misc"
+  #   name = "Misc"
+  #   url = "/misc/"
+  #   weight = 30
+
+[params]
+  dateFormat = "2006-01-02"
+
+# [markup]
+#   [markup.highlight]
+#     lineNos = true

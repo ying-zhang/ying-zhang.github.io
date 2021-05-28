@@ -1,0 +1,18 @@
+{{ define "main" }}
+<main id="home">
+    <div id="content">
+        {{ .Content }}
+    </div>
+    <div id="recent-posts">
+        <h2>{{ i18n "recent_posts" }}</h2>
+        <ul>
+            {{ range (.Site.RegularPages).ByPublishDate.Reverse }}
+                <li>
+                    <span>{{- partial "date.html" . -}}</span>| &nbsp; <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </li>
+            {{ end }}
+        </ul>
+        <p>{{ .Site.RegularPages.Len }} items.</p>
+    </div>
+</main>
+{{ end }}

@@ -1,0 +1,11 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ with .Page.Title }}{{ . }} - {{ end }}{{ .Site.Title }}</title>
+    <base href="{{ .Site.BaseURL }}">
+    {{ $normalize := resources.Get "css/normalize.css" }}
+    {{ $style := resources.Get "css/style.css" }}
+    {{ $css := slice $normalize $style | resources.Concat "css/main.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+</head>
