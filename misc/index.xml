@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Miscs on Ying ZHANG</title>
+    <link>/misc/</link>
+    <description>Recent content in Miscs on Ying ZHANG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 31 Dec 2019 08:00:00 +0800</lastBuildDate><atom:link href="/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>中国计算机学会(CCF)推荐国际学术会议和期刊目录(2019)-单页</title>
+      <link>/misc/2019-ccf-list/</link>
+      <pubDate>Tue, 31 Dec 2019 08:00:00 +0800</pubDate>
+      
+      <guid>/misc/2019-ccf-list/</guid>
+      <description>很久之前整理论文列表，感觉“中国计算机学会推荐国际学术会议和期刊目录(2019)”分成多页用起来不太方便，于是把它们合并到一起。 目录(2019版)的PDF文件：https://www.ccf.org.cn/ccf/contentcore/r</description>
+    </item>
+    
+    <item>
+      <title>如何收集和整理论文（面向CS专业）</title>
+      <link>/misc/2016-we-love-paper/</link>
+      <pubDate>Wed, 28 Sep 2016 08:00:00 +0800</pubDate>
+      
+      <guid>/misc/2016-we-love-paper/</guid>
+      <description>论文（Paper）是每个研究生读研路上挥之不去的“阴云”。 无论是否已经有了一个好的课题或想法，都首先要收集某个研究方向一定数量的论文，来了解相关的工作和最新进展（State of the art &amp;amp; practice）。 本文介绍了如何检索、收集计算机科学（CS</description>
+    </item>
+    
+    <item>
+      <title>如果有一支笔</title>
+      <link>/misc/2016-stylus/</link>
+      <pubDate>Mon, 20 Jun 2016 08:00:00 +0800</pubDate>
+      
+      <guid>/misc/2016-stylus/</guid>
+      <description>这是一个我N年前的想法，但一直没有实现。所以说，这也是一个“就差一个软件工程师了”的悲伤的故事（其实还缺一个硬件工程师）。 xPen 鼠标是图形用户界面的主要输入设备。其实在鼠标（1968年原型诞生）之前，还有一种光笔（1955年）的设备。光笔需要直</description>
+    </item>
+    
+    <item>
+      <title>罗网是坚韧的</title>
+      <link>/misc/2016-obstinate/</link>
+      <pubDate>Wed, 01 Jun 2016 08:00:00 +0800</pubDate>
+      
+      <guid>/misc/2016-obstinate/</guid>
+      <description>吉檀迦利 第28 罗网是坚韧的，但是要撕破它的时候我又心痛。 我只要自由，为希望自由我却觉得羞愧。 我确知那无价之宝是在你那里，而且你是我最好的朋友，但我却舍不得清除我满屋的俗物。 我身上披的是尘灰和死亡之衣；我恨它，却又热爱地把它抱紧。 我的债务很多</description>
+    </item>
+    
+  </channel>
+</rss>

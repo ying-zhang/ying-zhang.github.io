@@ -1,0 +1,41 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Ying ZHANG</title>
+    <link>/</link>
+    <description>Recent content in Home on Ying ZHANG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 May 2021 12:00:00 +0800</lastBuildDate>
+    
+        <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Times</title>
+      <link>/time/</link>
+      <pubDate>Tue, 04 May 2021 12:00:00 +0800</pubDate>
+      
+      <guid>/time/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Miscs</title>
+      <link>/misc/</link>
+      <pubDate>Tue, 31 Dec 2019 08:00:00 +0800</pubDate>
+      
+      <guid>/misc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clusters</title>
+      <link>/cluster/</link>
+      <pubDate>Sun, 10 Jun 2018 08:00:00 +0800</pubDate>
+      
+      <guid>/cluster/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

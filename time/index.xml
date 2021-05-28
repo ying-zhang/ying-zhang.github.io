@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Times on Ying ZHANG</title>
+    <link>/time/</link>
+    <description>Recent content in Times on Ying ZHANG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 04 May 2021 12:00:00 +0800</lastBuildDate><atom:link href="/time/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[*]论动体的电动力学</title>
+      <link>/time/1905-einstein-cn/</link>
+      <pubDate>Tue, 04 May 2021 12:00:00 +0800</pubDate>
+      
+      <guid>/time/1905-einstein-cn/</guid>
+      <description>Zur Elektrodynamik bewegter Körper On the Electrodynamics of Moving Bodies 阿尔伯特·爱因斯坦(Albert Einstein) 重排：Ying ZHANG. 2021-05. (绝大部分公式的Latex源码来自上面的英文版) 全文 PDF 文件 这是相对论的第一篇论文，是物理科学中有划时代意义的历史文献，写于1905年6月，发表在1905年9月</description>
+    </item>
+    
+    <item>
+      <title>[译]分布系统中的时间、时钟和事件排序</title>
+      <link>/time/1978-lamport-cn/</link>
+      <pubDate>Mon, 12 Apr 2021 08:00:00 +0800</pubDate>
+      
+      <guid>/time/1978-lamport-cn/</guid>
+      <description>Time, Clocks, and the Ordering of Events in a Distributed System Leslie Lamport, Massachusetts Computer Associates, Inc. Concurrency: the Works of Leslie Lamport. 179—196. Oct. 2019. doi.org/10.1145/3335772.3335934 Originally published in Comm. of the ACM. 21(7), 558—565. July 1978. doi.org/10.1145/359545.359563 译者：Ying ZHANG. 2020-06, 11; 2021-04 译文 PDF 文件 研究了分布系统中一个事件先于另一事件发生的概念， 基于此概念定义了事件的偏序。 给出了用于同步逻辑时钟的分</description>
+    </item>
+    
+    <item>
+      <title>[译]Spanner, TrueTime 和CAP 理论</title>
+      <link>/time/2017-spanner-truetime-cap-cn/</link>
+      <pubDate>Sat, 10 Apr 2021 10:00:00 +0800</pubDate>
+      
+      <guid>/time/2017-spanner-truetime-cap-cn/</guid>
+      <description>Spanner, TrueTime &amp; The CAP Theorem Eric Brewer, VP, Infrastructure, Google. 2017-02-14 译者：Ying ZHANG. 2017-03; 2021-04. 译文 PDF，英文原文PDF CAP定理是分布式系统中一个“著名”的结论，它又称为布鲁尔定理（Brewer&#39;s theorem）。Brewer就是本文的作者，他还在2012年发表了一篇文章 CAP Twelve Years Later: How the &#34;Rules&#34;</description>
+    </item>
+    
+    <item>
+      <title>[译]Spanner: 谷歌的全球分布数据库</title>
+      <link>/time/2013-spanner-cn/</link>
+      <pubDate>Sat, 10 Apr 2021 08:00:00 +0800</pubDate>
+      
+      <guid>/time/2013-spanner-cn/</guid>
+      <description>Spanner: Google&#39;s Globally Distributed Database James C. Corbett, Jeffrey Dean, Michael Epstein, Andrew Fikes, Christopher Frost, J. J. Furman, Sanjay Ghemawat, Andrey Gubarev, Christopher Heiser, Peter Hochschild, Wilson Hsieh, Sebastian Kanthak, Eugene Kogan, Hongyi Li, Alexander Lloyd, Sergey Melnik, David Mwaura, David Nagle, Sean Quinlan, Rajesh Rao, Lindsay Rolig, Yasushi Saito, Michal Szymaniak, Christopher Taylor, Ruth Wang, and Dale Woodford. 谷歌公司 ACM Trans. on Comp. Sys.(TOCS), Vol. 31, No. 3, 8:1-8:22, Aug. 2013. doi.org/10.1145/2491245 译者：厦门大学计算机系 林子雨 2012年9月. http://dblab.xmu.edu.cn/post/google-spanner/ 修订：Ying ZHANG. 2020-06, 11; 2021-04. 译文 PDF 文件 Spanner 是谷歌</description>
+    </item>
+    
+    <item>
+      <title>Revisiting Time, Clocks, and Synchronization</title>
+      <link>/time/2021-02-revisiting-sync/</link>
+      <pubDate>Thu, 04 Feb 2021 08:00:00 +0800</pubDate>
+      
+      <guid>/time/2021-02-revisiting-sync/</guid>
+      <description>Ying ZHANG Full text in PDF Note: This article is rejected by the HotOS 2021 conference.
+ Abstract: Sub-nanosecond precision clock synchronization over the packet network has been achieved by the White Rabbit protocol for a decade. However, few computer systems utilize such a technique. We try to attract more interest in the clock synchronization problem. We first introduce the basics of clock and synchronization in the time and frequency discipline. Then we revisit several related works, such as Google&#39;s Spanner, Huygens, FARMv2, DTP, and Sundial, explain why these works could be improved. Finally, we briefly discuss an independent time network approach towards low-cost and high-precision synchronization.
+1. Introduction Accurate time is everywhere in our daily life. The global navigation satellite systems (GNSS, namely GPS, Galileo, GLONASS, and Beidou) are, in fact, global high-precision clock dissemination systems.</description>
+    </item>
+    
+  </channel>
+</rss>

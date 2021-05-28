@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Clusters on Ying ZHANG</title>
+    <link>/cluster/</link>
+    <description>Recent content in Clusters on Ying ZHANG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 10 Jun 2018 08:00:00 +0800</lastBuildDate><atom:link href="/cluster/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[译]YARN资源管理器的研究进展</title>
+      <link>/cluster/2018-yarn-adv-cn/</link>
+      <pubDate>Sun, 10 Jun 2018 08:00:00 +0800</pubDate>
+      
+      <guid>/cluster/2018-yarn-adv-cn/</guid>
+      <description>Advancements in YARN Resource Manager Konstantinos Karanasos，Arun Suresh, Chris Douglas. 微软 Encyclopedia of Big Data Technologies https://doi.org/10.1007/978-3-319-63962-8_207-1 译者：Ying ZHANG. 2018-06 译文 PDF 文件 定义 YARN是目前流行的共享集群作业调度和资源管理框架之一。本条目将重点介绍自YARN初始版本推出之后增加的新功能。 概述 Apache Hadoop[Apache Hadoop]是广泛采用的</description>
+    </item>
+    
+    <item>
+      <title>[译]使用Borg在Google管理大规模集群</title>
+      <link>/cluster/2015-borg-eurosys-cn/</link>
+      <pubDate>Fri, 10 Nov 2017 08:00:00 +0800</pubDate>
+      
+      <guid>/cluster/2015-borg-eurosys-cn/</guid>
+      <description>Large-scale cluster management at Google with Borg Abhishek Vermay, Luis Pedrosaz, Madhukar Korupolu David Oppenheimer, Eric Tune, John Wilkes. Google Inc. EuroSys 2015 译者：难易（Simpson） 修订：Ying ZHANG. 2017-11; 2018-06 https://dl.acm.org/doi/10.1145/2741948.2741964或https://research.google/pu</description>
+    </item>
+    
+  </channel>
+</rss>
