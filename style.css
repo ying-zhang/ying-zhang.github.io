@@ -1,0 +1,186 @@
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/Libertinus-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url(' /fonts/Libertinus-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/Libertinus-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/Libertinus-bold-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Libertinus-semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Libertinus-semibold-italic.woff2') format('woff2');
+}
+
+@media print {
+  body { margin: 1em; }
+  header, footer { display: none; }
+  .title p #url { display: block; }
+  a, a:visited, a:hover { color: #000; text-decoration: none; }
+}
+
+@media screen {
+  body  { background-color: #eee; font-size: 1.2em; width: 80%; }
+  #list { width: 80%; }
+  .title p #url { display: none; } /* Only for print */
+  a, b, strong, h1, h2, h3 { color: #14a; }
+  i, em, .copyright { color: #c33; }
+  .note  { color: #00f; }
+  .ynote { color: #50a; }
+}
+
+@media screen and (max-width: 1200px) {
+  body  { width: 90%; }
+  #list { width: 96%; }
+}
+
+body { font-family: 'Libertinus', '宋体', '宋体-简', serif; hyphens: auto; margin: 0 auto; }
+
+#list { min-width: 40em; margin: 1em auto; }
+#list h1 { margin-left: 2.4rem; }
+#list p  { margin-left: 2.4rem; font-size: 0.8em; }
+#list ul { list-style-type: none; }
+#list li a { font-weight: 600; line-height: 1.5em; }
+
+.title { margin: 2em 0; }
+.title h1 { text-align: center; }
+.title p  { text-align: center; font-size: 0.8em; }
+
+p  { text-align: justify; margin: 0.5em 0; line-height: 1.4em; }
+li { text-align: justify; margin: 0.3em 0; line-height: 1.4em; }
+
+a { text-decoration: none; background-color: transparent; opacity: 1; }
+a:active { opacity: 0.8; transition: opacity 0.15s ease-out; }
+a:focus, a:hover { opacity: 0.5; transition: opacity 0.15s ease-in; }
+
+code, pre, time { font-family: 'Consolas', monospace; }
+.highlight pre { border-radius: 4px; padding: 4px; margin-left: 1em; width: 80%; }
+
+blockquote {
+  width: 80%; margin: 1em auto; padding-left: 1em;
+  border-left: 3px solid #14a;
+  font-family: 'Libertinus Sans', '楷体', '楷体-简', sans-serif;
+}
+
+img { border-style: none; }
+ul { list-style-type: square; }
+ul ul { list-style-type: disc; }
+time { color: #777; }
+
+.s, small,  figure p { font-size: 0.8em; }
+.c, figure, figure p { width: 99%; margin: 0 auto; text-align: center; }
+.copyright { width: 80%; margin: 1em auto; font-weight: 600; font-size: 0.7em; }
+.copyright p { margin: 0.2em 0; }
+.box { padding: 0.3em 0.5em; border: 1px solid; border-radius: 4px; }
+
+.note::before { content: "["; } .note::after  { content: "]"; }
+.ynote::before { content: "〔"; } .ynote::after  { content: "〕"; }
+.note, .ynote { font-size: 0.75em; font-family: 'Libertinus Sans', '楷体', '楷体-简', sans-serif; }
+
+.bib>li { line-height: 1.2rem; font-size: 0.7em; }
+.bib>li::marker { content: "[" counter(list-item)"]. "; }
+.bib>li a {font-weight: bold}
+
+hr { height: 0; border:none; border-bottom: 1px dashed #777; width: 60%; }
+
+h1 { font-size: 1.25em; } h2 { font-size: 1.1em; } h3 { font-size: 1.0em; }
+h1, h2, h3 { margin-top: 1em 0 0.2em 0; page-break-after: avoid; page-break-before: auto; }
+
+h1 { font-family: 'Libertinus', '等线', '微软雅黑', '苹方-简', sans-serif; }
+h2, h3 { font-family: 'Libertinus', '楷体', '楷体-简', sans-serif; }
+
+.fsong { font-family: 'Libertinus', 'FreeSerif', '仿宋', '华文仿宋', serif; }
+.kai { font-family: 'Libertinus Sans', '楷体', '楷体-简', sans-serif; }
+.hei, b, strong { font-family: 'Libertinus Sans', '等线', '微软雅黑', '苹方-简', sans-serif; }
+
+header, footer { text-align: center; font-size: 0.8em; }
+
+header { margin-top: 0.5em; }
+header a { background-color: #ccc; padding: 0 0.5em; }
+
+footer { margin-bottom: 0.5em; }
+footer p { text-align: center; font-size: 0.7em; }
+
+/*********************************************************/
+
+table {
+  border-collapse: collapse;
+  border: none;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  font-size: 0.8em;
+  page-break-inside: avoid;
+  width: 99%;
+  margin: 0 auto;
+}
+
+td, th { padding: 0.1em 0.5em; text-align: left; vertical-align: middle }
+th { background-color: #bbb; }
+tr {
+  padding: 0.1em;
+  border: none;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
+}
+
+.tx tr:nth-child(even) {
+  background: #ddd; /*9cf*/
+}
