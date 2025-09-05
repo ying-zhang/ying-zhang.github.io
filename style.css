@@ -1,0 +1,240 @@
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-italic.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/LibertinusSans-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('/fonts/Libertinus-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url(' /fonts/Libertinus-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/Libertinus-bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url('/fonts/Libertinus-bold-italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Libertinus-semibold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/Libertinus-semibold-italic.woff2') format('woff2');
+}
+
+@media print {
+  body { margin: 1em; color: #000; background-color: none; }
+  header, footer, #btn { display: none; }
+  .title p #url { display: block; }
+  a, a:visited, a:hover { color: #000; text-decoration: none; }
+}
+
+@media screen and (max-width: 1200px) {
+  body { width: 90%; }
+  #list { width: 96%; }
+}
+
+@media screen {
+  body { background-color: #eee; font-size: 1.2em; width: 80%;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  }
+
+  body.dark { background: #25292E; color:#eee; /*#eee; #2c2; */ font-size: 1.2em; width: 80%;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+  }
+
+  #btn { background: #fff; color: #333; }
+  body.dark #btn { background: #555; border-color: #888; color: #eee; }
+  #btn:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 0 10px #3B82F6,
+                0 0 15px #3B82F6,
+                0 0 30px #3B82F6;
+  }
+
+  header, footer { text-align: center; font-size: 0.8em; }
+  header { margin-top: 0.5em; }
+  header a { background-color: #eee; padding: 0 0.5em; }
+  body.dark header a { background-color: #555; }
+
+  footer { margin-bottom: 0.5em; }
+  footer p { text-align: center; font-size: 0.7em; }
+
+  #list { width: 80%; }
+  .title p #url { display: none; }
+
+  a, b, strong, h1, h2, h3 { color: #14a; }
+  body.dark a, body.dark b, body.dark strong, body.dark h1, body.dark h2, body.dark h3 { color: #8bf; }
+
+  i, em, .copyright { color: #c33; }
+  body.dark i, body.dark em, body.dark .copyright { color: #f55; }
+
+  body.dark input, body.dark textarea, body.dark select { background: #222;  color: #eee;  border-color: #444; }
+
+  img { background-color: #eee; }
+
+  body.dark code, body.dark pre { background: #222; color: #eee; border-color: #444; }
+  body.dark pre { border-radius: 4px; padding: 1em; }
+
+  .note { color: #00f; }
+  body.dark .note { color: #4cf; }
+
+  .ynote { color: #50a; }
+  body.dark .ynote { color: #b8f; }
+}
+
+body { hyphens: auto; margin: 0 auto; font-family: 'Libertinus', '宋体', '宋体-简', 'STSong', 'SimSun', serif; }
+
+#list { min-width: 40em; margin: 1em auto; }
+#list h1 { margin-left: 2.4rem; }
+#list p { margin-left: 2.4rem; font-size: 0.8em; }
+#list ul { list-style-type: none; }
+#list li a { font-weight: 600; line-height: 1.5em; }
+
+.title { margin: 2em 0; }
+.title h1 { text-align: center; }
+.title p { text-align: center; font-size: 0.8em; }
+
+p { text-align: justify; margin: 0.5em 0; line-height: 1.4em; }
+li { text-align: justify; margin: 0.3em 0; line-height: 1.4em; }
+
+a { text-decoration: none; background-color: transparent; opacity: 1; }
+a:active { opacity: 0.8; transition: opacity 0.2s ease-out; }
+a:focus, a:hover { opacity: 0.5; transition: opacity 0.2s ease-in; }
+
+code, pre, time { font-family: 'Consolas', monospace; }
+
+.highlight pre { border-radius: 4px; padding: 4px; margin-left: 1em; width: 80%; }
+
+blockquote { 
+  width: 80%; margin: 1em auto; padding-left: 1em; border-left: 3px solid #24d;
+  font-family: 'Libertinus Sans', '楷体', '楷体-简', 'STKaiTi', 'KaiTi', sans-serif;
+}
+
+img { border-style: none; border-radius: 4px; }
+
+ul { list-style-type: square; }
+ul ul { list-style-type: disc; }
+
+time { color: #666; }
+
+.s, small, figure p { font-size: 0.8em; }
+.c, figure, figure p { width: 99%; margin: 0 auto; text-align: center; }
+
+.copyright { width: 80%; margin: 1em auto; font-weight: 600; font-size: 0.7em; }
+.copyright p { margin: 0.2em 0; }
+
+.box { padding: 0.3em 0.5em; border: 1px solid; border-radius: 4px; }
+
+.note::before { content: "["; }
+.note::after { content: "]"; }
+
+.ynote::before { content: "〔"; }
+.ynote::after { content: "〕"; }
+
+.note, .ynote { font-size: 0.75em; font-family: 'Libertinus Sans', '楷体', '楷体-简', 'STKaiTi', 'KaiTi', sans-serif; }
+
+.bib>li { line-height: 1.2rem; font-size: 0.7em; }
+
+.bib>li::marker { content: "[" counter(list-item)"]. "; }
+.bib>li a { font-weight: bold; }
+
+hr { height: 0; border: none; border-bottom: 1px dashed #666; width: 60%; }
+body.dark hr { border-color: #eee; }
+
+h1 { font-size: 1.25em; }
+h2 { font-size: 1.1em; }
+h3 { font-size: 1.0em; }
+h1, h2, h3 { margin-top: 1em 0 0.2em 0; page-break-after: avoid; page-break-before: auto; }
+
+h1 { font-family: 'Libertinus', '等线', '微软雅黑', '苹方-简', sans-serif; }
+h2, h3 { font-family: 'Libertinus', '楷体', '楷体-简', 'STKaiTi', 'KaiTi', sans-serif; }
+
+.fsong { font-family: 'Libertinus', 'FreeSerif', '仿宋', '华文仿宋', 'STFangSong', 'FangSong', serif; }
+.kai { font-family: 'Libertinus Sans', '楷体', '楷体-简', 'STKaiTi', 'KaiTi', sans-serif; }
+.hei, b, strong { font-family: 'Libertinus Sans', '等线', '微软雅黑', '苹方-简', sans-serif; }
+
+table {
+  border-collapse: collapse;
+  border: none;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+  font-size: 0.8em;
+  page-break-inside: avoid;
+  width: 99%;
+  margin: 0 auto;
+}
+
+body.dark table { border-top: solid 2px #ccc; border-bottom: solid 2px #ccc; }
+
+td, th { padding: 0.1em 0.5em; text-align: left; vertical-align: middle; }
+
+th { background-color: #bbb; }
+body.dark th { background-color: #444; }
+
+tr { padding: 0.1em; border: none; border-top: solid 1px black; border-bottom: solid 1px black; }
+body.dark tr { border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; }
+.tx tr:nth-child(even) { background: #ddd; }
+body.dark .tx tr:nth-child(even) { background: #333; }
+
+/*切换深/浅主题的按钮*/
+#btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  z-index: 999;
+  border: 2px solid #aaa; border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px;
+  height: 36px; width: 36px;
+  transition: all 0.3s ease;
+}

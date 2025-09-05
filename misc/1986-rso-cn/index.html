@@ -1,0 +1,322 @@
+<!DOCTYPE html><html><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=80&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/style.css">
+<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+<script> MathJax = {tex: {inlineMath: [['$', '$']]}}; </script>
+<title>[译]转子绕组匝间短路检测（RSO）</title>
+</head><body>
+<header> <a href="/">Home</a> </header>
+<button id="btn">☀️</button>
+<script src="/dark.js" ></script>
+
+<article>
+<div class="title">
+  <h1>[译]转子绕组匝间短路检测（RSO）</h1>
+  <p><time>2010-11-10</time><span id="url">https://ying-zhang.cn/misc/1986-rso/</span></p>
+</div>
+<div class="title">
+<h1>Rotor Winding Short Detection</h1>
+<p>J.W. Wood, Ph.D., C.Eng., M.I.E.E., and R.T. Hindmarch<br/>
+<i>IEE Proceedings B (Electric Power Applications)</i>. Volume 133, Issue 3, May 1986<br/>
+<a href="https://doi.org/10.1049/ip-b.1986.0025" target="_blank">https://doi.org/10.1049/ip-b.1986.0025</a><br/>
+<a href="/misc/1986-rso.pdf"><b>原文 PDF</b></a><br/>
+&nbsp;<br/>
+译者：Ying ZHANG. 2010-11.<br/>
+<a href="/misc/1986-rso-cn.pdf"><b>译文 PDF（与本页稍异）</b></a>
+</p>
+</div>
+<p class="fsong"><b>摘要</b> 总结了大型汽轮发电机转子绕组匝间短路的4种检测技术，分别是：气隙探测线圈、重复脉冲示波法（RSO）、定子环流和转子轴电流，其中某些技术可以用于定位故障点。此外，还介绍了设备制造过程中的一些技术和经验反馈信息。</p>
+<h1>1. 背景介绍</h1>
+<p>多年来，如果转子出现的匝间短路没有产生影响机组运行的问题（如因热不平衡所致的振动异常），则认为是可以接受的。很多小机组（功率30~120 MW）的转子在匝间短路的情况下已经运行了几十年。直到在最近的大修中，采用本文介绍的匝间短路检测技术后才发现有些转子存在故障。</p>
+<p>英国近十年来由于缺少有效的备用容量，对运行不可靠的机组施以高额罚款，使得经济因素逐渐成为重要的因素。因此，对于目前承担基荷的500~800 MW发电机，检测和修复转子匝间短路越来越受到重视。经验表明，有些情况下匝间短路处于隐匿状态，即并非所有的匝间短路都会发展到影响发电机正常运行的程度；然而，机组的运行功率越高，匝间短路发展成严重事故的可能性就越大。</p>
+
+<figure>
+<img src="fig/01.png" width="250px"/>
+<p><b>图1.</b> 转子匝间短路检测方法的适用性</p>
+</figure>
+
+<p>由于检测转子匝间短路故障的重要性，一些检测技术在发电机的制造、检修和运行过程中得到了应用。这些技术的原理已确立，但试验方法还在不断发展，以期能在发电机的制造、检修和运行3个领域中得到最有效的应用。图1给出了目前各种技术的应用领域及未来可能的发展，这一点会在本文后面的相关章节进一步讨论。</p>
+
+<style>#tf {margin: 0 auto;} #tf, #tf tr, #tf td {border:none} #tf td {text-align: center}</style>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/02a.png" width="200px"/></td><td>&nbsp;</td><td><img src="fig/02b.png" width="200px"/></td></tr>
+<tr><td>a）径向冷却</td><td>&nbsp;</td><td>b）轴向冷却</td></tr>
+<tr><td colspan="3"><b>图2.</b> 不同冷却方式的转子槽</td></tr>
+</table>
+</figure>
+
+<p>本文研究的相关信息是从功率60~800 MW的发电机得到的，但主要来自大型机组。图2和图3给出了目前两极发电机转子绕组中槽和线圈的典型布置。</p>
+
+<figure>
+<img src="fig/03.jpg" width="360px"/>
+<p><b>图3.</b> 气隙探测线圈原理和线圈编号</p>
+</figure>
+
+<h1>2. 气隙探测线圈</h1>
+<p>气隙探测线圈技术最先由Albright在1971年提出[1-3]。图3说明了该方法的原理并标出了线圈的编号。探测线圈放置在靠近转子表面的地方。当转子旋转时，每个导体槽的漏磁通经过线圈，并在其中感应出电压。电压幅值与该槽的安匝数成正比。因此当线圈存在匝间短路时观察到的电压就会降低。</p>
+<p>由于使用气隙探测线圈方法需要转动转子，因此，该方法不能应用在转子下线过程中。NEI Parsons制造厂在试验台上安装了探测线圈，而且英国大部分500 MW、660 MW的机组以及一些国外的机组也都永久性地安装了探测线圈。</p>
+<h2>2.1 试验原理</h2>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/04.png" height="300px"/></td><td>&nbsp;</td><td><img src="fig/05.png" height="250px"/></td></tr>
+<tr><td><b>图4.</b> 开路时的径向磁通和电压波形</td><td>&nbsp;</td><td><b>图5.</b> 短路时的径向磁通和电压波形</td></tr>
+</table>
+</figure>
+
+<p>放置在气隙中的探测线圈感应出来的电压是穿过它的磁通变化率的函数。磁通包括主磁通和槽的漏磁通。图4为开路情况下放置在测量漏磁通径向分量位置的线圈感应出来的波形，图5是切向放置的线圈感应出来的波形，用以探测该方向的磁通分量。需要注意的是，径向线圈电压的正波峰比负波峰多一个。尽管在开路工况下没有什么问题，但在负载工况下的电压波形就比较复杂了，甚至可能会造成波形的混淆。在测量转子切向槽漏磁通时则不会产生这种问题。</p>
+<p>在开路工况下可以观察到，电压幅值从交轴开始逐渐增长，到与磁极相邻的槽时达到峰值，这个峰值由畸变系数引起[1]。在短路工况下，气隙中的磁通是对称的。气隙中的主磁通会以相同的程度叠加到某一给定线圈两边的槽漏磁通上。负载工况下则不会如此，因为此时转子和定子合成磁通的对称轴不再穿过转子磁极，但直径上相对的2个槽，其槽漏磁通受主磁通的影响是相同的，因此可比较这2个槽的电压峰值。为了消除不对称性的影响，通常将某一线圈两边的电压峰值相加，再与另一极相同位置的线圈比较，这种方法将在后面阐述。</p>
+<h2>2.2 试验装置</h2>
+<p>气隙探测线圈可以是圆柱形或矩形。用于检测径向磁通时，其直径或宽度根据转子齿宽来确定。其尺寸和匝数应能够提供足够的灵敏度。典型的线圈大约有750匝，用直径0.0508 mm的导线绕制在直径9.5 mm的骨架上。为便于分析，线圈被放置在测量槽漏磁通径向和切向分量的位置上。图6是典型的气隙探测线圈探头组件的截面图，包括2个径向线圈和2个切向线圈。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/06.jpg" height="200px"/></td><td>&nbsp;</td><td><img src="fig/07.jpg" height="300px"/></td></tr>
+<tr><td><b>图6.</b> 气隙探测线圈截面图</td><td>&nbsp;</td><td><b>图7.</b> 气隙探测线圈固定措施</td></tr>
+</table>
+</figure>
+
+<p>发电机中探头的固定是很重要的。图7中探头支架由定子线棒槽楔改造而成，并打入鸽尾槽中。整个组件由环氧玻璃层压板制成，适合在不抽转子的情况下安装探头组件（经常会出现这种情况）。然而对一些机组，受探头尺寸、探头应尽量接近转子、转子风扇位置、气隙等条件限制，需要抽出转子才能安装探头。对已经投入运行的机组，会相应地增加工期和成本。</p>
+<p>经验表明，探测线圈和转子表面的距离不是关键因素，40%~60%气隙长度范围内的距离都能提供足够的灵敏度。</p>
+
+<figure>
+<img src="fig/08.png" height="250px"/>
+<p><b>图8.</b> 转子磁通监测仪原理图</p>
+</figure>
+
+<p>线圈的引线宜采用无自感绕法，通过定子接线盒的端子引出。气隙线圈的电压可以通过示波器或拍照记录下来用于分析。另一种方法是Byars使用的通过模拟延迟线将波形延迟半个周期（图8）[2]，这样就能得到直径上相对的2个槽的电压差，并显示在示波器上。现在已经有一种称为“转子磁通监测仪”的产品能实现这样的功能了。</p>
+<p>NEI Parsons开发了一种方法来获取探测线圈电压的具体数值，并可用计算机程序对其进行分析。</p>
+<h2>2.3 试验结果</h2>
+<p>作为一个例子，下面给出了1台500 MW发电机上探头（图6）的参数。表1给出了探头中4个探测线圈的位置和编号。图9是4号线圈在匝间短路状态下的实际电压输出以及电压峰-峰值之和。采用5%的差值作为判断是否存在匝间短路的参考值。表2比较了同一线圈在开路和短路工况下的差值百分比。表3给出了发电机在20 MW负荷下4个线圈的电压差值百分比。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/09a.jpg" height="200px"/></td><td>&nbsp;</td><td><img src="fig/09b.jpg" height="450px"/></td></tr>
+<tr><td colspan="3">x：指可能存在故障的位置</td></tr>
+<tr><td colspan="3"><b>图9.</b> 气隙探测线圈电压分析</td></tr>
+</table>
+</figure>
+
+<style>th {text-align: center}</style>
+
+<table style="width: 32em">
+<caption><b>表1 探测线圈到转子表面的距离</b></caption>
+<tr><th>探测线圈编号</th><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><th>探测线圈中心到转子表面的距离/mm</th><td>20</td><td>28.5</td><td>36.5</td><td>45</td></tr>
+<tr><th>类型</th><td>径向</td><td>切向</td><td>径向</td><td>切向</td></tr>
+</table>
+<br/>
+<table style="width: 32em">
+<caption><b>表2 4号探测线圈在开路和短路工况下的电压差值百分比 %</b></caption>
+<tr><th>转子线圈编号</th><td>开路工况</td><td>短路工况</td></tr>
+<tr><th>A</th><td>25.0</td><td>14.0</td></tr>
+<tr><th>B</th><td>0.7</td><td>0.0</td></tr>
+<tr><th>C</th><td>1.6</td><td>0.7</td></tr>
+<tr><th>D</th><td>0.9</td><td>0.7</td></tr>
+<tr><th>E</th><td>5.1</td><td>11.6</td></tr>
+<tr><th>F</th><td>22.0</td><td>32.0</td></tr>
+<tr><th>G</th><td>32.5</td><td>56.0</td></tr>
+</table>
+<br/>
+<table style="width: 40em">
+<caption><b>表3 径向和切向探测线圈的电压差值百分比 %</b></caption>
+<tr><th>转子线圈编号</th><td>1号线圈</td><td>2号线圈</td><td>3号线圈</td><td>4号线圈</td></tr>
+<tr><th>A</th><td>6.1</td><td>20.5</td><td>23.7</td><td>32.2</td></tr>
+<tr><th>B</th><td>1.3</td><td>0.6</td><td>1.0</td><td>0.8</td></tr>
+<tr><th>C</th><td>0.0</td><td>1.3</td><td>0.9</td><td>1.4</td></tr>
+<tr><th>D</th><td>0.9</td><td>1.5</td><td>0.0</td><td>0.7</td></tr>
+<tr><th>E</th><td>2.1</td><td>7.5</td><td>6.5</td><td>8.1</td></tr>
+<tr><th>F</th><td>7.3</td><td>16.7</td><td>14.1</td><td>25.7</td></tr>
+<tr><th>G</th><td>19.1</td><td>35.0</td><td>30.8</td><td>46.7</td></tr>
+</table>
+
+<h2>2.4 对该技术的评价</h2>
+<p>由于转子间存在差异，很难对一个确定试验的详情进行介绍。短路试验工况下似乎能获得最好的结果，但在一台500 MW的发电机上，在负荷达到50 MW的工况下也获得了有意义的结果。径向探测线圈在短路工况下效果较好，而切向线圈则在开路工况下效果较好，但通常会一起安装这2种类型的线圈。另外在现场可以通过短路变压器高压侧进行短路试验。</p>
+<p>在最好的条件下，气隙探测线圈方法可以检测到单匝的短路，对交轴位置的故障灵敏度最大。</p>
+<p>极面开槽及磁性槽楔会对分析产生影响。有时一些老机组会用到磁性平衡块，如果它们在探头两侧5 cm的距离内，就会影响探头的输出。</p>
+<p>气隙探测线圈技术在满负荷工况下给出的结果不够好，Connolly等人尝试了采用多种可能的线圈和位置以克服这个限制[3]。他们开发了一套在线监测仪，可以探测到因匝间短路故障产生、发展引起的探测线圈电压变化。如果发生了匝间短路故障，定子电压波形中会产生偶次谐波分量。这种在线监测仪能测量前4个偶次谐波分量之和。进一步的详细说明目前尚未见报道。</p>
+<h1>3. 重复脉冲示波法（RSO）</h1>
+<p>RSO法是由变压器绕组的试验方法发展而来的，这种方法施加一个雷电冲击波（波前时间/半峰值时刻为1/50 μs）后，估计变压器绕组上的电压分布，以正确设计变压器的绝缘强度。在用于转子匝间短路检测时，则将一个前沿快速上升脉冲（陡波）注入转子绕组，转子绕组相当于传输线，匝间短路导致的阻抗变化会产生反射波。</p>
+<p>NEI Parsons制造厂的工人将这种技术用在转子下线及后续的试验过程中。它在转子静止或旋转状态下都可以应用。通常，现场试验由电力部门进行。据笔者所知，还没有转子励磁情况下的在线应用，但从原理上看这是可行的。</p>
+<h2>3.1 RSO理论</h2>
+<p>Makin研究了陡波脉冲下绕组的响应[4]。附录7.1给出了绕组响应的一个简化分析，表明只有在临界频率以下的频率分量才能作为行波传播。在RSO技术中，注入到转子绕组的脉冲上升时间约50 ns，其上升沿包含的频率远高于临界频率。结果是经绕组传播的行波的上升时间比注入的脉冲慢得多，典型值是20 μs。转子绕组形状复杂，本身就有一些阻抗变化的区域，在这些区域自身会产生反射波。在没有匝间短路时，端电压有一个特征波形；匝间短路则会产生相对较大的反射波。Grant描述了反射波产生的方式，分析的总结见附录7.2。由于转子绕组是对称的，脉冲从绕组两端同时注入。比较输出波形可见，如果没有匝间短路，实际波形基本完全相同，这也说明了试验方案是正确的。</p>
+<h2>3.2 试验装置</h2>
+
+<figure>
+<img src="fig/10.png" height="450px"/>
+<p><b>图10.</b> RSO使用转子反射计（Reflectometer）的试验方案</p>
+</figure>
+
+<p>图10是RSO试验的电路图。NEI Parsons使用的是商用脉冲发生器，在2个滑环上交替注入脉冲。注入脉冲的上升时间是75 ns，重复率可以在30~275个脉冲/秒范围内变化。尽管只有较低频率的分量在通过绕组时才会有较小的衰减，但超过临界频率的分量也会传播较短的一段距离，这足够在最开始几匝线圈短路时产生有效的反射波，因此，用来显示端电压波形的示波器至少要有20 MHz的带宽。从RSO脉冲发生器到转子的屏蔽信号线的长度应该尽量相同，并在中点处接地以防止产生接地环流。</p>
+<h2>3.3 试验结果</h2>
+<p>图11a是没有匝间短路故障的转子对地端电压（滑环处）的典型重叠波，上面部分是输入电压的波形，下面部分是输出脉冲的波形，波形是通过每次注入RSO脉冲时同时切换输入点和记录通道得到的。图11a中下面部分的波形给出了输出脉冲的到达时间，这样就可以得到单次传输时间（SPTT）。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/11a.jpg" height="250px"/></td><td>&nbsp;</td><td><img src="fig/11b.jpg" height="250px"/></td></tr>
+<tr><td>a）没有故障的绕组</td><td>&nbsp;</td><td>b）E号线圈存在匝间短路</td></tr>
+<tr><td colspan="3"><b>图11.</b> 在500 MW径向冷却转子上模拟的匝间短路</td></tr>
+</table>
+</figure>
+
+<p>图11b是人工模拟E号线圈单匝短路的例子。这个转子一极有7个线圈。匝间短路波形在时间轴上的位置与绕组故障点的实际位置相关。</p>
+
+<figure>
+<img src="fig/12.png" height="360px"/>
+<p><b>图12.</b> 不同位置的人工短路产生的时间差</p>
+</figure>
+
+<p>波形的时间差和匝间短路在绕组中的位置通常不是线性相关的（图12），对每种型式的发电机，都必须通过试验才能得到其关系。如果按线性估计的话，可能会出现超过一个线圈的位置误差。</p>
+
+
+<p>同一设计型式的发电机，在相同试验条件下，传播时间差大约在5%以内。终端的影响很显著，对于给定的绕组长度（感抗和容抗不同），由于设计型式的差别，引起的传播时间差可达150%。因此，如果可以接触到线圈，则可以采用一种称为“互补短路”的方法进行短路补偿。图13是一个故障波形和在绕组另一边引入相同故障后的效果。</p>
+<p>互补短路技术很灵敏，能检测出单匝线圈的短路。对一台500 MW轴向冷却的转子进行的试验表明，在A号线圈上可以检测到10 Ω的短路，在G号线圈上则可检测到3 Ω的短路。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/13a.jpg" height="250px"/></td><td>&nbsp;</td><td><img src="fig/13b.jpg" height="250px"/></td></tr>
+<tr><td>a）1号磁极G号线圈的故障</td><td>&nbsp;</td><td>b）2号磁极G号线圈人工补偿短路</td></tr>
+<tr><td colspan="3"><b>图13.</b> 1台500 MW轴向冷却转子上应用“补偿短路法”定位故障</td></tr>
+</table>
+</figure>
+
+<p>上述例子的结论是从静止状态的转子得到的，但转动转子的试验也得到了类似的结果。因为离心力可能诱发匝间短路，因此在旋转状态的转子上进行的试验是很重要的。在测量转速达3000 r/min的转子时会遇到2个主要的问题（图14）。碳刷噪音可能导致示波器波形无法分辨（图14b），试验表明改进转子大轴接地方式可以消除这一影响。用黄铜电刷紧压并嵌入轴上的结果最好，碳刷接地效果最差，铜和石墨混合碳刷的效果正在评估中。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/14a.jpg" height="200px"/></td><td>&nbsp;</td><td><img src="fig/14b.jpg" height="200px"/><td>&nbsp;</td><td><img src="fig/14b.jpg" height="200px"/></td></tr>
+<tr><td>a）转子静止</td><td>&nbsp;</td><td>b）3000 r/min时多重触发</td><td>&nbsp;</td><td>c）3000 r/min时碳刷噪音</td></tr>
+<tr><td colspan="3"><b>图14.</b> 碳刷噪音和多重触发示例</td></tr>
+</table>
+</figure>
+
+<p>多重触发效应使示波器波形记录非常困难（图14c）。这是制造厂试验台试验时遇到的一种效应，在电厂还没有报道。多重触发效应是由试验区域分布在转子外部的杂散磁场在转子绕组中感应出正弦电压造成的。随着转子转速增加，感应电压和RSO试验脉冲的重复率产生差拍效应。研究短路出现的条件，要记录从静止到超速的全部RSO波形。可以通过改变RSO脉冲的重复率来实现，直到它和感应电压频率一致，得到一个稳定的波形。要使脉冲重复率可以在需要的范围内扫描，需要对现有的信号发生器进行小的改进。</p>
+<h2>3.4 对该技术的评价</h2>
+<p>RSO技术灵敏度很高，能够检测到单匝的匝间短路，但除非可以使用互补短路法，否则需要事先校验波形才能准确定位（图12），而通常情况下是没有校验数据的。</p>
+<p>RSO技术能检测到不会对转子运行产生明显影响的高阻短路（若干欧姆）。因此，对结果的分析要有预先判断。</p>
+<h1>4. 其他技术</h1>
+<p>还有一些技术用来检查和确认转子是否存在匝间短路，它们的适用性取决于转子的状况。如果转子在下线的过程中，可以通过电压降试验检查是否存在匝间短路。电压降试验方法是将直流电压加在转子绕组上，在指定的位置测量电压。在完全组装好的转子上，可以用Hall探头法来探测每槽间的磁场变化。这种技术使用探测线圈中感生的磁场来测量转子的磁场，使其灵敏度较低，好处是不必转动转子。下面详细介绍另外2种检测技术。</p>
+<h2>4.1 定子环流测量</h2>
+
+<figure>
+<img src="fig/15.png" height="360px"/>
+<p>定子输出电流=$I_1 + I_2$；定子环流=$（I_1 - I_2）/2$<br/>
+<b>图15.</b> 测量定子谐波环流的示意图</p>
+</figure>
+
+<p>Mulhaus等人介绍了一种在线检测转子匝间短路的方法[5]。这种方法要求定子绕组每相由2个并联支路组成。当转子存在匝间短路时，2个极面上的磁通分布不再对称，气隙磁通密度有偶次谐波[6]。因此绕组上会感应出相反的偶次谐波电压，2个并联支路就会有偶次谐波环流。图15是检测该电流方法的示意图。图16是测量到的一台怀疑有匝间短路的发电机在不同工况下的100 Hz环流。得到的结论是其环流要比没有转子匝间短路的发电机（测量电流为5 A）大得多，确认了转子存在故障。然而这种基于测量100 Hz电流的方法并不能提供具体的匝间短路位置信息，作者正在研究可能提供有利证据的其他信息，如4次谐波。</p>
+
+<figure>
+<img src="fig/16.png" height="250px"/>
+<p><b>图16.</b> 一台认为有转子匝间短路的发电机的100 Hz环流</p>
+</figure>
+
+
+<h2>4.2 转子轴电流</h2>
+
+<figure>
+<img src="fig/17.png" height="360px"/>
+<p><b>图17.</b> 脉冲试验电路</p>
+</figure>
+
+<figure>
+<img src="fig/18.jpg" height="250px"/>
+<p>注入的电压：1 kV/格；转子轴电流：20 A/格；扫描时间：20 μs/格<br/>
+<b>图18.</b> 脉冲试验期间的转子轴电流</p>
+</figure>
+
+<p>Richardson等人探讨了可控硅励磁的转子进行匝间电压试验的必要性[7]。尽管得出的结论是没有必要进行试验，但客户仍要求进行可控硅励磁的大型转子试验。可以设计一种方法来检测是否存在或产生了因施加电压（可控硅励磁系统可能产生的尖峰电压脉冲）导致的匝间短路。可控硅励磁机脉冲可以表示为上升时间10 μs、衰减时间3 ms的脉冲。将峰值达到3.2 kV（取决于可控硅励磁机的电压）的脉冲施加到800 MW的转子上。由试验电路示意图（图17）可见，该方法与RSO法的试验电路相似，但该方法只用了一个脉冲且只测量轴电流。图18是测量到的轴电流波形。图19是模拟匝间短路产生的电流变化。图20是电流变化的首个峰值延迟时间与图19中相应的匝间短路位置的关系。因此该方法可以用来检测、定位转子的匝间短路。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/19.png" height="250px"/></td><td>&nbsp;</td><td><img src="fig/20.png" height="250px"/></td></tr>
+<tr><td><b>图19.</b> 匝间短路导致的轴电流变化</td><td>&nbsp;</td><td><b>图20.</b> 轴电流首个峰值随匝间短路位置的变化</td></tr>
+</table>
+</figure>
+
+<h1>5. 总结</h1>
+<p>本文介绍了多种检测匝间短路的方法，表明在制造厂、下线及发电机现场试验过程中进行转子故障的检测和定位是可行的。测量探测线圈谐波电压和定子谐波环流的方法是2种新的在线探测转子匝间短路的途径，近期这些技术的发展表明：由于具有良好的经济可行性，检测技术的发展趋势是逐步实现电力设备的连续监测。</p>
+<h1>6. 致谢</h1>
+<p>感谢NEI Parsons允许发表这篇文章，特别要感谢B.F.Ewles、B.Johnson、L.C.Kerr（电磁小组）和M.Michinson（运行服务部）为编写本文提供的帮助。</p>
+<h1>7. 附录</h1>
+<h2>7.1 转子绕组对陡波脉冲的响应</h2>
+<p>对应简单的单层绕组、单位长度对地电容$c$、单位长度匝间电容$k$和单位长度电感$l$，Markin导出了下面的微分方程[4]：</p>
+<p>$$\frac{\partial^{2} V}{\partial x^{2}}-l c \frac{\partial^{2} V}{\partial t^{2}}+l k w^{2} \frac{\partial^{4} V}{\partial t^{2} \partial x^{2}}=0 \tag{1}$$</p>
+<p>式中，$V$为电压；$w$为单匝的长度。</p>
+<p>其解为波动方程： $$V=V_{0} e^{j \omega(t-x / v)} \tag{2}$$</p>
+<p>考虑到$w$和波速$v$的关系： $$v = \pm \sqrt{\frac{1}{l c}-\frac{k}{c} w^{2} \omega^{2}} \tag{3}$$</p>
+<p>从这个简化方程可以发现，角频率$\omega$存在一个特殊值$\nu$ ( $=2 \pi f_\nu$， $f_\nu$是以Hz计的频率)，使速度为0，即：$$\nu = \frac{1}{w \sqrt{l k}} \tag{4}$$</p>
+<p>$f_\nu$为临界频率，若频率低于$f_\nu$，波速是实数；若频率大于$f_\nu$，则波速是虚数。进一步的简化分析表明，所有大于临界值的频率沿绕组按指数衰减。Makin指出[4]，如果考虑到非线性感应效应（由于涡流、磁通对所有频率的响应不相同），所有频率都会通过绕组，但是大于$f_\nu$部分的波速与大部分较低频率的波速相比太小，以至于很快被落在后面，可以认为是被截止了。</p>
+<p>将陡波脉冲注入到绕组意味着注入无限序列的谐波，每个谐波的幅值与频率成反比。只有频率低于$f_\nu$才能传播，因此在简化方法中，如果用$$\frac{2}{\pi} V \int_{0}^{\infty} \frac{\sin \omega t}{\omega} {\rm d} \omega=1$$表示一个陡波脉冲，则$$\frac{2}{\pi} V \int_{0}^{\nu} \frac{\sin \omega t}{\omega} {\rm d} \omega$$表示绕组中传播的波。其中，函数$$\int_{0}^{\nu} \frac{\sin \omega t}{\omega} {\rm d} \omega$$是一个著名的数学方程，称为正弦积分${\rm Si}(\nu t)$，可以查到它的积分表；其曲线见图21。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/21a.png" height="250px"/></td><td>&nbsp;</td><td><img src="fig/21b.png" height="250px"/></td></tr>
+<tr><td>a）正弦积分（传播的脉冲）</td><td>&nbsp;</td><td>b）超临界频率之和（衰减的部分）</td></tr>
+<tr><td colspan="3"><b>图21.</b> 理想绕组对陡波脉冲的响应</td></tr>
+</table>
+</figure>
+
+<h2>7.2 短路匝对行波影响的简化分析</h2>
+<p>短路匝对行波的作用可以通过假设转子绕组是理想传输线来确定。短路匝处是4条波阻抗为$Z_0$的传输线的节点（图22）。由传输线理论，一个幅值为V的波在t时刻后到达故障点，产生一个反射波，幅值为：$$V_T=\left(\frac{Z_0/3-Z_0}{Z_0/3+Z_0}\right)V=-\frac{V}{2} \tag{5}$$</p>
+
+<figure>
+<img src="fig/22.png" height="150px"/>
+<p><b>图22.</b> 转子绕组中短路匝示意图</p>
+</figure>
+
+<p>相同幅值的波沿着绕组在短路匝的每个分支中传播，如图23a所示。如果SPTT为$T$，$n$是绕组的匝数，那么在短路匝传播的波会在$T/n$后回到短路匝，如图23b所示。因此，假设绕组的远端等效为开路，绕组的理想响应将如图24所示。</p>
+
+<figure>
+<table id="tf">
+<tr><td><img src="fig/23a.png" height="150px"/></td><td>&nbsp;</td><td><img src="fig/23b.png" height="150px"/></td></tr>
+<tr><td>a）波到达故障点</td><td>&nbsp;</td><td>b）延迟$T/n$后</td></tr>
+<tr><td colspan="3"><b>图23.</b> 短路匝中的详细情况</td></tr>
+</table>
+
+<p>&nbsp;</p>
+
+<img src="fig/24.png" height="300px"/>
+<p><b>图24.</b> 故障绕组的理想响应（单匝短路）</p>
+</figure>
+<p>理想情况下，如果$n_s$是短路匝数，那么反射波经历的时间是$n_s T/n$，由此可以确定短路匝数，故障点的起始位置由$n·(t/T)$给出。</p>
+<p>通常，陡波脉冲通过一个阻值调整为$Z_0$的可变电阻注入绕组，以保证获得可重复的试验条件，便于与后续试验进行比较。这时注入转子的电压是脉冲发生器输出电压的一半。</p>
+<p></p>
+<p><b>参考文献</b></p>
+<ol class="bib">
+<li x="1">Albright D R. Inter-Turn Short-Circuit Detection for Turbine-Generator Rotor Windings[J]. IEEE Trans., 1971, PAS-90: 478-483.</li>
+<li x="2">Byars M. Detection of Alternator Rotor Winding Faults Using an On-Line Magnetic Field Search Coil Monitoring Unit [C]. 17th Universities Power Engineering Conference Paper, 1982.</li>
+<li x="3">Connolly H M, Lodge I, Jackson R J, Roberts I. Detection of Inter-Turn Faults in Generator Rotor Windings Using Air Gap Search Coils[J]. IEE Conf Publ, 1985, 254: 11-15.</li>
+<li x="4">Makin A W. Surges in Transformer Windings[D]. Ph.D. Thesis, London University, 1952.</li>
+<li x="5">Mulhaus J, Ward D M, Lodge I. The Detection of Shorted Turns in Alternator Rotor Windings by Measurement of Circulating Stator Currents[J]. IEE Conf. Publ., 1985, 254: 100-103.</li>
+<li x="6">Buckley G W. The Effects of Rotor Inter-Turn Short-Circuits on Voltage Imbalance and Circulating Currents in Large Generator Stator Windings[J]. IEE Conf. Publ., 1982, 213: 206-211.</li>
+<li x="7">Richardson P, Hawley R, Wood J W. Insulation Levels for Turbo-Generator Rotors[J]. IEEE Trans., 1972, PAS-91: 2237-2244.</li>
+</ol>
+</body></html>
+</article>
+<footer>
+<hr/>
+<img src="/up.png" style="height: 120px; border-radius: 59px"/><br/>
+<p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
+由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
+主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
+源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
+</footer>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-64NZP9N2DV"></script>
+<script>
+  var doNotTrack = false;
+  if ( false ) {
+    var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+    var doNotTrack = (dnt == "1" || dnt == "yes");
+  }
+  if (!doNotTrack) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-64NZP9N2DV');
+  }
+</script></body>
+</html>
+

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微软双拼键位图</title>
+    <style>
+        /* --- 1. 全局样式与颜色变量 --- */
+        :root {
+            --key-bg: #f5f5f5;
+            --key-border: #d9d9d9;
+            --key-char-color: #404040;
+            --initial-color: #f95700;  /* 声母 */
+            --final-color: #0072c6;    /* 韵母 */
+            --mono-font: Consolas, 'Courier New', monospace;
+        }
+
+        /* --- 2. 键盘容器与行布局 --- */
+        .kb-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            width: 42rem;
+        }
+
+        .kb-row {
+            display: flex;
+            gap: 8px; /* 按键间距 */
+        }
+
+        /* 实现交错布局 */
+        .kb-row:nth-child(2) {
+            margin-left: 25px;
+        }
+
+        .kb-row:nth-child(3) {
+            margin-left: 50px;
+        }
+
+        /* --- 3. 按键样式 --- */
+        .key {
+            background-color: var(--key-bg);
+            border: 1px solid var(--key-border);
+            border-radius: 6px;
+            width: 60px;
+            height: 60px;
+            padding: 6px;
+            box-sizing: border-box; /* 让 padding 和 border 不会增加盒子总宽度 */
+
+            /* 使用 Flexbox 进行内部布局 */
+            display: flex;
+            justify-content: space-between; /* 将主键字符和拼音推向两端 */
+            align-items: flex-start;      /* 确保所有内容都从顶部开始对齐 */
+        }
+
+        .ae {
+            background-color: #f957003f;
+        }
+
+         .o {
+            background-color: #36f90077;
+        }
+
+        .zcs {
+            background-color: #00a2f944;
+        }
+
+        /* --- 4. 按键内部元素样式 --- */
+        .key-char {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--key-char-color);
+        }
+
+        .pinyin {
+            display: flex;
+            flex-direction: column; /* 垂直堆叠声母和韵母 */
+            align-items: flex-end;  /* 右对齐 */
+            font-size: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .pinyin .initial {
+            color: var(--initial-color);
+        }
+
+        .pinyin .final {
+            color: var(--final-color);
+        }
+
+        /* --- 5. 右下角标签 --- */
+        .kb-label {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 0.9rem;
+            color: var(--key-char-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="kb-container">
+        <div class="kb-row">
+            <div class="key"><span class="key-char">Q</span><div class="pinyin"><span class="initial">q</span><span class="final">iu</span></div></div>
+            <div class="key"><span class="key-char">W</span><div class="pinyin"><span class="initial">w</span><span class="final">ua</span><span class="final">ia</span></div></div>
+            <div class="key ae"><span class="key-char">E</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">e</span></div></div>
+            <div class="key"><span class="key-char">R</span><div class="pinyin"><span class="initial">r</span><span class="final">uan</span><span class="final">er</span></div></div>
+            <div class="key"><span class="key-char">T</span><div class="pinyin"><span class="initial">t</span><span class="final">ue</span></div></div>
+            <div class="key"><span class="key-char">Y</span><div class="pinyin"><span class="initial">y</span><span class="final">uai</span><span class="final">ü</span></div></div>
+            <div class="key zcs"><span class="key-char">U</span><div class="pinyin"><span class="initial">sh</span><span class="final">u</span></div></div>
+            <div class="key zcs"><span class="key-char">I</span><div class="pinyin"><span class="initial">ch</span><span class="final">i</span></div></div>
+            <div class="key o"><span class="key-char">O</span><div class="pinyin"><span class="initial">·</span><span class="final">o</span><span class="final">uo</span></div></div>
+            <div class="key"><span class="key-char">P</span><div class="pinyin"><span class="initial">p</span><span class="final">un</span></div></div>
+        </div>
+        <div class="kb-row">
+            <div class="key ae"><span class="key-char">A</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">a</span></div></div>
+            <div class="key"><span class="key-char">S</span><div class="pinyin"><span class="initial">s</span><span class="final">iong</span><span class="final">ong</span></div></div>
+            <div class="key"><span class="key-char">D</span><div class="pinyin"><span class="initial">d</span><span class="final">iang</span><span class="final">uang</span></div></div>
+            <div class="key"><span class="key-char">F</span><div class="pinyin"><span class="initial">f</span><span class="final">en</span></div></div>
+            <div class="key"><span class="key-char">G</span><div class="pinyin"><span class="initial">g</span><span class="final">eng</span></div></div>
+            <div class="key"><span class="key-char">H</span><div class="pinyin"><span class="initial">h</span><span class="final">ang</span></div></div>
+            <div class="key"><span class="key-char">J</span><div class="pinyin"><span class="initial">j</span><span class="final">an</span></div></div>
+            <div class="key"><span class="key-char">K</span><div class="pinyin"><span class="initial">k</span><span class="final">ao</span></div></div>
+            <div class="key"><span class="key-char">L</span><div class="pinyin"><span class="initial">l</span><span class="final">ai</span></div></div>
+            <div class="key"><span class="key-char">;</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">ing</span></div></div>
+        </div>
+        <div class="kb-row">
+            <div class="key"><span class="key-char">Z</span><div class="pinyin"><span class="initial">z</span><span class="final">ei</span></div></div>
+            <div class="key"><span class="key-char">X</span><div class="pinyin"><span class="initial">x</span><span class="final">ie</span></div></div>
+            <div class="key"><span class="key-char">C</span><div class="pinyin"><span class="initial">c</span><span class="final">iao</span></div></div>
+            <div class="key zcs"><span class="key-char">V</span><div class="pinyin"><span class="initial">zh</span><span class="final">üe</span><span class="final">ui</span></div></div>
+            <div class="key"><span class="key-char">B</span><div class="pinyin"><span class="initial">b</span><span class="final">ou</span></div></div>
+            <div class="key"><span class="key-char">N</span><div class="pinyin"><span class="initial">n</span><span class="final">in</span></div></div>
+            <div class="key"><span class="key-char">M</span><div class="pinyin"><span class="initial">m</span><span class="final">ian</span></div></div>
+        </div>
+        
+        <div class="kb-label">微软双拼键位图</div>
+    </div>
+</body>
+</html>
