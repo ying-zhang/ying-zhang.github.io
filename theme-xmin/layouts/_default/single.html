@@ -1,0 +1,9 @@
+{{ partial "header.html" . }}
+  <article>
+    <div class="title">
+      <h1>{{ .Title }}</h1>
+      {{ if (gt .Params.date 0) }}<p><time>{{ .Date.Format "2006-01-02" }}</time><span id="url">{{ .Permalink }}</span></p>{{ end }}
+    </div>
+    {{ .Content }}
+  </article>
+{{ partial "footer.html" . }}

@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/style.css">
+<title>微软双拼输入法</title>
+<style>p {text-indent: 2rem}</style>
+</head><body>
+<header> <a href="/">Home</a> </header>
+<button id="btn">☀️</button>
+<script src="/dark.js" ></script>
+<article>
+<div class="title">
+<h1>微软双拼输入法</h1>
+<p style="text-indent: 0">https://ying-zhang.cn/misc/微软双拼输入法.pdf
+<span id="url">https://ying-zhang.cn/misc/udpn.html</span></p>
+</div>
+<p style="margin-top: -1rem">双拼是一种高效的汉字拼音输入方案。与全拼需要键入拼音的所有字母不同，双拼将每个汉字的拼音拆分为“声母”和“韵母”两部分，分别用键盘上的一个键输入。因此，输入任意汉字都只需敲击两个键，可以提升输入速度，并且具有非常好的节奏感。</p>
+<p>双拼输入法需要花一点时间来记忆键位与韵母的对应关系。有微软双拼，小鹤双拼等多种双拼输入方案，分别规定了不同的键位与韵母的对应关系。微软双拼在多数平台普遍可用，因此建议学习这种方案。</p>
+<p>双拼输入法并不需要特别安装输入法软件。主流的拼音输入法都可以在设置中选择双拼模式。有的输入法还可以选择不同的双拼方案。请参考视频 https://www.bilibili.com/video/BV1Jv411K7rG/ 切换不同平台的输入法到双拼模式。</p>
+
+<h1>1. 核心原理：先声后韵，两键一字</h1>
+<p>双拼的核心规则是：<b>第一个按键是声母，第二个按键是韵母</b>。</p>
+<p>例如，要输入“好 (hǎo)”：<b>声母</b>是 <code>h</code>，即键盘上的 <code>h</code> 键；<b>韵母</b>是 <code>ao</code>，查键位表，对应的是 <code>k</code> 键；因此，敲击 <code>hk</code> 两个键，即得到“好”。</p>
+
+<h1>2. 声母</h1>
+<h2>2.1 复声母 zh，ch，sh</h2>
+<p>单声母 b，p，m，f，d，t，n，l，g，k，h，j，q，x，z，c，s，r，y，w 与键盘上的按键一一对应，无需记忆。</p>
+<p>复声母zh，ch，sh需特别注意：<b>zh</b> 对应 <code>v</code> 键；<b>ch</b> 对应 <code>i</code> 键；<b>sh</b> 对应 <code>u</code> 键。</p>
+
+<h2>2.2 零声母</h2>
+<p>“零声母”指一个字的拼音只有韵母，没有声母，例如“啊（a）”、“安 (ān)”、“恩（ēn）”、“欧 (ōu)”等。</p>
+<p>零声母的规则是：<b>以<code>o</code>作为特殊的零声母，再加上韵母对应的键</b>。</p>
+<p>例如：“啊”的韵母为a，前面以<code>o</code>作为零声母，需敲<code>oa</code>两键；“安”的韵母为ān（对应<code>j</code>键），需敲<code>oj</code>两键。</p>
+
+<h1>3. 韵母</h1>
+<p>下面是<a href="https://ying-zhang.cn/misc/mskeymap.html"><b>微软双拼的键位图</b></a>，需要记住。</p>
+<iframe src="/misc/mskeymap.html" style="width: 45rem; height: 14rem; border: none; background-color: white; border-radius: 5px; margin: 0.5rem auto; display: block"></iframe>
+
+<style>td {text-align: center}</style>
+<table style="margin:0 auto; width: 40rem">
+  <tr><td>规则</td><td colspan="2">示例</td><td>按键</td></tr>
+  <tr><td>简单声母/韵母直接拼</td><td>“我”</td><td>（w ǒ）</td><td><code>w o</code></td></tr>
+  <tr><td style="width: 20rem" rowspan="4">复杂声母（zh, ch, sh）/韵母需记忆</td><td style="width: 1rem">“中”</td><td style="width: 6rem">（zh ōng）</td><td style="width: 3rem"><code>v s</code></td></tr>
+  <tr><td>“追”</td><td>（zh uī）</td><td><code>v v</code></td></tr>
+  <tr><td>“吃”</td><td>（ch ī）</td><td><code>i i</code></td></tr>
+  <tr><td>“书”</td><td>（sh ū）</td><td><code>u u</code></td></tr>
+  <tr><td>零声母要加o</td><td>“安”</td><td>（&emsp; ān）</td><td><code>o j</code></td></tr>
+</table>
+
+<h1>4. 练习</h1>
+<h2>4.1 复声母</h2>
+<ul>
+<li><b>zh (v)</b>: 追 (zh-ui → <code>vv</code>), 之 (zh-i → <code>vi</code>), 主 (zh-u → <code>vu</code>), 中 (zh-ong → <code>vs</code>)</li>
+<li><b>ch (i)</b>: 吃 (ch-i → <code>ii</code>), 出 (ch-u → <code>iu</code>), 常 (ch-ang → <code>ih</code>), 车 (ch-e → <code>ie</code>)</li>
+<li><b>sh (u)</b>: 书 (sh-u → <code>uu</code>), 是 (sh-i → <code>ui</code>), 双 (sh-uang → <code>ud</code>),</li>
+</ul>
+
+<h2>4.2 零声母</h2>
+<ul>
+<li>啊 (a → <code>oa</code>), 呃 (e → <code>oe</code>), 哦 (o → <code>oo</code>)</li>
+<li>安 (an → <code>oj</code>), 昂 (ang → <code>oh</code>), 爱 (ai → <code>ol</code>), 袄 (ao → <code>ok</code>)</li>
+<li>恩 (en → <code>of</code>), 而 (er → <code>or</code>), 欧 (ou → <code>ob</code>)</li>
+</ul>
+
+<h2>4.3 词组</h2>
+<ul>
+<li>微软 (w-ei, r-uan) → <code>wz rr</code></li>
+<li>双拼 (sh-uang, p-in) → <code>ud pn</code></li>
+<li>你好 (n-i, h-ao) → <code>ni hk</code></li>
+<li>中国 (zh-ong, g-uo) → <code>vs go</code></li>
+<li>朋友 (p-eng, y-ou) → <code>pg yb</code></li>
+</ul>
+
+<h2>4.4 短句</h2>
+<p><b>全拼</b> j-in, t-ian, t-ian, q-i, b-u, c-uo 今天天气不错。</p>
+<p><b>双拼</b> <code>jn tm tm qi bu co</code></p>
+<p style="margin-top: -1.5rem">&nbsp;</p>
+<p><b>全拼</b> w-o, zh-eng, z-ai, x-ue, x-i, sh-uang, p-in 我正在学习双拼。</p>
+<p><b>双拼</b> <code>wo vg zl xt xi ud pn</code></p>
+
+<h1>5. 提示与建议</h1>
+<ol>
+<li><b>常备键位图</b>：初期可将键位图放在系统桌面一角，方便速查。</li>
+<li><b>肌肉记忆</b>：最终会形成肌肉记忆，无需思考即可敲出，这需要约一周左右的练习。</li>
+<li><b>保持耐心</b>：从全拼转换到双拼请保持耐心。熟能生巧。</li>
+</ol>
+</article>
+</body></html>
