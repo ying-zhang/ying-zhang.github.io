@@ -1,0 +1,318 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- PDFTron PDFNet Generated! Version: 7.1.0.74195 -->
+<svg id="svgRoot" version="1.1" baseProfile="Full" width="235px" height="52.16px" viewBox="0 0 235 52.16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cs="http://www.pdftron.com/pdf2svg" xml:space="preserve">
+<defs>
+</defs>
+<style type="text/css">
+<![CDATA[
+@font-face { font-style:normal; font-weight:normal; font-family:fnt1; src:url(data:font/otf;base64,T1RUTwAJAIAAAwAQQ0ZGIMTYuqQAAAM8AAAA5E9TLzJsjiESAAABAAAAAGBjbWFwAA4ANwAAAuwAAAAwaGVhZF8XQOAAAACcAAAANmhoZWEAAuQiAAAA1AAAACRobXR4BAMAAAAABCAAAAAIbWF4cAACUAAAAAD4AAAABm5hbWUUxXaCAAABYAAAAYxwb3N0AAMAAQAAAxwAAAAgAAEAAAABAACUIkr7Xw889QADA+gAAAAAAAAAAAAAAAAAAAAA4P/g/x8BHwEAAAADAAIAAAAAAAAAAQAAAAHg/wAAAyAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAIAAFAAAAIAAAACAOMBkAAFAAACigJYAAAASwKKAlgAAAFeADIA+QAAAgAFCQgAAAkAAwAAAAMAAAAAAAAAAAAAAAAzNTc5AAD//f/9AAHg/wDIAAEfAQAAAAEAAAAAAaACpAAA//0AAAAAAAwAlgABAAAAAAAAABMAAAABAAAAAAABAAgAEwABAAAAAAACAAcAGwABAAAAAAADABAAIgABAAAAAAAEABAAMgABAAAAAAAGABAAQgADAAEECQAAACYAUgADAAEECQABABAAeAADAAEECQACAA4AiAADAAEECQADACAAlgADAAEECQAEACAAtgADAAEECQAGACAA1kNvcHlyaWdodCAtIFVua25vd25HZW5lcmljMVJlZ3VsYXJHZW5lcmljMS1SZWd1bGFyR2VuZXJpYzEtUmVndWxhckdlbmVyaWMxLVJlZ3VsYXIAQwBvAHAAeQByAGkAZwBoAHQAIAAtACAAVQBuAGsAbgBvAHcAbgBHAGUAbgBlAHIAaQBjADEAUgBlAGcAdQBsAGEAcgBHAGUAbgBlAHIAaQBjADEALQBSAGUAZwB1AGwAYQByAEcAZQBuAGUAcgBpAGMAMQAtAFIAZQBnAHUAbABhAHIARwBlAG4AZQByAGkAYwAxAC0AUgBlAGcAdQBsAGEAcgAAAAEAAwABAAAADAAEACQAAAAEAAQAAQAA//3//wAA//3//wAAAAAABAAEAAEAAAADAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQAEBAABBAAAAAEAAAARR2VuZXJpYzEtUmVndWxhcgABBAAAAAEAAAAuHQX14P8dBfXg/x36Ch8BHfoKHwEFHgoAH4uLHgoAH4uLDAf3KQ/3LhG+90MSAAQEAAAAAQAAABEAAAAZAAAAHgAAACZHZW5lcmljMS1SZWd1bGFyR2VuZXJpYzFBZG9iZUlkZW50aXR5AAACAAEAAAACBAAAAAEAAAAEAAAAB/m0Dvd3Dnub+DyZ926ZkZu5kwb7iIv4jJH3GosHe5v4NJf3bpedm7OVCPuGi/iGkvcXiwmvCvccCwAAAyAAAADjAAA=) format("opentype"); }
+@font-face { font-style:normal; font-weight:normal; font-family:fnt0; src:url(data:font/otf;base64,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///G9OCL//+z80AIi///x/Ug///e/gD//8/3IP//wP/g///b+iAI//+kAgD//8v2IAX//2wAgP//q/FA///U/qD//7z1gP//+AEg//9j9SAI/wHX/0CLBYv/AFb/4AX//osAgIsF/wAI/yD/ADoIQP8AIAHA/wAlBiD/AFb/4P8AMwmgCO//ADYKYAX/AGL/wP8ANQog/wAzAED/AEoMQIv/AFcPgAgO+MD/Afn+YP8AznUgFYv/AFYCwP//3QCgvf//qwCg/wAc/eAI/wBB/cD/ABoAQP8AIQIA/wAt++CL/wBG+MAIi/8AefLA//+u/oD/AEkCoP//eQCgiwj//3D+oIv//7P/wP//sf9A///9AmD//2kPYAj/AFgAIIsF/wACAID/AGj0wP8AKv5A/wAu/CD/AFoAoIsI/wBOAMCL/wAu/0D//9IEIIv//7UGQAiL//+0CSD//98BIP//4QTA//9y/yCLCIv//7YAQAX/AC//gIsF/wBg/0D///+uwL3//9IBAIv//7D/AAiL//+m/6D//8kB4P//yv9A//+j/uCLCP//oAEAi///0P2g/wAv/4D///oBoP8AZwDACP//p//giwX/AAr/oP//YgEg/wBOAMD//7kBAP8AkP7Aiwj/AJICIIv/AF3+gP8AVv/gi/8Ahf8gCIv/AABOIAUO+MD/Agf+wP8AqjcAFYv/AE8BAAX//5b+wIsFi/8BzCgABf//vv9giwX//r4AwP/+QdhgBYv//6L+oAX/ASr/wIsFi///VckABf8AWAAgiwWL/wCqNwAF/wBpAUCLBf//Pv6g/wBPAQAV//8iAMCLBf8A3f9A/wE2GGAFi//+yeegBQ74wP8CAP0A/wDrGGAVi/8Ai/dA//+jAcD/AFv+AP//eABgiwhZi///1/9g///y/+D//9b/IP//4gHgCP8AHADA/wC2raAF/wEm/sCLBYv/AFcDAAX//pICQIsF///K/0D//o1SQAX/AFD+YIsF/wApAOD/ADD8oP8AIf8g/wARASD/ADcBQIsI/wBe/sCL/wA8AoD//8MDgIv//5cIIAiL//+aBcD//8T9wP//xgRA//+gAQCLCP//sv+Ai///0QDA/wAm/UD//+sBAP8AT/sACP//p//giwX/ABz94P//cwiA/wBQAUD//8gBoP8AfgBAiwj/AI7+QIvv/wBj/OCL/wCV84AIDvjA/wIA/QD/ANw3ABWL/wCEDkD//6YCgP8AWQBg//+A/4CLCP//uf4gi///yQHg///k/4D//9n/4P//zAKgCP8AAQBA/wCtDAD/ADf+YP8AYAuA/wBlAECLCP8APf/gi/8AKwFg///Y+WD/AA4AYP//u/hgCP8AWAAgiwX//+7+4P8AdA1g//+z/8D/AEUBoP//lAEgiwj//1r/YIv//6b/oP//dPZAi///COrgCIv//yLoAP8ATABA//+K/uD/AKH/4IsI/wCG/2CL/wBg/0D/AF//AIv/AIsQAAj//6YCgP//+P5AFYv//6b2QP//w/2A///C+iD//68BoIsI//+t/kCL///CACD/AEAGoIv/AFsKQAiL/wBYCYD/ADwCgP8AOQgA/wBW/+CLCP8AVP9gi/8ANQDA///I+ICL//+g9MAIDvjA/wIH/sD/Amu9IBWL/wBKAuAF//4mAECLBYv//6j9AAX/AX7+4IsF//9y/yD//04VICf//zEUIFn//yIZwAj/AF4BoIsF/wAnAGD/AOToAO//ANXnYP8AlP/A/wCw7cAIDvjA/wIA/QD/AMhBoBWL/wBPEKD//9gCgP8ANw3A//+t/kD/ACb9QAj/AEj/gP8ALAGg/wAX/8D/ACP/oIv/AEMBIAiL/wBu/6D//6kAIP8ATgDA//+B/8CLCPsRi///qAMA//+x/0CL//+RAGAIi///vf8g/wAX/8D//9wAYP8AR/9A///S/iAI//+u/oD//9kCwP//2AKA///I8kCL//+x76AIi///feXA/wBh/4D//6oAYP8Ai/2Aiwj/AIwAoIv/AGH/gP8AVf+gi/8AgRoACP//jQKA/wE+HYAVi///vf8g///PAED//9QBgP//tf0giwj//7YAQIv//88AQP8AK/6Ai/8AQwEgCIv/AEP+QP8AMP/A/wAsAaD/AEn/wIsI1ov/ADACoP//0/5gi///uwGACKT//sDiQBWL//+r8UD//8P9gP//y/MA//+mAoCLCP//qgBgi///w/2A/wA1DUCL/wBTDoAIi/8AUxGg/wA8AoD/ADQNAP8AV/0Aiwj/AFgAIIv/ADwCgP//y/MAi///rO5gCA75L/8CZP0AixWL/wBR/qAF//5SAeCLBYv/APoJYAX/AYz/QIsFi/8AUf6gBf/+cwDAiwWL/wDo36AF/wGb/+CLBYv/AFIBwAX//gb+wIsFi//9JxgABf8CCv+AiwUO+Ij/AeX/oP8CDDgAFf//of5giwX//2wAgP/+VtEgBf//c/9g/wGpLuAF//+iAYCLBf8At/8g//3zyAAF/wBbAOCLBf8AyQBA/wIMOAAFDvdy/wCY/aCLFYv/Agw4AAX//60BIIsFi//988gABf8AUv7giwX/AAr/oP8CWwcAFYv/AGgBAAX//5gCIIsFi///l/8ABf8AZ/3giwUO+Ij/Adz9YP8AtCCAFf//rADgiwX///H/oP//rAQA///VAcD//94A4P//uP3giwj//6QCAIv//8j+wP8ARvvgi/8Ae/mACIv/AIL4IP8ANgEA/wBJ/KD/AFr9wIsI/wBGAeCL/wAr/oD//9cCQP8ACgKA//+3A6AI/wBT/yCLBf//9gCg/wB/+oD//6/+wP8APwAg//+K/uCLCP//cwJAi///o/7g//+UASCL//9SCaAIi///Vwrg/wBaAKD//5kCYP8Ajf4Aiwj3EYv/AE8BAP8ASvzg/wAJ/2D/AHf7oAgO96r/AP394P////agFYv/AEYB4AX///UAYP///P9A///y/+D///7/wP//7/8giwj//9wAYIv///YAoP8ACf9gi/8AJQYgCIv/AVc5oAX/AFX/oIsFi/8ARAFgBf//qgBgiwWL/wCPwAAF//+tASCLBYv//3BAAAX//7j94IsFi///u/6gBf8ARwIgiwWL//6DwEAFi///yv9A/wAj/6D//+IB4P8AQQCgiwj/ABP+wIv/ABP+wP8AAf1g/wAcAMD/AAUBQAgO+Ij/Acr/IP8AkyGgFYv/AE36gP//0/5g/wAm/UD//5gCIKQI//+v/sD/ABL+gAX//7v+oP8AD/3A///jAiD/ABX/QIv/ACT8wAiL/wAv/4D/ACr+QP8AHv5g/wBEAWCLCP8AQwEgi/8AI/+g///i/wD/AAH9YP//yQUACP8AWAAgiwX///8C4P8AZvqA//+7/qD/ADoCAP//hwEAiwj//4X9oIv//7ECIP//wP/gi///nwPgCIv//64EgP8AKf4A///ZAsD/AHv/wP//4gHgCP8ATgDA///tAYAF/wA6AgD///H/oP8AFv+A///vAgCL///aAwAIi///zwBA///PAED//+MCIP//tv1giwhAi///1gIA/wASAWD///UAYP8AT/sACP//p//giwX/AAP94P//hwQg/wBEAWD//8oCIP8AiP/giwj/AIP+oIv/AFQCQP8APP+gi/8AZPoACA73qg74wP8CAP0A/wDuPqAVi/8AS/0g///6AaD/AC/v4P//8P9g/wAm9wAI///eAOD/AFXs4P//r/7A/wA0AID//54AgIsI//9uAQCL//+h/mD//5QHYIv//1QmQAiL//9T6uD/AFsA4P//mf+A/wCS/0CLCP8AeAHgi/8AUv7g/wBD/kD/ABT/AP8Aag4ACP//rADgiwX//+kAgP//uvUA///RAMD//+P8IP//vP7giwj//6kAIIv//77/YP8AOAfA///9/4D/AHgRgAj/AYH/oIsF//+nAsD/AEn8oBWLi4v///wCIP///v/A///+AqAI//7Z/mCLBf8ABwHA/wBc4iD/ADr/IP8APu1g/wBT/yCLCP8AUgHAi/8APwAg//+8FICL//+uF0AIDvjA/wIW/2D/AAImABWL/wA/ACAF///2/cD///3/gP///AIgi///+v7Aiwj//+L/AIv///ACQP8ADwCgi/8AGf0gCIv/ASPuYAWL/wBc/kD//7v+oL3//37/AIsI//+BAqCL//+x/0D//879IP//+v7A//+HB0AI/wBUAkCLBf8ABv6g/wA//UD/ACYAIP8AHP3g/wBOAMCLCNaL/wAp/gD//+QCYIv//84DIAiL///qAMAFi///3QCg///rAQD///ECgP//vf8g///3/gAI//+KAcD///ECgP//7f6g///7/wD//+ABYP//8wMACP//wwBgcv//4P6A///RA+CL///AAsAIi///oQRg/wBCAOD//8gBoP8Aaf5giwj/AEMBIIv/AEEAoP8AG/2g/wAt/wD/ADD/wAj/AAj/IP//2AKA/wAkAsD//+L/AP8AKP3Aiwj/ABEBIIv/AA0AIP8AAgCA/wAbAID/AAb+oAj//2394P8AsvrAFYv//7UDIP//s//A///QA6D//68BoIsI//++/2CL///Z/+D/ABb8YIv/ADj+oAiL/wA2+wD/ACT/4P8AF//A/wBZAGD/AA0AIAj/AFgAIP8AC//g/wASAWD/AAP94P8AG/2g/wANACAIi///sgWABQ74iP8B9f1gixX//yn/oP8BVyPABf8AtgHA/wC1FEAF//+U/kCLBf//IgDA//8h58AFi/8BqshABf//rQEgiwWL//0nGAAF/wBS/uCLBYv/AMwTwAX/AFEBgP8AUAeABf8AsQCA//7j5MAF/wBm/aCLBQ75Zv8Cw/7g/wIMOAAV//+h/mCLBf//mAIg//5n0kAF//+Y/0D/AZgtwAX//5n/gIsFJ//+Z9JABf//lQFg/wGYLcAF//+j/uCLBf8AmACA//3zyAAF/wBd/oCLBf8AZQBA/wGbK2AF/wBqAYD//mTUoAX/AF7+wIsF/wCaAQD/Agw4AAUO+dX/Avf/YP8AAA+gFYv/AYj+QAWL/wBeAaD//8v/gP8ANACA//+eAICLCP//uf4gi///1gIA///q/eD//88AQP//xQDgCP//4P6A/wA3/mD//9X+4P8AGALg//+8AcCLCP//uf4gi///0gEA///l/8D//9MBQP//wP/gCIv/AEooYAX//7P/wIsFi//988gABf8AUv7giwWL/wFJJoAFi/8ATAaA/wA3AUD/AD0JAP8AQ/5Aiwj/AD3/4Iv/ACMCgP//2fzAi///vPWACIv//pbXwAX/AFL+4IsFi/8BSSaABYv/AEwGgP8AN/5g/wA9CQD/AEQBYIsI/wA8/6CL/wAi/2D//9j8gIv//731wAiL//6W18AF/wBTAgD/AAAPoAUO+MD/AeX/oIsVi/8BjAuABYv/AFgDQP//wP/g/wA3AUD//5n/gIsI//+2AECL///S/iD//+j9YP//zwBA//+//6AIi/8BFNsABf//rQEgiwWL//0nGAAF/wBS/uCLBYv/ASEGoAWL/wBrBOD/ADgBgP8ARgHg/wBV/6CLCP8AOv8gi/8AMP/A///eAOCL//+6+0AIi//+lPaABf8AUwIAiwUO+MD/AeH+oP8AACWAFYv/AgwSgAX//60BIIsFi//+3vMgBYv//5T+QP//x/6A//+5/iD//6kAIIsI//+9/yCL///WAgD/ACgAoIv/AD8DQAiL/wFrDKAF//+s/gCLBYv//nPxYAWL//+o/QD/AEEAoP//yAGg/wBmAICLCP8ATQCAi/8AMP/A/wAa/WD/ADD/wP8ARQGgCIv//67+gAXWiwUO96r/AQH+4P8ByDagFYv/AEQBYAX//6kAIIsFi/8AUeKABYv/ACLy4P8AE/7A/wAR+AD/ACYAIIsI/wAHAcCL/wAC/aCL/wATAaD///8C4AiL/wBE/oAF///s/mD/AAQBAP//9QBg/wABAED//+8CAIsI//+y/4CL///R/eD//9P+YIv//7UPoAiL//+nIgAF//+6AUCLBYv//7v+oAX/AEX+wIsFi//+N8lgBf8AUwIAiwWL/wHINqAF/wBW/+CLBQ73cv8Alv0gixWL/wLY6AAF//+tASCLBYv//ScYAAX/AFL+4IsFDnub+DyZ926ZkZu5kwb7iIv4jJH3GosHe5v4NJf3bpedm7OVCPuGi/iGkvcXiwmvCvccCwAAAAMgAAACLAAAAU0AAAIsAAACLAAAAiwAAAFNAAACLAAAAiwAAAIsAAACLAAAAiwAAAIsAAACLAAAAiwAAAIsAAACmwAAAfQAAADeAAAB9AAAARYAAAH0AAABFgAAAiwAAAIsAAAB9AAAAtIAAANBAAACLAAAAiwAAAEWAAAA3gAA) format("opentype"); }
+.ps00 { stroke:#050809;fill:none; }
+.ps05 { stroke:#0A75B4;fill:none; }
+.ps012 { stroke:#0EA075;fill:none; }
+.ps09 { stroke:#CD78A6;fill:none; }
+.ps03 { stroke:#CECDCC;fill:none; }
+.ps07 { stroke:#D76227;fill:none; }
+.ps011 { stroke:#F0E542;fill:none; }
+.ps01 { stroke:none;fill:#050809; }
+.ps04 { stroke:none;fill:#0A75B4;fill-rule:nonzero; }
+.ps08 { stroke:none;fill:#CD78A6;fill-rule:nonzero; }
+.ps02 { stroke:none;fill:#CECDCC;fill-rule:nonzero; }
+.ps06 { stroke:none;fill:#D76227;fill-rule:nonzero; }
+.ps010 { stroke:none;fill:#F0E542;fill-rule:nonzero; }
+.ps11 { stroke-width:0.055;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:none; }
+.ps19 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.22191,0.33286; }
+.ps14 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.22191,0.44382,1.3314,0.44382,0.22191,0.44382; }
+.ps17 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.44382,0.44382,0.44382,0.44382,0.44382,0.44382,0.44382,0.88763; }
+.ps16 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.44382,0.44382,0.44382,1.3314; }
+.ps12 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.44382,0.66573; }
+.ps13 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.66573,0.66573,0.22191,0.66573; }
+.ps18 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:0.88763,0.44382; }
+.ps15 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:1.3314,0.44382,0.22191,0.44382; }
+.ps10 { stroke-width:0.111;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.8;stroke-dasharray:none; }
+.ps23 { 
+letter-spacing:0px;word-spacing:0;font-family:fnt0;font-style:normal;font-weight:normal;font-size:6.391px; }
+.ps20 { 
+letter-spacing:0px;word-spacing:0;font-family:fnt0;font-style:normal;font-weight:normal;font-size:7.1008px; }
+.ps22 { 
+letter-spacing:0px;word-spacing:0;font-family:fnt0;font-style:normal;font-weight:normal;font-size:7.9884px; }
+.ps21 { 
+letter-spacing:0px;word-spacing:0;font-family:fnt1;font-style:normal;font-weight:normal;font-size:7.1008px; }
+]]>
+</style>
+<clipPath id="clp1" clip-rule="nonzero">
+<rect x="0" y="0" width="235" height="52.16"/>
+</clipPath>
+<g clip-path="url(#clp1)" transform="matrix(1 0 0 -1 -0 52.157)">
+<g id="q1" class="ps10">
+<g id="xfrm2" transform="matrix(1 0 0 1 33.845 27.573)">
+<path d="M0 0 L1.952 0" class="ps00"/>
+<g id="xfrm3" transform="matrix(1 0 0 1 198.32 0)">
+<path d="M0 0 L-1.953 0" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 17.2144 37.995)"><tspan x="0,3.948,6.3126,10.261" y="-0" class="ps01 ps10 ps20">prod</tspan>
+<tspan x="14.209" y="-0" class="ps01 ps10 ps21">&#xFFFD;</tspan>
+<tspan x="-14.209,-10.261,-6.3126,-2.3646,1.9709e-015,3.948,6.3126,10.261" y="10.152" class="ps01 ps10 ps20">non-prod</tspan>
+</text>
+<g id="q4" class="ps01 ps10 ps20">
+<g id="xfrm5" transform="matrix(1 0 0 1 33.845 41.221)">
+<path d="M0 0 L1.952 0" class="ps00"/>
+<g id="xfrm6" transform="matrix(1 0 0 1 198.32 0)">
+<path d="M0 0 L-1.953 0" class="ps00"/>
+<g id="xfrm7" transform="matrix(1 0 0 1 -198.32 -20.484)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm8" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 31.3909 14.7034)"><tspan x="0" y="-0" class="ps01 ps10 ps20">0</tspan>
+</text>
+<g id="q9" class="ps01 ps10 ps20">
+<g id="xfrm10" transform="matrix(1 0 0 1 57.322 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm11" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 55.0931 14.6678)"><tspan x="0" y="-0" class="ps01 ps10 ps20">1</tspan>
+</text>
+<g id="q12" class="ps01 ps10 ps20">
+<g id="xfrm13" transform="matrix(1 0 0 1 80.824 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm14" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 78.3803 14.6678)"><tspan x="0" y="-0" class="ps01 ps10 ps20">2</tspan>
+</text>
+<g id="q15" class="ps01 ps10 ps20">
+<g id="xfrm16" transform="matrix(1 0 0 1 104.302 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm17" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 101.874 14.7034)"><tspan x="0" y="-0" class="ps01 ps10 ps20">3</tspan>
+</text>
+<g id="q18" class="ps01 ps10 ps20">
+<g id="xfrm19" transform="matrix(1 0 0 1 127.779 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm20" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 125.33 14.6678)"><tspan x="0" y="-0" class="ps01 ps10 ps20">4</tspan>
+</text>
+<g id="q21" class="ps01 ps10 ps20">
+<g id="xfrm22" transform="matrix(1 0 0 1 151.258 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm23" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 148.808 14.7344)"><tspan x="0" y="-0" class="ps01 ps10 ps20">5</tspan>
+</text>
+<g id="q24" class="ps01 ps10 ps20">
+<g id="xfrm25" transform="matrix(1 0 0 1 174.758 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm26" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 172.29 14.7034)"><tspan x="0" y="-0" class="ps01 ps10 ps20">6</tspan>
+</text>
+<g id="q27" class="ps01 ps10 ps20">
+<g id="xfrm28" transform="matrix(1 0 0 1 198.235 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm29" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 195.746 14.7034)"><tspan x="0" y="-0" class="ps01 ps10 ps20">7</tspan>
+</text>
+<g id="q30" class="ps01 ps10 ps20">
+<g id="xfrm31" transform="matrix(1 0 0 1 221.714 20.737)">
+<path d="M0 0 L0 1.954" class="ps00"/>
+<g id="xfrm32" transform="matrix(1 0 0 1 0 27.317)">
+<path d="M0 0 L0 -1.952" class="ps00"/>
+</g>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 219.26 14.7034)"><tspan x="0" y="-0" class="ps01 ps10 ps20">8</tspan>
+</text>
+<path d="M33.845 48.055 L232.17 48.055 L232.17 20.738 L33.845 20.738 Z" class="ps00 ps10 ps20"/>
+<text transform="matrix(1 0 0 -1 85.9976 2.3297)"><tspan x="0,5.3283,9.3225,11.096,15.09,17.311,19.084,23.526,27.967,31.962,34.182,38.624,43.065,45.726,47.946,50.167,54.609,58.603,62.597,65.257,71.025,75.466,79.908" y="-0" class="ps01 ps10 ps22">Evictions per task-week</tspan>
+</text>
+<path d="M96.246 41.907 L108.3 41.907 L108.3 44.126 L96.246 44.126 Z" class="ps02 ps10 ps22"/>
+<path d="M96.246 44.126 L108.3 44.126 L108.3 41.907 L96.246 41.907 Z" class="ps03 ps10 ps22"/>
+<path d="M33.845 22.114 L216.3 22.114 L216.3 33.031 L33.845 33.031 Z" class="ps02 ps10 ps22"/>
+<g id="q33" class="ps02 ps10 ps22">
+<g id="xfrm34" transform="matrix(1 0 0 1 33.845 22.114)">
+<path d="M0 0 L182.45 0 L182.45 10.917 L0 10.917" class="ps03"/>
+</g>
+</g>
+<path d="M33.845 33.031 L216.3 33.031 L216.3 22.114 L33.845 22.114 Z" class="ps00 ps11 ps22"/>
+<path d="M33.845 35.761 L33.845 46.678" class="ps03 ps12 ps22"/>
+<g id="q35" class="ps03 ps11 ps22">
+<g id="xfrm36" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 42.0501 34.9814)"><tspan x="0,5.3237,8.8771,12.073,15.626,17.045,20.598,24.152,25.928,29.124,32.677,36.231,38.007,41.561,45.114,49.728" y="-0" class="ps01 ps11 ps23">machine shutdown</tspan>
+</text>
+<path d="M96.246 36.049 L108.3 36.049 L108.3 38.268 L96.246 38.268 Z" class="ps04 ps11 ps23"/>
+<path d="M96.246 38.268 L108.3 38.268 L108.3 36.049 L96.246 36.049 Z" class="ps05 ps13 ps23"/>
+<path d="M216.3 22.114 L223.25 22.114 L223.25 33.031 L216.3 33.031 Z" class="ps04 ps13 ps23"/>
+<path d="M216.3 22.114 L223.24 22.114 L223.24 33.031 L216.3 33.031" class="ps05 ps13 ps23"/>
+<path d="M216.3 33.031 L223.24 33.031 L223.24 22.114 L216.3 22.114 Z" class="ps00 ps11 ps23"/>
+<path d="M33.845 35.761 L33.845 46.678" class="ps05 ps14 ps23"/>
+<g id="q37" class="ps05 ps11 ps23">
+<g id="xfrm38" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 140.848 40.8419)"><tspan x="0,3.5534,5.3301,8.8835,12.437" y="-0" class="ps01 ps11 ps23">other</tspan>
+</text>
+<path d="M156.94 41.907 L168.99 41.907 L168.99 44.126 L156.94 44.126 Z" class="ps06 ps11 ps23"/>
+<path d="M156.94 44.126 L168.99 44.126 L168.99 41.907 L156.94 41.907 Z" class="ps07 ps10 ps23"/>
+<path d="M223.24 22.114 L228.19 22.114 L228.19 33.031 L223.24 33.031 Z" class="ps06 ps10 ps23"/>
+<g id="q39" class="ps06 ps10 ps23">
+<g id="xfrm40" transform="matrix(1 0 0 1 223.245 22.114)">
+<path d="M0 0 L4.948 0 L4.948 10.917 L0 10.917" class="ps07"/>
+</g>
+</g>
+<path d="M223.24 33.031 L228.19 33.031 L228.19 22.114 L223.24 22.114 Z" class="ps00 ps11 ps23"/>
+<path d="M33.845 35.761 L33.845 46.678" class="ps07 ps12 ps23"/>
+<g id="q41" class="ps07 ps11 ps23">
+<g id="xfrm42" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 109.779 35.6908)"><tspan x="0,3.5534,7.1068,8.8835,10.66,14.214,15.99,17.767,19.895,23.449,26.644,30.197,33.751,35.879,39.075,42.628" y="-0" class="ps01 ps11 ps23">out of resources</tspan>
+</text>
+<path d="M156.94 36.049 L168.99 36.049 L168.99 38.268 L156.94 38.268 Z" class="ps08 ps11 ps23"/>
+<path d="M156.94 38.268 L168.99 38.268 L168.99 36.049 L156.94 36.049 Z" class="ps09 ps15 ps23"/>
+<path d="M228.19 22.114 L231.17 22.114 L231.17 33.031 L228.19 33.031 Z" class="ps08 ps15 ps23"/>
+<path d="M228.19 22.114 L231.17 22.114 L231.17 33.031 L228.19 33.031" class="ps09 ps15 ps23"/>
+<path d="M228.19 33.031 L231.17 33.031 L231.17 22.114 L228.19 22.114 Z" class="ps00 ps11 ps23"/>
+<path d="M33.845 35.761 L33.845 46.678" class="ps09 ps16 ps23"/>
+<g id="q43" class="ps09 ps11 ps23">
+<g id="xfrm44" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 173.26 40.8355)"><tspan x="0,5.3237,8.8771,12.073,15.626,17.045,20.598,24.152,25.928,27.705,31.258,32.677,34.096,37.649,39.778" y="-0" class="ps01 ps11 ps23">machine failure</tspan>
+</text>
+<path d="M217.63 41.907 L229.68 41.907 L229.68 44.126 L217.63 44.126 Z" class="ps010 ps11 ps23"/>
+<path d="M217.63 44.126 L229.68 44.126 L229.68 41.907 L217.63 41.907 Z" class="ps011 ps17 ps23"/>
+<path d="M231.17 22.114 L232.17 22.114 L232.17 33.031 L231.17 33.031 Z" class="ps010 ps17 ps23"/>
+<path d="M231.17 22.114 L232.17 22.114 L232.17 33.031 L231.17 33.031" class="ps011 ps17 ps23"/>
+<path d="M231.17 33.031 L232.16 33.031 L232.16 22.114 L231.17 22.114 Z" class="ps00 ps11 ps23"/>
+<path d="M33.845 35.761 L33.845 46.678" class="ps011 ps18 ps23"/>
+<g id="q45" class="ps011 ps11 ps23">
+<g id="xfrm46" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M232.17 22.114 L232.17 33.031" class="ps012 ps19 ps23"/>
+<g id="q47" class="ps012 ps11 ps23">
+<g id="xfrm48" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M33.845 35.761 L33.845 46.678" class="ps012 ps13 ps23"/>
+<g id="q49" class="ps012 ps11 ps23">
+<g id="xfrm50" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M232.17 22.114 L232.17 33.031" class="ps05 ps14 ps23"/>
+<g id="q51" class="ps05 ps11 ps23">
+<g id="xfrm52" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M33.845 35.761 L39.791 35.761 L39.791 46.678 L33.845 46.678 Z" class="ps04 ps11 ps23"/>
+<g id="q53" class="ps04 ps10 ps23">
+<g id="xfrm54" transform="matrix(1 0 0 1 33.845 35.761)">
+<path d="M0 0 L5.946 0 L5.946 10.917 L0 10.917" class="ps05"/>
+</g>
+</g>
+<path d="M33.845 46.678 L39.791 46.678 L39.791 35.761 L33.845 35.761 Z" class="ps00 ps11 ps23"/>
+<path d="M232.17 22.114 L232.17 33.031" class="ps03 ps12 ps23"/>
+<g id="q55" class="ps03 ps11 ps23">
+<g id="xfrm56" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M39.791 35.761 L40.79 35.761 L40.79 46.678 L39.791 46.678 Z" class="ps02 ps11 ps23"/>
+<path d="M39.791 35.761 L40.79 35.761 L40.79 46.678 L39.791 46.678" class="ps03 ps15 ps23"/>
+<path d="M39.791 46.678 L40.79 46.678 L40.79 35.761 L39.791 35.761 Z" class="ps00 ps11 ps23"/>
+<path d="M232.17 22.114 L232.17 33.031" class="ps012 ps16 ps23"/>
+<g id="q57" class="ps012 ps11 ps23">
+<g id="xfrm58" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M40.79 35.761 L40.79 46.678" class="ps012 ps17 ps23"/>
+<g id="q59" class="ps012 ps11 ps23">
+<g id="xfrm60" transform="matrix(1 0 0 1 40.79 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M232.17 22.114 L232.17 33.031" class="ps011 ps18 ps23"/>
+<g id="q61" class="ps011 ps11 ps23">
+<g id="xfrm62" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M40.79 35.761 L40.79 46.678" class="ps011 ps19 ps23"/>
+<g id="q63" class="ps011 ps11 ps23">
+<g id="xfrm64" transform="matrix(1 0 0 1 40.79 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M232.17 22.114 L232.17 33.031" class="ps09 ps13 ps23"/>
+<g id="q65" class="ps09 ps11 ps23">
+<g id="xfrm66" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M40.79 35.761 L40.79 46.678" class="ps09 ps14 ps23"/>
+<g id="q67" class="ps09 ps11 ps23">
+<g id="xfrm68" transform="matrix(1 0 0 1 40.79 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<g id="q69" class="ps09 ps10 ps23">
+<g id="xfrm70" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917" class="ps07"/>
+</g>
+</g>
+<g id="q71" class="ps09 ps11 ps23">
+<g id="xfrm72" transform="matrix(1 0 0 1 232.167 22.114)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<path d="M40.79 35.761 L40.79 46.678" class="ps07 ps12 ps23"/>
+<g id="q73" class="ps07 ps11 ps23">
+<g id="xfrm74" transform="matrix(1 0 0 1 40.79 35.761)">
+<path d="M0 0 L0 10.917 L0 0" class="ps00"/>
+</g>
+</g>
+<text transform="matrix(1 0 0 -1 62.9041 41.3532)"><tspan x="0,3.5534,5.6816,9.235,12.788,18.112,21.665,23.442,24.861,28.414" y="-0" class="ps01 ps11 ps23">preemption</tspan>
+</text>
+</g>
+</svg>

@@ -1,0 +1,454 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../style.css">
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+  <script>MathJax = {tex: {inlineMath: [['$', '$']]}};</script>
+  <title>[*]论动体的电动力学 >> Ying ZHANG</title>
+</head><body>
+  <header> <a href="../../">Home</a> </header>
+  <button id="btn">☀️</button>
+  <script src="../../dark.js" ></script>
+  <article>
+    <div class="title">
+      <h1>[*]论动体的电动力学</h1>
+      <p><time>2021-05-04</time><span id="url">https://ying-zhang.cn/time/1905-einstein-cn/</span></p>
+    </div>
+    <div class="title">
+<h1>Zur Elektrodynamik bewegter Körper<br/>
+<a href="http://www.fourmilab.ch/etexts/einstein/specrel/www/">On the Electrodynamics of Moving Bodies</a></h1>
+<p>阿尔伯特·爱因斯坦 (Albert Einstein)<br/>
+&nbsp;<br/>
+重排：Ying ZHANG. 2021-05. (绝大部分公式的Latex源码来自上面的英文版)<br/>
+<a href="../../time/1905-Einstein-cn.pdf"><b>全文 PDF</b></a></p>
+</div>
+<p class="copyright kai">
+这是相对论的第一篇论文，是物理科学中有划时代意义的历史文献，写于1905年6月，发表在1905年9月的德国《物理学杂志》(Annalen der Physik)，第4编，17卷，891-921页。这里译自洛伦兹、爱因斯坦、明可夫斯基关于相对论的原始论文集：《相对性原理》(H. A. Lorentz, A. Einstein, H. Minkowski: Das Relativiästprinzip, Eine Sammlung von Abhandlungen)，莱比锡 Teubner，1922年第4版，26-50页。译时参考了W. 帕勒特(Perrett)和G. B. 杰费利(Jeffery)的英译本《The Principle of Relativity》，伦敦Methuer，1923年版，35-65页。
+<span style="display: block; text-align: right">——范岱年、赵中立、许良英编译《爱因斯坦文集》（第二卷）<a href="../../time/1905-Einstein-cn-book.pdf">(原书节选PDF)</a></span></p>
+<hr/>
+<p>大家知道，麦克斯韦电动力学——像现在通常为人们所理解的那样——应用到运动的物体上时，就要引起一些不对称，而这种不对称似乎不是现像所固有的。比如设想一个磁体同一个导体之间的电动力的相互作用。在这里，可观察到的现像只同导体和磁体的相对运动有关，可是按照通常的看法，这两个物体之中，究竟是这个在运动，还是那个在运动，却是截然不同的两回事。如果是磁体在运动，导体静止着，那么在磁体附近就会出现一个具有一定能量的电场，它在导体各部分所在的地方产生一股电流。但是如果磁体是静止的，而导体在运动，那么磁体附近就没有电场，可是在导体中却有一电动势，这种电动势本身虽然并不相当于能量，但是它——假定这里所考虑的两种情况中的相对运动是相等的——却会引起电流，这种电流的大小和路线都同前一情况中由电力所产生的一样。</p>
+<p>诸如此类的例子，以及企图证实地球相对于“光媒质”运动的实验的失败，引起了这样一种猜想：绝对静止这概念，不仅在力学中，而且在电动力学中也不符合现像的特性，倒是应当认为，凡是对力学方程适用的一切坐标系，对于上述电动力学和光学的定律也一样适用，对于第一级微量来说，这是已经证明了的。我们要把这个猜想（它的内容以后就称之为“相对性原理”<sup>1</sup>）提升为公设，并且还要引进另一条在表面上看来同它不相容的公设：光在空虚空间里总是以一确定的速度$V$传播着，这速度同发射体的运动状态无关。由这两条公设，根据静体的麦克斯韦理论，就足以得到一个简单而又不自相矛盾的动体电动力学。“光以太”的引入将被证明是多余的，因为按照这里所要阐明的见解，既不需要引进一个共有特殊性质的“绝对静止的空间”，也不需要给发生电磁过程的空虚实间中的每个点规定一个速度矢量。</p>
+<p class="note">1. 当时作者并不知道洛伦兹和彭加勒在1904—1905年间发表的有关论文，而只读到过洛伦兹1895年的涉及迈克耳孙实验的论文（那里提出了洛伦兹—斐兹杰惹收缩）。——编译者</p>
+<p>这里所要闸明的理论——像其他各种电动力学一样——是以刚体的运动学为根据的，因为任何这种理论所讲的，都是关于刚体（坐标系）、时钟和电磁过程之间的关系。对这种情况考虑不足，就是动体电动力学目前所必须克服的那些困难的根源。</p>
+<h1 id="一运动学部分">一、运动学部分</h1>
+<h2 id="1-同时性的定义">§1. 同时性的定义</h2>
+<p>设有一个牛顿力学方程在其中有效的坐标系。为了使我们的陈述比较严谨，并且便于将这坐标系同以后要引进来的别的坐标系在字面上加以区别，我们叫它“静系”。</p>
+<p>如果一个质点相对于这个坐标系是静止的，那么它相对于后者的位置就能够用刚性的量杆按照欧几里得几何的方法来定出，并且能用笛卡儿坐标来表示。</p>
+<p>如果我们要描述一个质点的运动，我们就以时间的函数来给出它的坐标值。现在我们必须记住，这样的数学描述，只有在我们十分清楚地懂得“时间”在这里指的是什么之后才有物理意义。我们应当考虑到：凡是时间在里面起作用的我们的一切判断，总是关于同时的事件的判断。比如我说，“那列火车7点钟到达这里”，这大概是说：“我的表的短针指到7同火车的到达是同时的事件。”<sup>2</sup></p>
+<p class="note">2. 这里，我们不去讨论那种隐伏在（近乎）同一地点发生的两个事件的同时性这一概念里的不精确性，这种不精确性同样必须用一种抽像法把它消除。——原注</p>
+<p>可能有人认为，用“我的表的短针的位置”来代替“时间”，也许就有可能克服由于定义“时间”而带来的一切困难。事实上，如果问题只是在于为这只表所在的地点来定义一种时间，那么这样一种定义就已经足够了；但是，如果问题是要把发生在不同地点的一系列事件在时间上联系起来，或者说——其结果依然一样——要定出那些在远离这只表的地点所发生的事件的时间，那么这样的定义就不够了。</p>
+<p>当然，我们对于用如下的办法来测定事件的时间也许会感到满意，那就是让观察者同表一起处于坐标的原点上，而当每一个表明事件发生的光信号通过空虚空间到达观察者时，他就把当时的时针位置同光到达的时间对应起来。但是这种对应关系有一个缺点，正如我们从经验中所已知道的那样，它同这个带有表的观察者所在的位置有关。通过下面的考虑，我们得到一种此较切合实际得多的测定法。</p>
+<p>如果在空间的$A$点放一只钟，那么对于贴近$A$处的事件的时间，$A$处的一个观察者能够由找出同这些事件同时出现的时针位置来加以测定。如果又在空间的$B$点放一只钟——我们还要加一句，“这是一只同放在$A$处的那只完全一样的钟。”——那么，通过在$B$处的观察者，也能够求出贴近$B$处的事件的时间。但要是没有进一步的规定，就不可能把$A$处的事件同$B$处的事件在时间上进行比较；到此为止，我们只定义了“$A$时间”和“$B$时间”，但是并没有定义对于$A$和$B$是公共的“时间”。只有当我们通过定义，把光从$A$到$B$所需要的“时间”，规定为等于它从$B$到$A$所需要的“时间”，我们才能够定义$A$和$B$的公共“时间”。设在“$A$时间”$t_A$，从$A$发出一道光线射向$B$，它在“$B$时间”$t_B$又从$B$被反射向$A$，而在“$A$时间”$t&rsquo;_A$回到$A$处。如果
+$$t_B - t_A = t&rsquo;_A - t_B\text{，}$$
+那么这两只钟按照定义是同步的。</p>
+<p>我们假定，这个同步性的定义是可以没有矛盾的，并且对于无论多少个点也都适用，于是下面两个关系是普遍有效的：</p>
+<ol>
+<li>
+<p>如果在$B$处的钟同在$A$处的钟同步，那么在$A$处的钟也就同$B$处的钟同步。</p>
+</li>
+<li>
+<p>如果在$A$处的钟既同$B$处的钟，又同$C$处的钟同步的，那么，$B$处同$C$处的两只钟也是相互同步的。</p>
+</li>
+</ol>
+<p>这样，我们借助于某些（假想的）物理经验，对于静止在不同地方的各只钟，规定了什么叫做它们是同步的，从而显然也就获得了“同时”和“时间”的定义。一个事件的“时间”，就是在这事件发生地点静止的一只钟同该事件同时的一种指示，而这只钟是同某一只特定的静止的钟同步的，而且对于一切的时间测定，也都是同这只特定的钟同步的。</p>
+<p>根据经验，我们还把下列量值
+$$\dfrac{2\ \overline{AB}}{t&rsquo;_A-t_A}=V$$
+当作一个普适常数（光在空虚空间中的速度）。</p>
+<p>要点是，我们用静止在静止坐标系中的钟来定义时间，由于它从属于静止的坐标系，我们把这样定义的时间叫做“静系时间”。</p>
+<h2 id="2-关于长度和时间的相对性">§2. 关于长度和时间的相对性</h2>
+<p>下面的考虑是以相对性原理和光速不变原理为依据的，这两条原理我们定义如下。</p>
+<ol>
+<li>
+<p>物理体系的状态据以变化的定律，同描述这些状态变化时所参照的坐标系究竞是用两个在互相匀速移动着的坐标系中的哪一个并无关系。</p>
+</li>
+<li>
+<p>任何光线在“静止的”坐标系中都是以确定的速度$V$运动着，不管这道光线是由静止的还是运动的物体发射出来的。由此，得</p>
+</li>
+</ol>
+<p>$$\text{速度}=\dfrac{\text{ 光的路程 }}{\text{ 时间间隔 }}\text{，}$$</p>
+<p>这里的“时间间隔”，是依照§1中所定义的意义来理解的。</p>
+<p>设有一静止的刚性杆；用一根也是静止的量杆量得它的长度是$l$。我们现在设想这杆的轴是放在静止坐标系的$X$轴上，然后使这根杆沿着$X$轴向$x$增加的方向作匀速的平行移动（速度是$v$）。我们现在来考查这根运动着的杆的长度，并且设想它的长度是由下面两种操作来确定的：</p>
+<p>a)  观察者同前面所给的量杆以及那根要量度的杆一道运动，并且直接用量杆同杆相叠合来量出杆的长度，正像要量的杆、观察者和量杆都处于静止时一样。</p>
+<p>b)  观察者借助于一些安置在静系中的、并且根据§1作同步运行的静止的钟，在某一特定时刻$t$，求出那根要量的杆的始末两端处于静系中的哪两个点上。用那根已经使用过的在这种情况下是静止的量杆所量得的这两点之间的距离，也是一种长度，我们可以称它为“杆的长度”。</p>
+<p>由操作 a) 求得的长度，我们可称之为“动系中杆的长度”。根据相对性原理，它必定等于静止杆的长度$l$。</p>
+<p>由操作 b) 求得的长度，我们可称之为“静系中（运动着的）杆的长度”。这种长度我们要根据我们的两条原理来加以确定，并且将会发现，它是不同于$l$的。</p>
+<p>通常所用的运动学心照不宣地假定了：用上述这两种操作所测得的长度彼此是完全相等的，或者换句话说，一个运动着的刚体，于时期$t$，在几何学关系上完全可以用静止在一定位置上的同一物体来代替。</p>
+<p>此外，我们设想，在杆的两端（$A$和$B$），都放着一只同静系的钟同步了的钟，也就是说，这些钟在任何瞬间所报的时刻，都同它们所在地方的“静系时间”相一致；因此，这些钟也是“在静系中同步的”。</p>
+<p>我们进一步设想，在每一只钟那里都有一位运动着的观察者同它在一起，而且他们把§1中确立起来的关于两只钟同步运行的判据应用到这两只钟上。设有一道光线在时间<sup>3</sup> $t_A$从$A$处发出，在时间$t_B$于$B$处被反射回，并在时间$t&rsquo;_A$返回到$A$处。考虑到光速不变原理，我们得到：</p>
+
+$$t_B - t_A = \dfrac{r_{AB}}{V-v} \text{ 和 } t'_A - t_B = \dfrac{r_{AB}}{V+v} \text{，}$$
+
+<p>此处$r_{AB}$表示运动着的杆的长度——在静系中量得的。因此，同动杆一起运动着的观察者会发现这两只钟不是同步进行的，可是处在静系中的观察者却会宣称这两只钟是同步的。</p>
+<p class="note">3. 这里的“时间”表示“静系的时间”，同时也表示“运动着的钟经过所讨论的地点时的指针位置”。——原注</p>
+<p>由此可见，我们不能给予同时性这概念以任何绝对的意义；两个事件，从一个坐标系看来是同时的，而从另一个相对于这个坐标系运动着的坐标系看来，它们就不能再被认为是同时的事件了。</p>
+<h2 id="3-从静系到另一个相对于它作匀速移动的坐标系的坐标和时间的变换理论">§3. 从静系到另一个相对于它作匀速移动的坐标系的坐标和时间的变换理论</h2>
+<p>设在“静止的”空间中有两个坐标系，每一个都是由三条从一点发出并且互相垂直的刚性物质直线所组成。设想这两个坐标系的$X$轴是叠合在一起的，而它们的$Y$轴和$Z$轴则各自互相平行着<sup>4</sup>。设每一系都备有一根刚性量杆和若干只钟，而且这两根量杆和两坐标系的所有的钟彼此都是完全相同的。</p>
+<p class="note">4. 本文中用大写的拉丁字母$XYZ$和希腊字母$\Xi H Z$分别表示这两个坐标系$K$系和$k$系的轴，而用相应的小写拉丁字母$x,y,z$和小写的希腊字母$\xi, \eta,\zeta$分别表示它们的坐标值。——编者注</p>
+<p>现在对其中一个坐标系（$k$）的原点，在朝着另一个静止的坐标系（$K$）的$x$增加方向上给以一个（恒定）速度$v$，设想这个速度也传给了坐标轴、有关的量杆，以及那些钟。因此，对于静系$K$的每一时间$t$，都有动系轴的一定位置同它相对应，由于对称的缘故，我们有权假定$k$的运动可以是这样的：在时间$t$（这个“$t$”始终是表示静系的时间），动系的轴是同静系的轴相平行的。</p>
+<p>我们现在设想空间不仅是从静系$K$用静止的量杆来量度，而且也可从动系$k$用一根同它一道运动的量杆来量，由此分别得到坐标$x, y, z$和$\xi, \eta,\zeta$。再借助于放在静系中的静止的钟，用§1中所讲的光信号方法，来测定一切安置有钟的各个点的静系时间$t$；同样，对于一切安置有同动系相对静止的钟的点，它们的动系时间$\tau$也是用§1中所讲的两点间的光信号方法来测定，而在这些点上都放着后一种〔对动系静止〕的钟。</p>
+<p>对于完全地确定静系中一个事件的位置和时间的每一组值$x, y, z, t$，对应有一组值$\xi, \eta,\zeta, \tau$，它们确定了那一事件对于坐标系$k$的关系，现在要解决的问题是求出联系这些量的方程组。</p>
+<p>首先，这些方程显然应当都是线性的，因为我们认为空间和时间是具有均匀性的。</p>
+<p>如果我们置$x&rsquo;= x - vt$，那么显然，对于一个在$k$系中静止的点，就必定有一组同时间无关的值$x&rsquo;,y,z$。我们先把$\tau$定义为$x&rsquo;,y,z$和$t$的函数。为此目的，我们必须用方程来表明$\tau$不是别的，而只不过是$k$系中已经依照§1中所规定的规则同步化了的静止钟的全部数据。</p>
+<p>从$k$系的原点在时间$\tau_0$发射一道光线，沿着$X$轴射向$x&rsquo;$，在$\tau_1$时从那里反射回坐标系的原点，而在$\tau_2$时到达；由此必定有下列关系：
+$$\dfrac{1}{2}(\tau_0+\tau_2)=\tau_1\text{，}$$
+或者，当我们引进函数$\tau$的自变数，并且应用到静系中的光速不变原理：
+$$\dfrac{1}{2}\left[\tau(0,0,0,t)+\tau\left(0,0,0,t+\dfrac{x&rsquo;}{V-v}+\dfrac{x&rsquo;}{V+v}\right)\right]=\tau\left(x&rsquo;,0,0,t+\dfrac{x&rsquo;}{V-v}\right)\text{。}$$</p>
+<p>如果我们选取$x&rsquo;$为无限小，那么：</p>
+<p>$$\dfrac{1}{2}\left(\dfrac{1}{V-v}+\dfrac{1}{V+v}\right)\dfrac{\partial \tau}{\partial t}=\dfrac{\partial\tau}{\partial x&rsquo;}+\dfrac{1}{V-v}\dfrac{\partial\tau}{\partial t}\text{，}$$</p>
+<p>或者，</p>
+<p>$$\dfrac{\partial \tau}{\partial x&rsquo;}+\dfrac{v}{V^2-v^2}\dfrac{\partial\tau}{\partial t}=0\text{。}$$</p>
+<p>应当指出，我们可以不选坐标原点，而选别的点做为光线的出发点，因此刚才所得到的方程对于$x&rsquo;,y,z$的一切数值都该是有效的。</p>
+<p>作类似的考查——用在$H$轴和$Z$轴上——并且注意到，从静系看来，光沿着这些轴传播的速度始终是$\sqrt{V^2 - v^2}$，这就得到：</p>
+<p>$$\dfrac{\partial \tau}{\partial y}=0\text{，}$$
+$$\dfrac{\partial \tau}{\partial z}=0\text{。}$$</p>
+<p>由于$\tau$是线性函数，从这个方程得到：</p>
+<p>$$\tau=a\left(t-\dfrac{v}{V^2-v^2}x&rsquo;\right)\text{，}$$</p>
+<p>此处$a$暂时还是一个未知函数$\varphi(v)$，并且为了简便起见，假定在$k$的原点，当$\tau=0$时，$t=0$。</p>
+<p>借助于这一结果，就不难确定$\xi, \eta,\zeta$这些量，这只要用方程来表明，光（像光速不变原理和相对性原理所共同要求的）在动系中量度起来也是以速度$V$在传播的。对于在时间$\tau=0$向$\xi$增加的方向发射出去的一道光线，其方程是：</p>
+<p>$$\xi=V\tau \text{，或者}\ \xi=aV\left(t-\dfrac{v}{V^2-v^2}x&rsquo;\right)\text{。}$$</p>
+<p>但在静系中量度，这道光线以速度$V-v$相对于$k$的原点运动着，因此得到：</p>
+<p>$$\dfrac{x&rsquo;}{V-v}=t\text{。}$$</p>
+<p>如果我们以$t$这个值代入关于$\xi$的方程中，我们就得到：</p>
+<p>$$\xi=a\dfrac{V^2}{V^2-v^2}x&rsquo;$$</p>
+<p>用类似的方法，考查沿着另外两条轴走的光线，我们就求得：</p>
+<p>$$\eta=V\tau=aV\left(t-\dfrac{v}{V^2-v^2}x&rsquo;\right)\text{，}$$</p>
+<p>此处</p>
+<p>$$\dfrac{y}{\sqrt{V^2-v^2}}=t;\ x&rsquo;=0;$$</p>
+<p>因此
+$$\eta=a\dfrac{V}{\sqrt{V^2-v^2}}y\ \text{和}\ \zeta=a\dfrac{V}{\sqrt{V^2-v^2}}z\text{。}$$</p>
+<p>代入$x&rsquo;$的值，我们得到：
+$$\begin{aligned}
+\tau \  =\ &amp; \varphi(v)\beta(t-\dfrac{v}{V^2}x),  \\
+\xi  \  =\  &amp; \varphi(v)\beta(x-vt),      \\
+\eta \  =\  &amp; \varphi(v)y,                \\
+\zeta\  =\  &amp; \varphi(v)z,                \end{aligned}$$</p>
+<p>此处</p>
+<p>$$\beta = \dfrac{1}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}\text{，}$$</p>
+<p>而$\varphi$暂时仍是$v$的一个未知函数。如果对于动系的初始位置和$\tau$的零点不作任何假定，那么这些方程的右边都有一个附加常数。</p>
+<p>我们现在应当证明，任何光线在动系量度起来都是以速度$V$传播的，如果像我们所假定的那样，在静系中的情况就是这样的；因为我们还未曾证明光速不变原理同相对性原理是相容的。</p>
+<p>在$t=\tau=0$时，这两坐标系共有一个原点，设从这原点发射出一个球面波，在$K$系里以速度$V$传播着。如果$(x, y, z)$是这个波刚到达的一点，那么
+$$x^2+y^2+z^2=V^2t^2\text{。}$$</p>
+<p>借助我们的变换方程来变换这个方程，经过简单的演算后，我们得到：
+$$\xi^2+\eta^2+\zeta^2=V^2\tau^2\text{。}$$</p>
+<p>由此，在动系中看来，所考查的这个波仍然是一个具有传播速度$V$的球面波。这表明我们的两条基本原理是彼此相容的。<sup>5</sup></p>
+<p class="note">5. 洛伦兹变换方程可以直接从下面的条件更简单地导出来：由于那些方程，从 $$x^2+y^2+z^2-V^2t^2=0$$ 这一关系，应该推导出第二个关系 $$\xi^2+\eta^2+\zeta^2-V^2\tau^2=0$$ ——《相对性原理》编者注</p>
+<p>在已推演得的变换方程中，还留下一个$v$的未知函数$\varphi$，这是我们现在所要确定的。</p>
+<p>为此目的，我们引进第三个坐标系$K&rsquo;$，它相对于$k$系作这样一种平行于$\Xi$轴的移动，使它的坐标原点在$\Xi$轴上以速度$-v$运动着。设在$t=0$时，所有这三个坐标原点都重合在一起，而当$t=x=y=z=0$时，设$K&rsquo;$系的时间$t&rsquo;$为0。我们把在$K&rsquo;$系量得的坐标叫做$x&rsquo;,y&rsquo;,z&rsquo;$，通过两次运用我们的变换方程，我们就得到：
+$$\begin{array}{lllll}
+t&rsquo; &amp; = &amp; \varphi(-v)\beta(-v)\left\{\tau+\dfrac{v}{V^2} \xi\right\} &amp; = &amp; \varphi(v)\varphi(-v)t,\\
+x&rsquo; &amp; = &amp; \varphi(-v)\beta(-v)\{\xi+v\tau\} &amp; = &amp; \varphi(v)\varphi(-v)x,\\
+y&rsquo; &amp; = &amp; \varphi(-v)\eta &amp; = &amp; \varphi(v)\varphi(-v)y,\\
+z&rsquo; &amp; = &amp; \varphi(-v)\zeta &amp; = &amp; \varphi(v)\varphi(-v)z.
+\end{array}$$</p>
+<p>由于$x&rsquo;,y&rsquo;,z&rsquo;$同$x,y,z$之间的关系中不含有时间$t$，所以$K$同$K&rsquo;$这两个坐标系是相对静止的，而且，从$K$到$K&rsquo;$的变换显然也必定是恒等变换。因此：$$\varphi(v)\varphi(-v)=1\text{。}$$</p>
+<p>我们现在来探究$\varphi(v)$的意义。我们注意$k$系中$H$轴上在$\xi=0$，$\eta=0$，$\zeta=0$和$\xi=0$，$\eta=l$，$\zeta=0$之间的这一段。这一段的$H$轴，是一根对于$K$系以速度$v$作垂直与它自己的轴运动的杆。它的两端在$K$系中的坐标是：
+$$x_1=vt,\ y_1=\dfrac{l}{\varphi(v)},\ z_1=0;$$
+和
+$$x_2=vt,\ y_2=0,\ z_2=0\text{。}$$</p>
+<p>在$K$系中所量得的这杆的长度也是$l/\varphi(v)$；这就给出了函数$\varphi$的意义。由于对称的缘故，一根相对于自己的轴作垂查运动的杆，在静系中量得的它的长度，显然必定只同运动的速度有关，而同运动的方向和指向无关。因此，如果$v$同$-v$对调，在静系中量得的动杆的长度应当不变。由此推得：
+$$\dfrac{l}{\varphi(v)}=\dfrac{l}{\varphi(-v)}\text{，或者}\varphi(v)=\varphi(-v)\text{。}$$</p>
+<p>从这个关系和前面得出的另一关系，就必然得到$\varphi(v)=1$，因此，已经得到的变换方程就变为：<sup>6</sup></p>
+<p>$$\begin{aligned}
+\tau  \ = \ &amp; \beta\left(t-\dfrac{v}{V^2}x\right), \\
+\xi   \ = \ &amp; \beta(x - vt), \\
+\eta  \ = \ &amp; y, \\
+\zeta \ = \ &amp; z, \end{aligned}$$</p>
+<p>此处
+$$\beta=\dfrac{1}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}\text{ 。}$$</p>
+<p class="note">6. 这一组变换方程以后通称为洛伦兹变换方程，事实上它是同洛伦兹1904年提出的变换方程不同的。洛伦兹原来的形式相当于：
+$$\tau=\dfrac{t}{\beta}-\dfrac{\beta v}{V^2}x,\ \xi=\beta x,\ \eta=y, \zeta=z.$$
+两者只对于$\beta$的一次幂才是一致的。值得注意的是，对于爱因斯坦的形式，$x^2+y^2+z^2-V^2t^2$是一个不变量；而对于洛伦兹的形式则不是。所以以后大家都采用爱因斯坦的形式。这个变换方程，伏格特(W. Voigt)于1887年，拉摩(J. Larmor)于1900年已分别发现，但当时并未认识其重要意义，因此也未引起人们的注意。——编译者</p>
+<h2 id="4-关于运动刚体和运动时钟所得方程的物理意义">§4. 关于运动刚体和运动时钟所得方程的物理意义</h2>
+<p>我们观察一个半径为$R$的刚性球<sup>7</sup>，它相对于动系$k$是静止的，它的中心在$k$的坐标原点上。这个球以速度$v$相对于$K$系运动着，它的球面方程是：$$\xi^2+\eta^2+\zeta^2=R^2$$</p>
+<p>用$x,y,z$来表示，在$t=0$时，这个球面方程是：
+$$\dfrac{x^2}{\left(\sqrt{1-\left(\dfrac{v}{V}\right)^2}\right)^2}+y^2+z^2=R^2\text{ 。}$$</p>
+<p>一个在静止状态量起来是球形的刚体，在运动状态——从静系看来——则具有旋转椭球的形状了，这椭球的轴是：
+$$R\sqrt{1-\left(\dfrac{v}{V}\right)^2},\ R,\ R\text{ 。}$$</p>
+<p>这样看来，球（因而也可以是无论什么形状的刚体）的$Y$方向和$Z$方向的长度不因运动而改变，而$X$方向的长度则好像以$1:\sqrt{1-(v/V)^2}$的比率缩短了，$v$愈大，缩短得就愈厉害。对于$v=V$，一切运动着的物体——从“静”系看来——都缩成扁平的了。对于大于光速的速度，我们的讨论就变得毫无意义了；此外，在以后的讨论中，我们会发现，光速在我们的物理理论中扮演着无限大速度的角色。</p>
+<p class="note">7. 即在静止时看起来是球形的物体。——原注</p>
+<p>很显然，从匀速运动着的坐标系看来，同样的结果也适用于静止在“静”系中的物体。</p>
+<p>进一步，我们设想有若干只钟，当它们同静系相对静止时，它们能够指示时间$t$；而它们同动系相对静止时，就能够指示时间$\tau$，现在我们把其中一只钟放到$k$的坐标原点上，并且校准它，使它指示时间$\tau$。从静系看来，这只钟走的快慢怎样呢？</p>
+<p>在同这只钟的位置有关的量$x$，$t$和$\tau$之间，显然下列方程成立：
+$$\tau=\dfrac{1}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}\left(t-\dfrac{v}{V^2}x\right)\ \text{和}\ x=vt\text{，}$$</p>
+<p>因此，
+$$\tau=t\sqrt{1-\left(\dfrac{v}{V}\right)^2}=t-\left(1-\sqrt{1-\left(\dfrac{v}{V}\right)^2}\right)t$$</p>
+<p>由此得知，这只钟所指示的时间（在静系中看来）每秒钟要慢$1-\sqrt{1-\left(\dfrac{v}{V}\right)^2}$秒，或者——略去第四级和更高级的〔小〕量——要慢$\dfrac{1}{2} (v/V)^2$秒。</p>
+<p>从这里产生了如下的奇特后果。如果在$K$系的$A$点和$B$点上各有一只在静系看来是同步运行的静止的钟，并且使$A$处的钟以速度$v$沿着$AB$联线向$B$运功，那么当它到达$B$时，这两只钟不再是同步的了，从$A$向$B$运动的钟要比另一只留在$B$处的钟落后$\dfrac{1}{2}t (v/V)^2$秒（不计第四级和更高级的〔小〕量，$t$是这只钟从$A$到$B$所费的时间。</p>
+<p>我们立即可见，当钟从$A$到$B$是沿着一条任意的折线运动时，上面这结果仍然成立，甚至当$A$和$B$这两点重合在一起时，也还是如此。</p>
+<p>如果我们假定，对于折线证明的结果，对于连续曲线也是有效的，那么我们就得到这样的命题：如果$A$处有两只同步的钟，其中一只以恒定速度沿一条闭合曲线运动，经历了$t$秒后回到$A$，那么，比那只在$A$处始终未动的钟来，这只钟在它到达$A$时，要慢$\dfrac{1}{2} t (v/V)^2$秒。由此，我们可以断定：在赤道上的摆轮钟<sup>8</sup>，比起放在两极的一只在性能上完全一样的钟来，在别的条件都相同的情况下，它要走得慢些，不过所差的量非常之小。</p>
+<p class="note">8. 不是“摆钟”，在物理学上摆钟是同地球同属一个体系的。这种情况必须除外。——《相对性原理》编者注<br/>
+按：普通的手表就是摆轮钟的一种。——编译者</p>
+<h2 id="5-速度的加法定理">§5. 速度的加法定理</h2>
+<p>在以速度$v$沿$K$系的$X$轴运动着的$k$系中，设有一个点依照下面的方程运动：
+$$\xi=w_\xi \tau,\ \eta=w_\eta \tau,\ \zeta=0,$$
+此处$w_\xi$和$w_\eta$都代表常数。</p>
+<p>求这个点对于$K$系的运动。借助于§3中得出的变换方程，我们把$x,y,z,t$这些量引进这个点的运动方程中来，我们就得到：</p>
+<p>$$\begin{aligned}
+x \ = \ &amp; \dfrac{w_\xi+v}{1+\dfrac{vw_\xi}{V^2}}t, \\
+y \ = \ &amp; \dfrac{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}{1+\dfrac{vw_\xi}{V^2}}w_\eta t, \\
+z \ = \ &amp; 0. \end{aligned}$$</p>
+<p>这样，依照我们的理论，速度的平行四边形定律只在第一级近似范围内才是有效的。我们置：
+$$\begin{aligned}
+U^2 \ = \ &amp; \left(\dfrac{{\rm d}x}{{\rm d}t}\right)^2+\left(\dfrac{{\rm d}y}{{\rm d}t}\right)^2,\\
+w^2 \ = \ &amp; w_\xi^2+w_\eta^2, \\
+\alpha   \ = \ &amp; \text{arc tg}\ \dfrac{w_\eta}{w_\xi}; \ ^9\end{aligned}$$</p>
+<p class="note">9. 原文是：$\alpha = \text{arc tg} \dfrac{w_y}{w_x}$；——编译者</p>
+<p>$\alpha$因而被看作是$v$和$w$两速度之间的交角。经过简单演算后，我们得到：
+$$U = \dfrac{\sqrt{(v^2+w^2+2vw\cos \alpha)-\left(\dfrac{vw\sin \alpha}{V}\right)^2}}{1+\dfrac{vw\cos \alpha}{V^2}}\text{。}$$</p>
+<p>值得注意的是，$v$和$w$是以对称的形式进入合成速度的式子里的。如果$w$也取$X$轴（$\Xi$轴）的方向，那么我们就得到：
+$$U = \dfrac{v+w}{1+\dfrac{vw}{V^2}}\text{。}$$</p>
+<p>从这个方程得知，由两个小于$V$的速度合成而得的速度总小于$V$。因为如果我们置$v = V-\kappa$，$w = V-\lambda$，此处$\kappa$和$\lambda$都是正的，并且小于$V$，那么：
+$$U = V\dfrac{2V-\kappa-\lambda}{2V-\kappa-\lambda+\dfrac{\kappa\lambda}{V}}&lt;V\text{。}$$</p>
+<p>进一步还可看出，速度$V$不会因为同一个“小于光速的速度”合成起来而有所改变。在这场合下，我们得到：
+$$U=\dfrac{V+w}{1+\dfrac{w}{V}}=V\text{。}$$</p>
+<p>当$v$和$w$具有同一方向时，我们也可以把两个依照§3的变换联合起来，而得到$U$的公式。如果除了在§3中所描述的$K$和$k$这两个坐标系之外，我们还引进了另一个对$k$作平行运动的坐标系$k&rsquo;$，它的原点以速度$w$在$\Xi$轴上运动着，那么我们就得到$x,y,z,t$这些量同$k&rsquo;$的对应量之间的方程，它们同那些在§3中所得到的方程的区别，仅仅在于以
+$$\dfrac{v+w}{1+\dfrac{vw}{V^2}}$$
+这个量代替“$v$”：由此可知，这样的一些变换——必然地——形成一个群。</p>
+<p>我们现在已经依照我们的两条原理推导出运动学的必要命题，我们要进而说明它们在电动力学的应用。</p>
+<h1 id="二电动力学部分">二、电动力学部分</h1>
+<h2 id="6-关于空虚空间麦克斯韦赫兹方程的变换关于磁场中由运动所产生的电动力的本性">§6. 关于空虚空间麦克斯韦—赫兹方程的变换。关于磁场中由运动所产生的电动力的本性</h2>
+<p>设关于空虚空间的麦克斯韦—赫兹方程对于静系$K$是有效的，那么我们可以得到：
+$$\begin{array}{llllll}
+\dfrac{1}{V}\dfrac{\partial X}{\partial t} &amp; = &amp; \dfrac{\partial N}{\partial y} - \dfrac{\partial M}{\partial z}, &amp;
+\dfrac{1}{V}\dfrac{\partial L}{\partial t} &amp; = &amp; \dfrac{\partial Y}{\partial z}-\dfrac{\partial Z}{\partial y}, \\
+\dfrac{1}{V}\dfrac{\partial Y}{\partial t} &amp; = &amp; \dfrac{\partial L}{\partial z} - \dfrac{\partial N}{\partial x}, &amp;
+\dfrac{1}{V}\dfrac{\partial M}{\partial t} &amp; = &amp; \dfrac{\partial Z}{\partial x}-\dfrac{\partial X}{\partial z}, \\
+\dfrac{1}{V}\dfrac{\partial Z}{\partial t} &amp; = &amp; \dfrac{\partial M}{\partial x} - \dfrac{\partial L}{\partial y}, &amp;
+\dfrac{1}{V}\dfrac{\partial N}{\partial t} &amp; = &amp; \dfrac{\partial X}{\partial y}-\dfrac{\partial Y}{\partial x}, \\
+\end{array}$$</p>
+<p>此处$(X,Y,Z)$表示电力的矢量，而$(L,M,N)$表示磁力的矢量。</p>
+<p>如果我们把中所得出的变换用到这些方程上去，把这电磁过程参照于那个在§3中所引入的、以速度$v$运动着的坐标系，我们就得到如下方程：</p>
+<p>$$\begin{array}{rcll}
+\dfrac{1}{V}\dfrac{\partial X}{\partial \tau} &amp; = &amp; \dfrac{\partial }{\partial \eta}\left\{\beta\left({N}-\dfrac{v}{V}{Y}\right)\right\} &amp; - \ \dfrac{\partial }{\partial \zeta}\left\{\beta\left({M}+\dfrac{v}{V}{Z}\right)\right\}, \\
+\dfrac{1}{V}\dfrac{\partial }{\partial \tau}\left\{\beta\left({Y}-\dfrac{v}{V}{N}\right)\right\} &amp; = &amp; \dfrac{\partial L}{\partial \zeta} &amp; - \ \dfrac{\partial }{\partial \xi}\left\{\beta\left({N}-\dfrac{v}{V}{Y}\right)\right\}, \\
+\dfrac{1}{V}\dfrac{\partial }{\partial \tau}\left\{\beta\left({Z}+\dfrac{v}{V}{M}\right)\right\} &amp; = &amp; \dfrac{\partial }{\partial \xi}\left\{\beta\left({M}+\dfrac{v}{V}{Z}\right)\right\} &amp; - \ \dfrac{\partial L}{\partial \eta}, \\
+\dfrac{1}{V}\dfrac{\partial L}{\partial \tau} &amp; = &amp; \dfrac{\partial }{\partial \zeta}\left\{\beta\left({Y}-\dfrac{v}{V}{N}\right)\right\} &amp; - \ \dfrac{\partial }{\partial \eta}\left\{\beta\left({Z}+\dfrac{v}{V}{M}\right)\right\}, \\
+\dfrac{1}{V}\dfrac{\partial }{\partial \tau}\left\{\beta\left({M}+\dfrac{v}{V}{Z}\right)\right\} &amp; = &amp; \dfrac{\partial }{\partial \xi}\left\{\beta\left({Z}+\dfrac{v}{V}{M}\right)\right\} &amp; -\ \dfrac{\partial X}{\partial \zeta}, \\
+\dfrac{1}{V}\dfrac{\partial }{\partial \tau}\left\{\beta\left({N}-\dfrac{v}{V}{Y}\right)\right\} &amp; = &amp; \dfrac{\partial X}{\partial \eta} &amp; - \ \dfrac{\partial }{\partial \xi}\left\{\beta\left({Y}-\dfrac{v}{V}{N}\right)\right\},
+\end{array}$$</p>
+<p>此处
+$$\beta = 1/\sqrt{1-\left(\dfrac{v}{V}\right)^2}\text{。}$$</p>
+<p>相对性原理现在要求，如果关于空虚空间的麦克斯韦—赫兹方程在$K$系中成立，那么它们在$k$系中也该成立，也就是说，对于动系$k$的电力矢量$(X&rsquo;,Y&rsquo;,Z&rsquo;)$和磁力矢量$(L&rsquo;,M&rsquo;,N&rsquo;)$——它们是在动系$k$中分别由那些在带电体和磁体上的有重动力作用来定义的——下列方程成立：</p>
+<p>$$\begin{array}{cccccc}
+\dfrac{1}{V}\dfrac{\partial X&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial N&rsquo;}{\partial \eta}-\dfrac{\partial M&rsquo;}{\partial \zeta}, &amp; \dfrac{1}{V}\dfrac{\partial L&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial Y&rsquo;}{\partial \zeta} - \dfrac{\partial Z&rsquo;}{\partial \eta}, \\
+\dfrac{1}{V}\dfrac{\partial Y&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial L&rsquo;}{\partial \zeta}-\dfrac{\partial N&rsquo;}{\partial \xi}, &amp; \dfrac{1}{V}\dfrac{\partial M&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial Z&rsquo;}{\partial \xi} - \dfrac{\partial X&rsquo;}{\partial \zeta}, \\
+\dfrac{1}{V}\dfrac{\partial Z&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial M&rsquo;}{\partial \xi}-\dfrac{\partial L&rsquo;}{\partial \eta}, &amp; \dfrac{1}{V}\dfrac{\partial N&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial X&rsquo;}{\partial \eta} - \dfrac{\partial Y&rsquo;}{\partial \xi}.
+\end{array}$$</p>
+<p>显然，为$k$系所求得的上面这两个方程组必定表达完全同一回事，因为这两个方程组都相当于$K$系的麦克斯韦—赫兹方程。此外，由于两组里的各个方程，除了代表矢量的符号以外，都是相一致的，因此，在两个方程组里的对应位置上出现的函数，除了一个因子$\psi(v)$之外，都应当相一致，而$\psi(v)$这因子对于一个方程组里的一切函数都是共同的，并且同$\xi, \eta,\zeta$和$\tau$无关，而只同$v$有关。由此我们得到如下关系：
+$$\begin{array}{cclccl}
+{X&rsquo;} &amp; = &amp; \psi(v){X}, &amp; {L&rsquo;} &amp; = &amp; \psi(v){L}, \\
+{Y&rsquo;} &amp; = &amp; \psi(v)\beta\left({Y}-\dfrac{v}{V}{N}\right), &amp; {M&rsquo;} &amp; = &amp; \psi(v)\beta\left({M}+\dfrac{v}{V}{Z}\right), \\
+{Z&rsquo;} &amp; = &amp; \psi(v)\beta\left({Z}+\dfrac{v}{V}{M}\right), &amp; {N&rsquo;} &amp; = &amp; \psi(v)\beta\left({N}-\dfrac{v}{V}{Y}\right).
+\end{array}$$</p>
+<p>我们现在来作这个方程组的逆变换，首先要用到刚才所得到的方程的解，其次，要把这些方程用到那个由速度$-v$来表征的逆变换（从$k$变换到$K$）上去，那么，当我们考虑到如此得出的两个方程组必定是恒等的，就得到：
+$$\psi(v)\cdot \psi(-v)=1\text{。}$$</p>
+<p>再者，由于对称的缘故<sup>10</sup>，
+$$\psi(v)=\psi(-v)\text{；}$$
+所以
+$$\psi(v)=1\text{，}$$</p>
+<p>我们的方程也就具有如下形式：</p>
+<p>$$\begin{array}{cclccl}
+{X&rsquo;} &amp; = &amp; {X}, &amp; {L&rsquo;} &amp; = &amp; {L}, \\
+{Y&rsquo;} &amp; = &amp; \beta\left({Y}-\dfrac{v}{V}{N}\right), &amp; {M&rsquo;} &amp; = &amp; \beta\left({M}+\dfrac{v}{V}{Z}\right), \\
+{Z&rsquo;} &amp; = &amp; \beta\left({Z}+\dfrac{v}{V}{M}\right), &amp; {N&rsquo;} &amp; = &amp; \beta\left({N}-\dfrac{v}{V}{Y}\right).
+\end{array}$$</p>
+<p>为了解释这些方程，我们作如下的说明：设有一个点状电荷，当它在静系$K$中量度时，电菏的量值是“1”，那就是说，当它静止在静系中时，它以1达因的力作用在距离1厘米处的一个相等的电荷上。根据相对性原理，在动系中量度时，这个电荷的量值也该是“1”。如果这个电荷相对于静系是静止的，那么按照定义，矢量$(X,Y,Z)$就等于作用在它上面的力。如果这个电荷相对于动系是静止的（至少在有关的瞬时），那么作用在它上面的力，在动系中量出来是等于矢量$(X&rsquo;,Y&rsquo;,Z&rsquo;)$。由此，上面方程中的前面三个，在文字上可以用如下两种方式来表述：</p>
+<ol>
+<li>
+<p>如果一个单位点状电荷在一个电磁场中运动，那么作用在它上面的，除了电力，还有一个“电动力”，要是我们略去$v/V$的二次以及更高次幂所乘的项，这个电动力就等于单位电荷的速度同磁力的矢积除以光速。（旧的表述方式。）</p>
+</li>
+<li>
+<p>如果一个单位点状电荷在一个电磁场中运动，那么作用在它上面的力就等于在电荷所在处出现的一种电力，这个电力是我们把这电磁场变换到同这单位电荷相对静止的一个坐标系上去时所得出的。（新的表述方式。）</p>
+</li>
+</ol>
+<p>对与“磁动力”也是相类似的。我们看到，在所阐述的这个理论中，电动力只起着一个辅助概念的作用，它的引入是由于这样的情况：电力和磁力都不是独立于坐标系的运动状态而存在的。</p>
+<p>同时也很明显，开头所讲的，那种在考查由磁体同导体的相对运动而产生电流时所出现的不对称性，现在是不存在了。而且，关于电动力学的电动力的“位置”（Sitz）问题（单极电机），现在也不成为问题了。</p>
+<p class="note">10. 比如，要是$X=Y=Z=L=M=0$，而$N \ne 0$，那么，由于对称的缘故，如果$v$改变正负号而不改变其数值，显然$Y'$也必定改变正负号而不改变其数值。——原注</p>
+<h2 id="7-多普勒原理和光行差的理论">§7. 多普勒原理和光行差的理论</h2>
+<p>在$K$系中，离坐标原点很远的地方，设有一电动波源，在包括坐标原点在内的一部分空间里，这些电磁波可以在足够的近似程度上用下面的方程来表示：
+$$\begin{aligned}
+X = X_0\sin\Phi, \ Y = Y_0\sin\Phi,\ Z = Z_0\sin\Phi,\\
+L = L_0\sin\Phi, \ M = M_0\sin\Phi,\ N = N_0\sin\Phi,
+\end{aligned}$$</p>
+<p>此处
+$$\Phi=\omega\left\{t-\dfrac{ax+by+cz}{V}\right\}\text{。}$$</p>
+<p>这里的$(X_0, Y_0, Z_0)$和$(L_0, M_0, N_0)$是规定波列的振幅的矢量，$a,b,c$是波面法线的方向余弦。我们要探究由一个静止在动系$k$中的观察者看起来的这些波的性状。</p>
+<p>应用§6所得出的关于电力和磁力的变换方程，以及§3所得出的关于坐标和时间的变换方程，我们立即得到：</p>
+<p>$$\begin{array}{ll}
+{X&rsquo;} = {X}_0\sin\Phi&rsquo;,                  &amp; {L&rsquo;} = {L}_0\sin\Phi&rsquo;, \\
+{Y&rsquo;} = \beta({Y}_0-\dfrac{v}{V} {N}_0)\sin\Phi&rsquo;, &amp; {M&rsquo;} = \beta({M}_0+\dfrac{v}{V} {Z}_0)\sin\Phi&rsquo;, \\
+{Z&rsquo;} = \beta({Z}_0+\dfrac{v}{V} {M}_0)\sin\Phi&rsquo;, &amp; {N&rsquo;} = \beta({N}_0-\dfrac{v}{V} {Y}_0)\sin\Phi&rsquo;,
+\end{array}$$</p>
+<p>$$\Phi&rsquo;= \omega&rsquo;\left(\tau-\dfrac{a&rsquo;\xi+b&rsquo;\eta+c&rsquo;\zeta}{V}\right)\text{，}$$</p>
+<p>此处
+$$\begin{aligned}
+\omega&rsquo; \ = \ &amp; \omega\beta(1-a \dfrac{v}{V}), \\
+a&rsquo; \ = \ &amp; \dfrac{a-\dfrac{v}{V}}{1 - a \dfrac{v}{V}}, \\
+b&rsquo; \ = \ &amp; \dfrac{b}{\beta(1-a \dfrac{v}{V})}, \\
+c&rsquo; \ = \ &amp; \dfrac{c}{\beta(1-a \dfrac{v}{V})}. \end{aligned}$$</p>
+<p>从关于$\omega&rsquo;$的方程即可得知：如果有一观察者以速度$v$相对于一个在无限远处频率为$\nu$的光源运动，并且参照于一个同光源相对静止的坐标系，“光源—观察者”连线同观察者的速度相交成$\varphi$角，那么，观察者所感知的光的频率$v&rsquo;$由下面方程定出：
+$$\nu&rsquo; = \nu\dfrac{1-\dfrac{v}{V} \cos\varphi}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}\text{。}$$</p>
+<p>这就是对于任何速度的多普勒原理。当$\varphi=0$时，这方程具有如一下的明晰形式：
+$$\nu&rsquo;=\nu\sqrt{\dfrac{1-\dfrac{v}{V}}{1+\dfrac{v}{V}}}\text{。}$$</p>
+<p>我们可以看出，当$v=-V$时，$\nu&rsquo;=\infty$ <sup>11</sup>，这同通常的理解相矛盾。</p>
+<p>如果我们把动系中的波面法线（光线的方向）同“光源—观察”连线之间的交角叫做$\varphi&rsquo;$，那么关于$a&rsquo;$的方程就取如下形式：
+$$\cos\varphi&rsquo;=\dfrac{\cos\varphi-\dfrac{v}{V}}{1-\dfrac{v}{V} \cos\varphi}\text{。}$$</p>
+<p>这个方程以一般的形式表述了光行差定律。如果$\varphi=\pi/2$,这个方程就取简单的形式：<sup>12</sup>
+$$\cos \varphi&rsquo; = - \dfrac{v}{V}$$</p>
+<p>我们还应当求出这些波在动系中看来的振幅。如果我们把在静系中量出的和在动系中量出的电力或磁力的振幅，分别叫做$A$和$A&rsquo;$，那么我们就得到：
+$${A&rsquo;}^2={A}^2\dfrac{\left(1-\dfrac{v}{V} \cos\varphi\right)^2}{1-\left(\dfrac{v}{V}\right)^2}\text{，}$$</p>
+<p>如果$\varphi=0$，这个方程就简化成：
+$${A&rsquo;}^2={A}^2\dfrac{1-\dfrac{v}{V}}{1+\dfrac{v}{V}}\text{。}$$</p>
+<p>从这些已求得的方程得知，对于一个以速度$V$向光源接近的观察者，这光源必定显得无限强烈。</p>
+<p class="note">11. 原文为“$v=-\infty$时，$\nu'=\infty$”，显然有误。——编译者<br/>
+12. 原文这个方程为$\cos \varphi' = \dfrac{v}{V}$，显然漏了一个负号。——编译者</p>
+<h2 id="8-光线能量的转换作用在完全反射镜上的辐射压力理论">§8. 光线能量的转换。作用在完全反射镜上的辐射压力理论</h2>
+<p>因为$A^2/8\pi$等于每单位体积的光能，于是由于相对性原理，我们应当把$A&rsquo;^2/8\pi$看作是动系的光能。因此，如果一个光集合体的体积，在$K$中量的同在$k$中量的是相等的，那么$A&rsquo;^2/A^2$就应该是这一集合体“在运动中量得的”能量同“在静止中量得的”能量的比率。但情况并非如此。如果$a,b,c$是静系中光的波面法线的方向余弦，那就没有能量会通过一个以光速在运动着的球面
+$$(x-Vat)^2+(y-Vbt)^2+(z-Vct)^2=R^2\text{。}$$
+的各个面元素的。我们因此可以说，这个球面永远包围着这个光集合体。我们要探究在$k$系看来这个球面所包围的能量，也就是要求出这个光集合体相对于$k$系的能量。</p>
+<p>这个球面——在动系看来——是一个椭球面，在$\tau=0$时它的方程是：
+$$\left(\beta\xi-a\beta\xi \dfrac{v}{V}\right)^2+\left(\eta-b\beta\xi \dfrac{v}{V}\right)^2+\left(\zeta-c\beta\xi \dfrac{v}{V}\right)^2={R}^2.$$</p>
+<p>如果$S$是球的体积，$S&rsquo;$是这个椭球的体积，那么，通过简单的计算，就得到：
+$$\dfrac{S&rsquo;}{S}=\dfrac{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}{1-\dfrac{v}{V} \cos\varphi}\text{。}$$</p>
+<p>因此，如果我们把在静系中量得的、为这个曲面所包围的光能叫做$E$，而在动系中量得的叫做$E&rsquo;$，我们就得到：
+$$\dfrac{E&rsquo;}{E} = \dfrac{\dfrac{A&rsquo;^2}{8\pi}{S&rsquo;}}{\dfrac{A^2}{8\pi}{S}} = \dfrac{1-\dfrac{v}{V} \cos\varphi}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}},$$</p>
+<p>当$\varphi=0$时，这个公式就简化成：
+$$\dfrac{E&rsquo;}{E} = \sqrt{\dfrac{1-\dfrac{v}{V}}{1+\dfrac{v}{V}}}.$$</p>
+<p>可注意的是，光集合体的能量和频率都随着观察者的运动状态遵循着同一定律而变化。</p>
+<p>现在设坐标平面$\xi=0$是一个完全反射的表面，§7中所考查的平面波在那里受到反射。我们要求出作用在这反射面上的光压，以及经反射后的光的方向、频率和强度。</p>
+<p>设入射光由$A$，$\cos\varphi$，$v$（参照于$K$系）这些量来规定。在$k$看来，其对应量是：</p>
+<p>$$\begin{aligned}
+{A&rsquo;} \ = \ &amp; {A}\dfrac{1-\dfrac{v}{V}\cos\varphi}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}, \\
+\cos\varphi&rsquo; \ = \ &amp; \dfrac{\cos\varphi-\dfrac{v}{V}}{1-\dfrac{v}{V}\cos\varphi}, \\
+\nu&rsquo; \ = \ &amp; \nu\dfrac{1-\dfrac{v}{V}\cos\varphi}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}. \end{aligned}$$</p>
+<p>对于反射后的光，当我们从$k$系来看这个过程，则得到：
+$$\begin{aligned}
+{A&rsquo;&rsquo;} \ = \ &amp; {A&rsquo;} \\
+\cos\varphi&rsquo;&rsquo; \ = \ &amp; -\cos\varphi&rsquo; \\
+\nu&rsquo;&rsquo; \ = \ &amp; \nu&rsquo; \end{aligned}$$</p>
+<p>最后，通过回转到静系$K$的变换，关于反射后的光，我们得到：</p>
+<p>$$\begin{aligned}
+{A&rsquo;&rsquo;&rsquo;} \ = \ &amp; {A&rsquo;&rsquo;}\dfrac{1+\dfrac{v}{V} \cos\varphi&rsquo;&rsquo;}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}} = {A}\dfrac{1-2\dfrac{v}{V}\cos\varphi + \left(\dfrac{v}{V}\right)^2}{1-\left(\dfrac{v}{V}\right)^2}, \\
+\cos\varphi&rsquo;&rsquo;&rsquo; \ = \ &amp; \dfrac{\cos\varphi&rsquo;&rsquo;+\dfrac{v}{V}}{1+\dfrac{v}{V}\cos\varphi&rsquo;&rsquo;} =  -\dfrac{\left(1 + \left(\dfrac{v}{V}\right)^2\right)\cos\varphi-2\dfrac{v}{V}}{1-2\dfrac{v}{V}\cos\varphi +\left(\dfrac{v}{V}\right)^2}, \\
+\nu&rsquo;&rsquo;&rsquo; \ = \ &amp; \nu&rsquo;&rsquo;\dfrac{1+\dfrac{v}{V}\cos\varphi&rsquo;&rsquo;}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}} = \nu\dfrac{1-2\dfrac{v}{V}\cos\varphi + \left(\dfrac{v}{V}\right)^2}{1-\left(\dfrac{v}{V}\right)^2}. \end{aligned}$$</p>
+<p>每单位时间内射到反射镜上单位面积的（在静系中量得的）能量显然是$A^2(V\cos\varphi-v)/8\pi$，单位时间内离开反射镜的单位面积的能量是$A&rsquo;&rsquo;&rsquo;^2(-V\cos\varphi&rsquo;&rsquo;&rsquo;+v)/8\pi$。由能量原理，这两式的差就是单位时间内光压所做的功。如果我们置这功等于乘积$P\cdot v$，此处$P$是光压，那么我们就得到：
+$${P}=2\cdot\dfrac{{A}^2}{8\pi}\dfrac{\left(\cos\varphi-\dfrac{v}{V}\right)^2}{1-\left(\dfrac{v}{V}\right)^2}.$$</p>
+<p>就一级近似而论，我们得到一个同实验一致，也同理论一致的结果，即：
+$${P}=2\cdot\dfrac{{A}^2}{8\pi}\cos^2\varphi\text{。}$$</p>
+<p>关于动体的一切光学问题，都能用这里所使用的方法来解决。其要点在于，把受到一动体影响的光的电力和磁力，变换到一个同这个物体相对静止的坐标系上去。通过这种办法，动体光学的全部问题将归结为一系列静体光学问题。</p>
+<h2 id="9-考虑到运流的麦克斯韦赫兹方程的变换">§9. 考虑到运流的麦克斯韦—赫兹方程的变换</h2>
+<p>我们从下列方程出发：</p>
+<p>$$\begin{array}{cccccc}
+\dfrac{1}{V}\left\{\dfrac{\partial X}{\partial t}+u_x\rho\right\} &amp; = &amp; \dfrac{\partial N}{\partial y} - \dfrac{\partial M}{\partial z},
+&amp; \dfrac{1}{V}\dfrac{\partial L}{\partial t} &amp; = &amp; \dfrac{\partial Y}{\partial z} - \dfrac{\partial Z}{\partial y}, \\
+\dfrac{1}{V}\left\{\dfrac{\partial Y}{\partial t}+u_y\rho\right\} &amp; = &amp; \dfrac{\partial L}{\partial z} - \dfrac{\partial N}{\partial x},
+&amp; \dfrac{1}{V}\dfrac{\partial M}{\partial t} &amp; = &amp; \dfrac{\partial Z}{\partial x} - \dfrac{\partial X}{\partial z}, \\
+\dfrac{1}{V}\left\{\dfrac{\partial Z}{\partial t}+u_z\rho\right\} &amp; = &amp; \dfrac{\partial M}{\partial x} - \dfrac{\partial L}{\partial y},
+&amp; \dfrac{1}{V}\dfrac{\partial N}{\partial t} &amp; = &amp; \dfrac{\partial X}{\partial y} - \dfrac{\partial Y}{\partial x}, \\
+\end{array}$$</p>
+<p>此处：
+$$\rho=\dfrac{\partial X}{\partial x}+\dfrac{\partial Y}{\partial y}+\dfrac{\partial Z}{\partial z}$$</p>
+<p>表示电的密度的$4\pi$倍，而$(u_x, u_y, u_z)$表示电的速度矢量。如果我们设想电荷是同小刚体（离子、电子）牢固地结合在一起的，那么些方程就是洛伦兹的动体电动力学和光学的电磁学基础。</p>
+<p>设这些方程在$K$系中成立，借助于§3和§6的变换方程，把它们变换到$k$系上去，我们由此得到方程：<sup>13</sup></p>
+<p>$$\begin{array}{cccccc}
+\dfrac{1}{V}\left\{\dfrac{\partial X&rsquo;}{\partial \tau}+u_\xi\rho&rsquo;\right\} &amp; = &amp; \dfrac{\partial N&rsquo;}{\partial \eta} - \dfrac{\partial M&rsquo;}{\partial \zeta},
+&amp; \dfrac{1}{V}\dfrac{\partial L&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial Y&rsquo;}{\partial \zeta} - \dfrac{\partial Z&rsquo;}{\partial \eta}, \\
+\dfrac{1}{V}\left\{\dfrac{\partial Y&rsquo;}{\partial \tau}+u_\eta\rho&rsquo;\right\} &amp; = &amp; \dfrac{\partial L&rsquo;}{\partial \zeta} - \dfrac{\partial N&rsquo;}{\partial \xi},
+&amp; \dfrac{1}{V}\dfrac{\partial M&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial Z&rsquo;}{\partial \xi} - \dfrac{\partial X&rsquo;}{\partial \zeta}, \\
+\dfrac{1}{V}\left\{\dfrac{\partial Z&rsquo;}{\partial \tau}+u_\zeta\rho&rsquo;\right\} &amp; = &amp; \dfrac{\partial M&rsquo;}{\partial \xi} - \dfrac{\partial L&rsquo;}{\partial \eta},
+&amp; \dfrac{1}{V}\dfrac{\partial N&rsquo;}{\partial \tau} &amp; = &amp; \dfrac{\partial X&rsquo;}{\partial \eta} - \dfrac{\partial Y&rsquo;}{\partial \xi}, \\
+\end{array}$$</p>
+<p>此处：</p>
+<p>$$\begin{aligned}
+u_\xi \ = \ &amp; \dfrac{u_x-v}{1-\dfrac{u_x v}{V^2}} \\
+u_\eta \ = \ &amp; \dfrac{u_y}{\beta \left(1-\dfrac{u_x v}{V^2}\right)} \\
+u_\zeta \ = \ &amp; \dfrac{u_z}{\beta \left(1-\dfrac{u_x v}{V^2}\right)}, \end{aligned}$$</p>
+<p>因为，——由速度的加法定理（§5）得知——矢量$(u_\xi, u_\eta, u_\zeta)$只不过是在$k$系中量得的电荷的速度，所以我们就证明了：根据我们的运动学原理，洛伦兹的动体电动力学理论的电动力学基础是符合于相对性原理的。</p>
+<p>此外，我还可以简要地说一下，由已经推演得到的方程可以容易地导出下面一条重要的定律：如果一个带电体在空间中无论怎样运动，并且从一个同它一道运动着的坐标系来看，它的电荷不变，那么从“静”系$K$来看，它的电荷也保持不变。</p>
+<p class="note">13. 原文中右面三个方程的左边都少了系数$\dfrac{1}{V}$。——编译者</p>
+<h2 id="10-缓慢加速的电子的动力学">§10. （缓慢加速的）电子的动力学</h2>
+<p>设有一点状的具有电荷$\varepsilon$的粒子（以后叫“电子”）在电磁场中运动，我们假定它的运动定律如下:</p>
+<p>如果这电子在一定时期内是静止的，在随后的时刻，只要电子的运动是缓慢的，它的运动就遵循如下方程
+$$\begin{aligned}
+\mu \dfrac{{\rm d}^2 x}{{\rm d}t^2} \ = \ &amp; \varepsilon X \\
+\mu \dfrac{{\rm d}^2 y}{{\rm d}t^2} \ = \ &amp; \varepsilon Y \\
+\mu \dfrac{{\rm d}^2 z}{{\rm d}t^2} \ = \ &amp; \varepsilon Z \end{aligned}$$</p>
+<p>此处$x,y,z$表示电子的坐标，$\mu$表示电子的质量。</p>
+<p>现在，第二步，设电子在某一时刻的速度是$v$，我们来求电子在随后时刻的运动定律。</p>
+<p>我们不妨假定，电子在我们注意观察它的时候是在坐标原点上，并且沿着$K$系的$x$轴以速度$v$运动着，这样的假定并不影响考查的普遍性。那就很明显，在已定的时刻（$t=0$），电子对于那个以恒定速度$v$沿着$X$轴作平行运动的坐标系$k$是静止的。</p>
+<p>从上面所作的假定，结合相对性原理，很明显的，在随后紧接的时间（对于很小的$t$值）里，由$k$系看来，电子是遵照如下方程而运动的：
+$$\begin{aligned}
+\mu \dfrac{{\rm d}^2\xi}{{\rm d}\tau^2}   \ = \ &amp; \varepsilon X&rsquo;, \\
+\mu \dfrac{{\rm d}^2\eta}{{\rm d}\tau^2}  \ = \ &amp; \varepsilon Y&rsquo;, \\
+\mu \dfrac{{\rm d}^2\zeta}{{\rm d}\tau^2} \ = \ &amp; \varepsilon Z&rsquo;, \end{aligned}$$</p>
+<p>在这里，$\xi$，$\eta$，$\zeta$，$\tau$，$X&rsquo;$，$Y&rsquo;$，$Z&rsquo;$这些符号是参照于$k$系的。如果我们进一步规定，当$t=x=y=z=0$时，$\tau=\xi=\eta=\zeta=0$，那么§3和§6的变换方程有效，也就是如下关系有效：
+$$\begin{array}{c}
+\tau=\beta\left(t-\dfrac{v}{V^2}x\right)\\
+\xi = \beta(x-vt), \eta=y, \zeta=z,\\
+{X}&rsquo; = {X}, {Y}&rsquo;=\beta\left({Y}- \dfrac{v}{V} {N}\right), {Z}&rsquo;=\beta\left({Z}+ \dfrac{v}{V} {M}\right).\\
+\end{array}$$</p>
+<p>借助于这些方程，我们把前述的运动从$k$系变换到$K$系，就得到：</p>
+<p>(A)   $ \qquad \qquad \left\{                                                                                                                                     <br>
+\begin{array}{rcl}                                                                                                                           <br>
+\dfrac{{\rm d}^2x}{{\rm d}t^2} &amp;=&amp;  \dfrac{\varepsilon}{\mu\beta}\dfrac{1}{\beta^2}{X} \\           <br>
+\dfrac{{\rm d}^2y}{{\rm d}t^2} &amp;=&amp;  \dfrac{\varepsilon}{\mu\beta}\left({Y}-\dfrac{v}{V}{N}\right) \\<br>
+\dfrac{{\rm d}^2z}{{\rm d}t^2} &amp;=&amp;  \dfrac{\varepsilon}{\mu\beta}\left({Z}+\dfrac{v}{V}{M}\right)
+\end{array}                                                                                                                                  <br>
+\right.$</p>
+<p>依照通常考虑的方法，我们现在来探究运动电子的“纵”质量和“横”质量。我们把方程($A$)写成如下形式
+$$\begin{array}{lllll}
+\mu \beta^3\dfrac{{\rm d}^2x}{{\rm d}t^2} &amp;=&amp; \varepsilon X &amp;=&amp; \varepsilon X&rsquo;, \\
+\mu \beta^2\dfrac{{\rm d}^2y}{{\rm d}t^2} &amp;=&amp; \varepsilon\beta\left({Y}-\dfrac{v}{V}{N}\right) &amp;=&amp; \varepsilon Y&rsquo;, \\
+\mu \beta^2\dfrac{{\rm d}^2z}{{\rm d}t^2} &amp;=&amp; \varepsilon\beta\left({Z}+\dfrac{v}{V}{M}\right) &amp;=&amp; \varepsilon Z&rsquo;,
+\end{array}$$</p>
+<p>首先要注意到，$\varepsilon X&rsquo;, \varepsilon Y&rsquo;,\varepsilon Z&rsquo;$是作用在电子上的有重动力的分量，而且确是从一个当时同电子一道以同样速度运动着的坐标系中来考查的。（比如，这个力可用一个静止在上述的坐标系中的弹簧秤来量出。）现在如果我们把这个力直截了当地叫做“作用在电子上的力”<sup>14</sup>，并且保持这样的方程
+$$\text{质量}\times\text{加速度}=\text{力，}$$
+而且，如果我们再规定加速度必须在静系$K$中进行量度，那么，由上述方程，我们导出：
+$$\begin{aligned}
+\text{纵质量} \ = \ &amp; \dfrac{\mu}{\left(\sqrt{1-\left(\dfrac{v}{V}\right)^2}\right)^3}\text{，}\\
+\text{横质量} \ = \ &amp; \dfrac{\mu}{1-\left(\dfrac{v}{V}\right)^2}\text{。}\end{aligned}$$</p>
+<p>当然，用另一种力和加速度的定义，我们就会得到另外的质量数值。由此可见，在比较电子运动的不同理论时，我们必须非常谨慎。</p>
+<p>我们觉得，这些关于质量的结果也适用于有重的质点上，因为一个有重的的质点加上一个任意小的电荷，就能成为一个（我们所讲的）电子。</p>
+<p>我们现在来确定电子的动能。如果一个电子本来静止在$K$系的坐标原点上，在一个静电力$X$的作用下，沿着$X$轴运动，那么很清楚，从这静电场中所取得的能量值为$\int \varepsilon X {\rm d}x$，因为这个电子应该是缓慢加速的，所以也就不会以辐射的形式丧失能量，那么从静电场中取得的能量必定都被积蓄起来，它等于电子的运动的能量$W$。由于我们注意到，在所考查的整个运动过程中，($A$)中的第一个方程是适用的，我们于是得到：<sup>15</sup></p>
+<p>$$\begin{aligned}
+{W} = \int\varepsilon X\,{\rm d}x = \mu \int_0^v\beta^3v\,{\rm d}v
+= \mu V^2\left\{\dfrac{1}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}-1\right\}\end{aligned}$$</p>
+<p>由此，当$v=V$，$W$就变的无限大。超光速的速度——像我们以前的结果一样——没有存在的可能。</p>
+<p>根据上述的论据，动能的这个式子也同样适用于有重物体。</p>
+<p>我们现在要列举电子运动的一些性质，它们都是从方程组($A$)得出的结果，并且是可以用实验验证的。</p>
+<ol>
+<li>
+<p>从($A$)组的第二个方程得知，电力$Y$和磁力$N$，对于一个以速度$v$运劝着的电子，当$Y=N \cdot v/V$时，它们产生同样强弱的偏转作用。由此可见，用我们的理论，从那个对于任何速度的磁偏转力$A_m$同电偏转力$A_e$的比率，就可测定电子的速度，这只要用到定律：
+$$\dfrac{A_m}{A_e}=\dfrac{v}{V}\text{。}$$
+这个关系可由实验来验证，因为电子的速度也是能够直接量出来的，比如可以用迅速振荡的电场和磁场来量出。</p>
+</li>
+<li>
+<p>从关于电子动能的推导得知，在所通过的势差$P$同电子所得到的速度$v$之间必定这样的关系：
+$$P=\int X \, {\rm d}x = \dfrac{\mu}{\varepsilon}V^2\left\{\dfrac{1}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}-1\right\}.$$</p>
+</li>
+<li>
+<p>当存在着一个同电子的速度相垂直的磁力$N$时（作为唯一的偏转力），我们来计算在这磁力作用下的电子路径的曲率半径$R$,由($A$)中的第二个方程，我们得到：
+$$-\dfrac{{\rm d}^2 y}{{\rm d}t^2}=\dfrac{v^2}{R}=\dfrac{\varepsilon}{\mu}\dfrac{v}{V}N\sqrt{1-\left(\dfrac{v}{V}\right)^2}$$
+或者
+$$R = \dfrac{\mu V^2}{\varepsilon}\cdot\dfrac{\dfrac{v}{V}}{\sqrt{1-\left(\dfrac{v}{V}\right)^2}}\cdot\dfrac{1}{N}\text{ 。}$$</p>
+</li>
+</ol>
+<p>根据这里所提出的理论，这三项关系完备地表述了电子运动所必须遵循的定律。</p>
+<p>最后，我要声明，在研究这里所讨论的问题时，我曾得到我的朋友和同事贝索(M. Besso)<sup>16</sup>的热诚帮助，要感谢他一些有价值的建议。</p>
+<p class="note">14. 正如M. 普朗克〔于1906年——编译者〕所首先指出来的，这里对力所下的定义并不好。力的比较中肯的定义，应当使动量定律和能量定律具有最简单的形式。——《相对性原理》编者注<br/>
+15. 原文中第三式积分符号左边漏了$\mu$。——编译者<br/>
+16. 关于M. 贝索，请参阅本文集第一卷106页的脚注以及第三卷关于爱因斯坦和贝索通信的说明。他当时也是伯尔尼专利局的技术员。——编译者</p>
+<hr/>
+<p style="text-align:center; margin:1em 0em; font-size:0.75em"><b><a href="../../time/1916-einstein-cn.html" target="_blank">《关于辐射的量子理论》(1916)</a></b></p>
+
+  </article>
+  <footer>
+  <hr/>
+  <img src="../../up.png" style="height: 120px; border-radius: 59px"/><br/>
+  <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
+  由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
+  主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
+  源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
+  <p><a href="../../misc/udpn.html">双拼是什么？</a></p>
+  </footer></body>
+</html>
+
