@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../style.css">
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+  <script>MathJax = {tex: {inlineMath: [['$', '$']]}};</script>
+  <title>如何收集论文（计算机科学专业） >> Ying ZHANG</title>
+</head><body>
+  <header> <a href="../../">Home</a> </header>
+  <button id="btn">☀️</button>
+  <script src="../../dark.js" ></script>
+  <article>
+    <div class="title">
+      <h1>如何收集论文（计算机科学专业）</h1>
+      <p><time>2016-09-28</time><span id="url">https://ying-zhang.cn/misc/2016-we-love-paper/</span></p>
+    </div>
+    <p>“论文”是每个研究生头上的“阴云”。无论是没有课题或想法，都要收集研究方向相关的多篇论文，来了解背景和最新进展。本文介绍计算机科学专业如何收集论文。</p>
+<h1 id="tldr">TL;DR</h1>
+<p>从<a href="../../misc/2022-ccf-list/">CCF推荐目录</a>中感兴趣的<strong>A类会议及期刊</strong>中找论文。</p>
+<hr>
+<p>按理说，开篇应该先要强调一下论文对于科研的重要性的。还是直接把前辈的经验拿来吧：</p>
+<ul>
+<li>周志华老师关于<a href="research_and_paper_zhou_zhihua_2007_ppt.pdf">做研究与写论文的ppt</a></li>
+<li>凌晓峰和杨强两位老师的<a href="https://item.jd.com/11127141.html">《学术研究：你的成功之道》</a>，这本书的英文原版是 <em><a href="https://link.springer.com/book/10.1007/978-3-031-79351-6">Crafting Your Research Future: A Guide to Successful Master&rsquo;s and Ph.D. Degrees in Science &amp; Engineering</a></em></li>
+</ul>
+<p>不要忘记论文的“初心”：论文不是科研的原因，而是结果（的一部分）。所谓“工欲善其事，必先利其器”，除了科研问题本身，形成一套有效的科研方法也是重要的。<strong>要有意识地探索和总结适合自己的科研方法</strong>。</p>
+<h1 id="论文发表过程">论文发表过程</h1>
+<pre>
+                                 / 期刊，特辑/专刊 → 多轮审稿 → 上线 \
+想法 -> 编程、实验、写论文、投稿 <                                     ->出版，检索
+                                 \ 会议           → 审稿 → 参会报告 /
+</pre>
+<p>论文作者一般是来自高校的在读研究生和年轻教师，还有一些是来自公司的研究人员。显然，论文的“出身”对质量的影响很大。</p>
+<p>期刊是传统的论文发表渠道；期刊每季度、双月或者月度出版一期（Issues）；把一年内的各期集结为一卷（Volume）。可以随时投稿给期刊，没有截稿日（Deadline）的压力。投稿后，要经同行评审（Peer Review）返回修改意见，针对审稿人的建议大修，小修（Major，Minor Revision），经两三轮修改才能被最终录用，耗时一年多是常见的。如果有的期刊安排了专刊（Special Issue）计划，会公布对应的截稿日，审稿的进度会稍快些。</p>
+<p>期刊分为<strong>Transaction</strong>, <strong>Journal</strong> 和 <strong>Magazine</strong>。其实Magazine接近科普水平了，其中很少发表新的研究工作，更多是对当前进展的简介和综述，也会转发一些已经发表过的重要论文。新手先浏览一下相关的Magazine，建立基本概念还是不错的。</p>
+<p>对快速发展的计算机科学（CS）专业来说，期刊的节奏比较慢，而且期刊版面有限，每期只能发布几篇到十几篇，通常发表偏理论或者综述类论文。CS的论文主要发表在学术会议上，这跟传统学科很不一样。</p>
+<p>大部分会议每年举办一届，时间上是比较固定的月份，比如寒暑假期间。会议网站上会提前发布下一届的征稿启事（Call for Paper, CFP）和截稿日。投稿后，经过两三个月，就完成了审稿，通知作者是否录用。近几年，不少会议还增加了一轮作者应辩（Rebuttal）的环节。被录用的论文按审稿意见修改后提交最终版（Camera Ready）。最后，作者要现场参会，介绍自己的论文（Presentation）。</p>
+<p>会议录用的论文会集结出版（<strong>Proceedings</strong>）。有的会议还会推荐若干优秀论文到合作的期刊，扩展后作为期刊论文发表。会议分为<strong>Symposium</strong>, <strong>Conference</strong> 和 <strong>Workshop</strong>。一般来说<strong>Workshop</strong>会与同领域某个更知名的<strong>Symposium/Conference</strong>一同举办，参会规模和论文质量与主会议都有所差别，有的<strong>Workshop</strong>甚至搞了几届后就不再继续了。</p>
+<h1 id="cs论文数据库">CS论文数据库</h1>
+<h2 id="acm-ieee-computer等">ACM, IEEE Computer等</h2>
+<p>会议和期刊的网站分散各处，不方便收集和检索论文，于是就有了综合的论文数据库（Digital Library，DL）。常用的CS论文数据库见下表。这些 DL 的机构与期刊出版社或者会议主办方合作，有的DL机构本身就是期刊出版社或会议主办方。</p>
+<blockquote class="s">注意区分DL和机构的网站。下载论文要去DL。</blockquote>
+<table style="width:80%;" class="tx">
+<thead><tr><th colspan="2" style="text-align:center">机构</th><th colspan="2" style="text-align:center">Digital Library （DL）</th></tr></thead>
+<tbody>
+<tr><td>Association for Computing Machinery, ACM</td><td><a href="https://www.acm.org/">www.acm.org</a></td>
+<td>ACM Digital Library</td><td><a href="https://dl.acm.org/">dl.acm.org</a></td></tr>
+<tr><td>IEEE Computer Society</td><td><a href="https://www.computer.org/">www.computer.org</a></td>
+<td>IEEE Xplore</td><td><a href="https://ieeexplore.ieee.org/">ieeexplore.ieee.org</a></td></tr>
+<tr><td>Elsevier</td><td><a href="https://www.elsevier.com/">www.elsevier.com</a></td>
+<td>Elsevier ScienceDirect</td><td><a href="https://www.sciencedirect.com/">www.sciencedirect.com</a></td></tr>
+<tr><td>Springer</td><td><a href="https://www.springer.com/">www.springer.com</a></td>
+<td>Springer Link</td><td><a href="https://link.springer.com/">link.springer.com</a></td></tr>
+<tr><td>Wiley</td><td><a href="https://www.wiley.com/">www.wiley.com</a></td>
+<td>Wiley Online Lib</td><td><a href="https://onlinelibrary.wiley.com/">onlinelibrary.wiley.com</a></td></tr>
+</tbody></table>
+<p>ACM 和 IEEE Computer Society（IEEE 计算机学会；IEEE还有电气、电子、通信等多个学会） 的网址后缀是 <strong>.org</strong>。这两个机构是CS领域最重要的学术组织。很多CS学术会议都是由它们组织的（此外还有下面介绍的 USENIX）。Elsevier，Springer和Wiley的网址后缀是 <strong>.com</strong>。它们是学术出版商，以出版期刊为主，除了CS，还有其它多个学科。上面这几个数据库是<strong>主要的论文全文来源</strong>。它们各自收录的会议和期刊基本没有重叠，从它们的数据库下载的论文也都有各自的排版样式。</p>
+<blockquote class="s">ACM作为最“正统”的计算机学术组织，它的DL除了收录ACM组织的会议和期刊全文之外，还会索引其它几家数据库的 <strong>元数据</strong>，通过DOI链接跳转到其它几家数据库的全文页面。<br/>
+IEEE出版的一些论文在 computer.org （实际是CSDL: <a href="https://www.computer.org/csdl/">www.computer.org/csdl/</a>）和 Xplore 都可能搜到，这两个数据库是 <strong>分别 收费的</strong>，能在 Xplore 下载全文的不一定能在 computer.org 下载。
+</blockquote>
+<h3 id="acm-sigs">ACM SIGs</h3>
+<p>ACM有多个针对CS各分领域的组织，称为Special Interest Group，SIG。目前有三十多个<a href="https://www.acm.org/sigs/">ACM SIGs</a>（或参考<a href="https://www.acm.org/special-interest-groups">SIGs ACM DL</a>），如</p>
+<ul>
+<li>体系结构方向的<a href="https://www.sigarch.org">SIGARCH</a>、<a href="https://www.sighpc.org">SIGHPC</a>、<a href="https://www.sigmetrics.org">SIGMETRICS</a>、<a href="https://www.sigmicro.org">SIGMICRO</a>、<a href="https://www.sigmobile.org">SIGMOBILE</a>，</li>
+<li>网络方向的<a href="https://www.sigcomm.org">SIGCOMM</a>，</li>
+<li>数据库方向的<a href="https://www.sigmod.org">SIGMOD</a>，</li>
+<li>系统方向的<a href="https://www.sigops.org">SIGOPS</a>，</li>
+<li>软件工程方向的<a href="https://www.sigplan.org">SIGPLAN</a>、<a href="https://www.sigsoft.org">SIGSOFT</a></li>
+</ul>
+<p>这些SIGs除了组织一系列的学术会议，还会评选本方向的一些奖项，如</p>
+<ul>
+<li><a href="https://www.sigsoft.org/awards/distinguishedPaperAward.html">SIGSOFT 杰出论文</a>，<a href="https://www.sigsoft.org/awards/dissertationAward.html">SIGSOFT 优秀博士论文</a></li>
+<li><a href="https://sigplan.org/Awards/">SIGPLAN Awards</a></li>
+<li><a href="https://www.sigops.org/awards/hof/">SIGOPS Hall of Fame</a></li>
+<li><a href="https://www.podc.org/dijkstra/">Edsger W. Dijkstra Prize in Distributed Computing</a>，来自PODC等多个分布计算会议/期刊</li>
+<li><a href="https://jeffhuang.com/best_paper_awards.html">部分会议的最佳论文列表</a>，</li>
+<li><a href="https://www.usenix.org/conferences/best-papers">USENIX各会议最佳论文</a>。</li>
+</ul>
+<h3 id="acm-dl-相关链接">ACM DL 相关链接</h3>
+<ul>
+<li><a href="https://dl.acm.org/about/content">收录会议和期刊的完整列表</a></li>
+<li><a href="https://dl.acm.org/conferences">会议</a></li>
+<li><a href="https://dl.acm.org/proceedings">会议论文集</a></li>
+<li><a href="https://dl.acm.org/journals">期刊和学报</a></li>
+<li><a href="https://dl.acm.org/magazines">杂志</a></li>
+<li><a href="https://dl.acm.org/conferences/upcoming">ACM Conferences - past 12 months</a></li>
+<li><a href="https://dl.acm.org/pb-assets/meetings/UpcomingConfLocations.xml">ACM Upcoming Conferences - RSS</a></li>
+</ul>
+<p>ACM的综合杂志</p>
+<ul>
+<li><a href="https://cacm.acm.org">Communications of the ACM, CACM</a>, <a href="https://dl.acm.org/magazine/cacm">in ACM DL</a>， <a href="https://dblp.org/db/journals/cacm/">in dblp</a> (CCF曾经选译部分CACM文章，出版为CACM中国版，但2016年之后没有继续下去)</li>
+<li><a href="https://queue.acm.org">Queue</a> 也值得一看，有一些文章会先发表在Queue，之后又发表在CACM</li>
+</ul>
+<h3 id="ieee-computer-相关链接">IEEE Computer 相关链接</h3>
+<ul>
+<li><a href="https://www.computer.org/conferences/calendar">会议日历</a></li>
+<li><a href="https://www.computer.org/csdl/proceedings">会议论文集</a></li>
+<li><a href="https://www.computer.org/csdl/journals">期刊/学报</a></li>
+<li><a href="https://www.computer.org/csdl/magazines">杂志</a></li>
+</ul>
+<h2 id="usenix"><a href="https://www.usenix.org">USENIX</a></h2>
+<p>要是图书馆不差钱，把所有论文数据库都买来，那么电子资源应该很全了吧？然而，还少了一个重要的数据库：<strong>USENIX —— 它是免费的</strong>。<a href="https://www.usenix.org">USENIX</a>实在是个良心组织，最初称为Unix User Group。它组织了OSDI 、ATC、FAST、NSDI等会议，不但学术水平很高，贴近工业界，而且免费提供全文，还提供一些论文作者在会议上的演讲视频及ppt。</p>
+<h3 id="usenix-相关链接"><a href="https://www.usenix.org/conferences/byname">USENIX 相关链接</a></h3>
+<ul>
+<li><a href="https://www.usenix.org/conferences/byname">所有会议</a>，其中包括ATC，FAST，NSDI，OSDI等；</li>
+<li><a href="https://www.usenix.org/conferences">按召开时间列出的会议列表</a></li>
+</ul>
+<h2 id="arxiv"><a href="https://arxiv.org">arXiv</a></h2>
+<p><a href="https://arxiv.org">arXiv（archive的简写）</a>，是由康乃尔大学维护的，免费的多学科论文<strong>预</strong>出版（preprint）数据库。所谓<strong>预</strong>出版，是指论文可能还没有经过同行评审，文责自负。有的学科也可能会先把文章放到 arXiv 来占位子。</p>
+<h2 id="dblp">dblp</h2>
+<p><a href="https://dblp.org">dblp.org</a> ，或<a href="https://dblp.uni-trier.de">dblp.uni-trier.de</a>或<a href="https://dblp.dagstuhl.de">dblp.dagstuhl.de</a>， 是专注于CS学科的文献<strong>元数据索引</strong>数据库，优势是收集得相当完整，用来初步筛选论文非常方便，链接也很有规律，对重名作者处理得很好，但只能搜索标题或作者等元数据（有全文链接）。</p>
+<p>dblp 列出了关于CS论文的一些统计数据：</p>
+<ul>
+<li><a href="https://dblp.org/statistics/recordsindblp.html">累计论文数量</a>，</li>
+<li><a href="https://dblp.org/statistics/publicationsperyear.html">每年发表的论文数量</a>，</li>
+<li><a href="https://dblp.org/statistics/distributionofpublicationtype.html">论文发表的类型</a>。</li>
+</ul>
+<!-- + 论文总数 3,587,354 ， 作者人数 1,825,286，会议数4,912，期刊数 1,491。 -->
+<p>另外，ACM DL也有一个<a href="https://dl.acm.org/about/content">类似的统计</a>。</p>
+<figure>
+<img alt="每年发表的CS论文数量（截至2021）" src="o/pubs.svg" width="960px"/>
+</figure>
+<p>而且dblp整站的数据可以下载为一个<a href="https://dblp.org/xml/">xml文件</a>，以供进一步挖掘。</p>
+<h2 id="doi">DOI</h2>
+<p>在查找或引用论文时经常会遇到DOI (Digital Object Identifier)，<a href="https://zh.wikipedia.org/wiki/DOI">wikipedia介绍DOI</a>“是一套识别数字资源的机制，涵括的对象有视频、报告或书籍等等。它既有一套为资源命名的机制，也有一套将识别号解析为具体地址的协议”。</p>
+<p>著名的 <a href="https://sci-hub.wf">SCI-HUB</a>，可以通过DOI免费获得很多全文。</p>
+<h2 id="ei和sci">EI和SCI</h2>
+<p>分别搜索上面的数据库还是有点麻烦，于是就有了一些聚合数据库，又称为索引。想必很多同学早就听说过EI和SCI：</p>
+<ul>
+<li>EI: <strong>Engineering Index</strong> <a href="https://www.engineeringvillage.com">https://www.engineeringvillage.com</a></li>
+<li>SCI: <strong>Science Citation Index</strong> <a href="https://apps.webofknowledge.com">https://apps.webofknowledge.com</a></li>
+</ul>
+<p><strong>只看它们的 URL， 似乎跟名字没啥关系</strong>。它们的 Web 界面体验也一般；而且它们不只收录CS的文献，还包括很多其它学科，搜索结果不怎么准确，往往返回不相关的内容。</p>
+<p>其实通常是在<strong>已知文章标题的情况下</strong>检索是不是被这两个数据库收录了，而<strong>不是</strong>直接搜索/收集文章。</p>
+<!-- 
+要确定某个会议论文集或者期刊[是否被EI或SCI收录](https://www.philippe-fournier-viger.com/links.php)，
++ 在[EI收录列表](https://www.elsevier.com/solutions/engineering-village/content) 页内搜索Compendex Source List，会找到一个Excel表格的链接，下载下来会发现这个表格是受保护的，但可以筛选标题（而且最后一个WorkSheet有中文翻译哦，满满的土洋结合，中国特色）。嘘~~ 也许你可以参考[这个脚本解除保护](o/crack_xls_vb.txt)，还要建议把title列中每个单元格开头的`=`替换掉。这个Excel的title是排好序的，方便顺序浏览，比如有个杂志名叫`Computing`，真是起的好名字，如果直接搜索是肯定搜出一堆结果，所以，即便找到名字一样的期刊，最好也要再确认一下ISSN号。但是！这个Excel表格并不完整，如果没有在表中搜索到，还是需要在EI的网站上搜索文章标题才能最终确认。
++ 在`WebOfKnowledge`的网站查询之前，**一定**要选择数据库为`检索 Web of Science 核心合集`，等页面自动刷新之后，还要在页面下部展开“更多设置”，只选中`Science Citation Index Expanded (SCIEXPANDED) 1900年至今`这一项，然后才能查询出根正苗红的`SCI（E）`。请**务必**参考[这个截图](o/SCI_E_Web_of_Science.pdf)。可以在[SCI收录列表](https://mjl.clarivate.com/home?PC=K)直接输入期刊的名称来查询该期刊是否被SCI收录，但感觉这个查的也不全。还是要充分利用SCI的中国特色了，因为还有一个国内整理的SCI期刊列表：[中国科学技术信息研究所SCI（E）论文期刊分区列表](https://scit.nju.edu.cn/10973/list.htm)，这是一个有一万三千多行的Excel表格，简单粗暴。 -->
+<h2 id="其它">其它</h2>
+<p>从Google Scholar搜索全文时可能会跳转到下面这几个网站（学术社交网络），因为它们会保存一些别人分享的全文。</p>
+<ul>
+<li>Semantic Scholar <a href="https://www.semanticscholar.org">https://www.semanticscholar.org</a></li>
+<li>CiteSeerX <a href="https://citeseerx.ist.psu.edu">https://citeseerx.ist.psu.edu</a></li>
+<li>ResearchGate <a href="https://www.researchgate.net">https://www.researchgate.net</a></li>
+</ul>
+<h1 id="ccf目录">CCF目录</h1>
+<p>EI和SCI只是两个论文数据库，但能够发表被EI和SCI收录的文章变成了能够毕业，能否获得奖学金，能否获得基金的指标。由于时代的限制，EI和SCI被赋予了不相称的地位和意义，而且短期看还是如此。更 “<strong>不幸</strong>” 的是，对于CS的学生，还有一个<a href="https://www.ccf.org.cn/Academic_Evaluation/By_category/">CCF目录</a>）摆在面前。其实并非是不幸，而是十分幸运，因为CCF目录不像是一个紧箍咒，而更像是一个入门指南。</p>
+<p><a href="https://www.ccf.org.cn/">中国计算机学会 CCF</a>是国内的类似于ACM的计算机学术组织。也许某位同学的导师就是CCF会员。相比EI和SCI收录的成百上千的会议和期刊，<a href="../../misc/2022-ccf-list/">CCF维护的目录显然精简得多</a>。考虑到对EI和SCI指标要求的实际情况，目录选取的<strong>大多</strong>是被EI或SCI收录的，具体划分为10个子方向，并区分出A，B，C三个等级。A，B类的会议和期刊的文章学术质量较高。这个质量不是简单通过所谓影响因子等简单的数据来评价的，而是综合了多种因素，国际上也获得比较广泛认可的。比如，翻一下《现代操作系统》这本经典教材的参考文献，会发现其中引用了不少SOSP，OSDI等CCF A类会议或期刊的文献。</p>
+<blockquote class="s">二八定律也符合学术界。事实是大部分的文章都不值得细读。这时就显现出CCF评级的价值了。仅从CCF-A类搜集文献就足够了。</blockquote>
+<p>上面提到ACM有三十多个SIGs，而CCF则只划分了10个子方向，不同的视角有不同的划分结果。ACM有更详细的<a href="https://dl.acm.org/ccs">分类系统CCS</a>，以及有重叠的<a href="https://www.acm.org/special-interest-groups/alphabetical-listing">SIGs大类划分</a>，还有<a href="https://en.wikipedia.org/wiki/Outline_of_computer_science">wikipedia上的一个划分</a>。</p>
+<h1 id="google-scholar谷歌学术">Google Scholar（谷歌学术）</h1>
+<p><a href="https://scholar.google.com">Google Scholar</a>非常强大又简单易用。虽然它不只收录CS专业的文献，但很容易搜索到准确的结果。我习惯先在谷歌学术上搜索，如果搜不到就改用<strong>高级搜索</strong>，实在不行再去ACM DL、IEEE Xplore或者Google网页搜索。</p>
+<h2 id="创建快讯">创建快讯</h2>
+<p>可以在Google Scholar创建某个关键词或某篇文章的快讯，获取最新搜索结果的Email通知。
+接收快讯<strong>不需要</strong>注册谷歌账号，任何有效的 Email 地址皆可。如果注册了谷歌学术账号，还可以获得个性化推荐的文章。</p>
+<p>谷歌学术有 3 种快讯：</p>
+<ol>
+<li>关键词快讯：如果在谷歌学术搜索完整的文章标题，只有一条匹配结果的话，谷歌会很自信地<strong>不</strong>在页面左侧显示 “创建快讯” 的入口链接；有多条结果时，才会显示。这是关键词快讯，是从文章全文中检索的，跟普通的谷歌网页搜索快讯差不多，查询结果可能有不少无关项，准确度较差，不建议使用；</li>
+<li>引用快讯：点击文章项的 “被引用次数：xx” 链接，在新的引用项列表页，左侧同样有 “创建快讯” 链接，这时创建的是引用该文章的快讯，相当于科研人员人工添加的项，是最准确的，<strong>推荐使用</strong>；不足之处是，对比较新的文章，还没有被引用过的话，就没有引用页，也就无法获取这个 “创建快讯” 入口链接&hellip; 解决办法可 <a href="https://webapps.stackexchange.com/questions/45333/how-to-create-a-citation-alert-for-a-paper-without-citation-in-google-scholar">参考这个 StackExchange 问题</a> ；</li>
+<li>作者快讯：如果某位作者在谷歌学术创建了个人主页，可以点击其主页上的 “关注” 按钮，获取其<strong>新文章</strong>，<strong>该作者文章的新引用</strong>，<strong>相关研究的新文章</strong> 的快讯，建议前 2 个选项即可。</li>
+</ol>
+<figure>
+<img src="o/scholar_newslet.png" alt="谷歌学术 - 引用快讯" width="700">
+</figure>
+<p>&nbsp;</p>
+<blockquote class="s">
+<a href="https://www.bing.com/academic">必应学术www.bing.com/academic</a>、<a href="https://xueshu.baidu.com">百度学术 xueshu.baidu.com</a>等跟谷歌学术比差距还很大啊!
+</blockquote>
+<p>&nbsp;</p>
+<blockquote class="s">
+如果所在的小组<strong>没有什么积累</strong>，暂时没有好的研究问题，不妨去浏览一下感兴趣的A类会议近5年的文章列表。<strong>总会</strong>有几篇比其它文章更有意思，这就把范围缩小一些了。
+<ul>
+<li>从这几篇文章里提炼出关键词，去 <a href="https://en.wikipedia.org">en.wikipedia.org</a> 上搜索一下这个关键词；</li>
+<li>从文章中的“相关工作”扩展开，体验一下这个细分领域涉及的问题；</li>
+<li>找出来这个细分领域里发文章比较多的作者和研究小组（实验室），去作者和小组的主页看看。</li>
+</ul>
+<p>这个前期工作其实花不了一周的时间。粗览一遍收集的这些相关论文，筛选出几篇值得详读的。<br/>
+我们不妨通过相关论文的数量来定义一个细分的领域。比如武断地说，100篇。这个具体的数量不是关键。一个领域能发的文章必定是有限的。太多的话说明问题太复杂，还要细分；太少的话，如果不是幸运地发现了新的方向，就是问题太小了。而这些相关文章中，又只有几篇是开创性的，才值得详读。<br/>
+如果读完核心的几篇文章后还是没有新的想法，那就只好重复上面的过程，重新寻找另外感兴趣的领域了。<br/>
+PS: 论文致谢中的 <strong>基金号</strong> 是不错的关键词！</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote class="s">综述文章，一般会介绍收集相关论文的过程，方法大都类似，即所谓 <a href="https://blog.efpsa.org/2018/01/03/writing-a-systematic-literature-review/">Systematic Literature Review (SLR)</a> （参考：<a href="o/Guidelines_for_SLR_in_SE.pdf">Guidelines for performing Systematic Literature Reviews in Software Engineering</a>），可以随便找一篇当作论文搜集方法的教程来看。<br/>
+其实 SLR 方法是完全新手才用的文献收集方法，或者是为了发综述文章看起来工作量大/方法严谨。对某个主题稍有了解后，应该可以识别出来相关的会议、期刊和研究组，也就是发现了所谓的“圈子”了。效率高一点的就是从相关顶级会议/期刊近几年的文章列表中筛选，或者去作者/小组主页筛选，当然，还有订阅谷歌学术快讯。
+</blockquote>
+<h1 id="杂项链接">杂项链接</h1>
+<h2 id="国内三个学报">国内三个学报</h2>
+<ul>
+<li><a href="https://www.ccf.org.cn/ccftjgjxskwml/">CCF 国内期刊分级目录（2022）</a></li>
+<li><a href="http://www.jos.org.cn">软件学报</a>，<a href="https://www.jos.org.cn/jos/action/toc_alert?name=E-mail%20Alert">Email订阅</a>，<a href="https://navi.cnki.net/knavi/journals/RJXB/detail?uniplatform=NZKPT">CNKI</a></li>
+<li><a href="http://cjc.ict.ac.cn">计算机学报</a>，<a href="https://navi.cnki.net/knavi/journals/JSJX/detail?uniplatform=NZKPT">CNKI</a></li>
+<li><a href="https://crad.ict.ac.cn/CN/1000-1239/home.shtml">计算机研究与发展</a> ，<a href="https://navi.cnki.net/knavi/journals/JFYZ/detail?uniplatform=NZKPT">CNKI</a></li>
+</ul>
+<h2 id="国内论文数据库">国内论文数据库</h2>
+<ul>
+<li><a href="https://www.cnki.net">知网 CNKI</a></li>
+<li><a href="https://www.wanfangdata.com.cn">万方数据</a></li>
+</ul>
+<h2 id="如何读写论文">如何读/写论文</h2>
+<ul>
+<li><a href="https://www.cs.columbia.edu/~hgs/netbib/efficientReading.pdf">Efficient Reading of Papers in Science and Technology (pdf)</a></li>
+<li><a href="http://blizzard.cs.uwaterloo.ca/keshav/home/Papers/data/07/paper-reading.pdf">How to Read a Paper (pdf)</a></li>
+<li><a href="https://www.cs.jhu.edu/~jason/advice/how-to-read-a-paper.html">How to Read a Technical Paper</a></li>
+<li><a href="https://muratbuffalo.blogspot.com/2013/07/how-i-read-research-paper.html">How I Read Research Paper</a>, <a href="https://muratbuffalo.blogspot.com/2022/02/deep-reading.html">Deep Reading</a></li>
+<li><a href="https://item.jd.com/11127141.html">《学术研究 - 你的成功之道》第3章</a></li>
+<li><a href="https://www.bilibili.com/video/BV1Nx411s7qF">How to Write a Great Research Paper - Simon Peyton Jones(SPJ) - B站视频</a>, <a href="https://www.youtube.com/watch?v=VK51E3gHENc">YouTube 原版</a></li>
+<li><a href="https://taoxie.cs.illinois.edu/publications/writepapers.pdf">Advice on Writing Research Papers - Tao Xie - PDF</a></li>
+<li><a href="https://taoxie.cs.illinois.edu/adviceonresearch.html">Advice on Getting a Start into Research</a></li>
+</ul>
+<figure>
+<img alt="@爱可可的读论文建议" src="o/arxiv.jpg" width="640px">
+</figure>
+<h2 id="辅助工具">辅助工具</h2>
+<ul>
+<li><a href="https://www.connectedpapers.com"><strong>Connected Papers</strong></a></li>
+<li><a href="https://myhuiban.com">会伴</a></li>
+<li><a href="https://www.scopus.com">Scopus</a></li>
+<li><a href="https://www.mendeley.com">Mendeley</a></li>
+<li><a href="https://www.zotero.org">Zotero</a></li>
+</ul>
+<!-- + Trans. on BigData的学术文献处理专刊 [Vol. 2, Issue 1](https://www.computer.org/csdl/trans/bd/2016/01/index.html)，[Vol. 2 Issue 2](https://www.computer.org/csdl/trans/bd/2016/02/index.html) -->
+<h2 id="知乎上的几个相关问题">知乎上的几个相关问题</h2>
+<ul>
+<li><a href="https://www.zhihu.com/question/26901116">如何总结和整理学术文献？</a></li>
+<li><a href="https://www.zhihu.com/question/26857521">如何高效管理文献？</a></li>
+<li><a href="https://www.zhihu.com/question/22790506">如何写好一篇高质量的IEEE/ACM Transaction级别的计算机科学论文?</a></li>
+<li><a href="https://www.zhihu.com/question/27956707">科研小组里有哪些有效的组会形式 - 知乎</a></li>
+</ul>
+<h2 id="ps">PS:</h2>
+<ul>
+<li><a href="https://karpathy.github.io/2016/09/07/phd/">A Survival Guide to a PhD</a></li>
+<li><a href="https://read.douban.com/reader/ebook/6056669/">研磨记 - 豆瓣阅读</a>(原文<em>PhD Grind</em>，似乎已被作者删除。还能找到转载。)</li>
+<li><a href="o/ssrir-rob-pike.pdf">Rob Pike: Systems Software Research is Irrelevant, 2000</a></li>
+<li><a href="o/EuroDW11_Systems_PhD.pdf">Steven Hand: Doing a Systems PhD, EuroDW11</a></li>
+<li><a href="o/EuroDW18_Systems_Research.pdf">Peter Druschel: How to Do Systems Research, EuroDW18</a></li>
+</ul>
+<!--
+## 软件工程学科知识体系
+软件工程学科知识体系 Software Engineering Body of Knowledge, SWEBoK, ISO/IEC TR 19759:2005([wiki](https://en.wikipedia.org/wiki/Software_Engineering_Body_of_Knowledge), [SWEBoK@IEEE Computer](https://www.computer.org/education/bodies-of-knowledge/software-engineering), [PDF 全文](o/SWEBoKv3.pdf))。
+
++ [The Morning Paper (已停更)](https://blog.acolyer.org)
++ [YOCSEF专题论坛：从LNCS事件反思中国学术论文的发表](https://www.ccf.org.cn/c/2008-01-14/613627.shtml)
++ [Suggested Guidelines for Finding Materials to include in the "Related Work" Sections of Conference Papers](https://www1.cs.columbia.edu/~kaiser/relatedwork.htm)
+-->
+<figure>
+<img alt="图书馆电子资源" src="o/lib.svg" height="1400px"/>
+</figure>
+<p class="kai s">2023-05-10：更新部分文字。<br/>
+2021-05-24：更新链接，部分文字和插图。
+</p>
+<!--**《飞鸟集》第83**那想做好人的，在门外敲着门，那爱人的，看见门敞开着。 -->
+  </article>
+  <footer>
+  <hr/>
+  <img src="../../up.png" style="height: 120px; border-radius: 59px"/><br/>
+  <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
+  由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
+  主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
+  源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
+  <p><a href="../../misc/udpn.html">双拼是什么？</a></p>
+  </footer></body>
+</html>
+
