@@ -1,0 +1,35 @@
+baseURL = "https://ying-zhang.cn"
+title = "Ying ZHANG"
+theme = "theme-xmin"
+themesDir = "."
+pagination.pagerSize = 100
+summaryLength = 120
+relativeURLs = true
+
+footnoteReturnLinkContents = "↩"
+disableHugoGeneratorInject = true
+enableEmoji = false
+hasCJKLanguage = true
+
+disableKinds = ["taxonomy", "sitemap", "RSS", "404", "robotsTXT"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+    lineNos = false
+    codeFences = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+
+  # [[menu.main]]
+  #   identifier = "time"
+  #   name = "Time&Sync"
+  #   url = "/time/"
+  #   weight = 20
