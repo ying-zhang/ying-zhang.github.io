@@ -1,0 +1,12 @@
+{{ partial "header.html" . }}
+  <main id="list">
+  {{ if not .IsHome }}<h1>{{ .Section | humanize }}</h1>{{ end }}{{ .Content }}
+  <ul>{{ $pages := .Pages.ByPublishDate.Reverse }} {{ if .IsHome }}{{ $pages = .Site.RegularPages.ByPublishDate.Reverse }}{{ end }}
+    {{ range $pages }}
+    <li><time>{{ .Date.Format "2006-01-02" }}</time> &nbsp; | &nbsp; <a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+
+  <p>共 {{ $pages.Len }} 项.</p>
+  </main>
+{{ partial "footer.html" . }}

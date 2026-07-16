@@ -1,0 +1,180 @@
+---
+title: "[译]Spanner，TrueTime和CAP定理"
+date: 2021-04-10T10:00:00+0800
+---
+
+<div class="title">
+<h1><a href="https://storage.googleapis.com/pub-tools-public-publication-data/pdf/45855.pdf" target="_blank">Spanner, TrueTime & The CAP Theorem</a></h1>
+<p>Eric Brewer, VP, Infrastructure, Google. 2017-02-14<br/>
+<a href="/time/2017-spanner-truetime-cap.pdf">原文 PDF</a><br/>
+&nbsp;<br/>
+译者：Ying ZHANG. 2017-03; 2021-04; 2025-06.<br/>
+<a href="/time/2017-spanner-truetime-cap-cn.pdf"><b>译文 PDF</b></a></p>
+</div>
+
+<!-- <div class="kai s">
+<p>CAP定理是分布式系统中一个“著名”的结论，它又称为布鲁尔定理（Brewer's theorem）。Brewer就是本文的作者，他还在2012年发表了一篇文章 <a href="https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed">CAP Twelve Years Later: How the "Rules" Have Changed</a>，<a href="http://www.infoq.com/cn/articles/cap-twelve-years-later-how-the-rules-have-changed">译文：CAP理论十二年回顾：“规则”变了</a> 。</p>
+<p>几篇相关文章：</p>
+<ul>
+<li>Michael Stonebraker: <a href="https://cacm.acm.org/blogs/blog-cacm/83396-errors-in-database-systems-eventual-consistency-and-the-cap-theorem/fulltext">Errors in Database Systems, Eventual Consistency, and the CAP Theorem</a>, 2010；</li>
+<li>Daniel J. Abadi: <a href="https://www.cs.umd.edu/~abadi/papers/abadi-pacelc.pdf">Consistency Tradeoffs in Modern Distributed Database System Design (PACELC)</a>, <i>IEEE Computer</i>, 2012. Abadi是Calvin@SIGMOD12（FaunaDB）的作者之一；</li>
+<li>Martin Kleppmann: <a href="http://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html">Please stop calling databases CP or AP</a>. Kleppmann是《设计数据密集型应用》(DDIA)的作者。<a href="https://zhuanlan.zhihu.com/p/108002021">译文：请不要再称数据库为 CP 和 AP</a>；顺便加上他在剑桥大学的分布系统课程视频 <a href="https://www.bilibili.com/video/BV1fV41187sH/">https://www.bilibili.com/video/BV1fV41187sH/</a>；</li>
+<li>Martin Kleppmann: A Critique of the CAP Theorem. https://arxiv.org/abs/1509.05393， 2015</li>
+<li><a href="https://groups.csail.mit.edu/tds/papers/Gilbert/Brewer2.pdf">Perspectives on the CAP Theorem</a>， Seth Gilbert, Nancy A. Lynch. <i>IEEE Computer</i>，doi.org/10.1109/MC.2011.389， 2012</li>
+<li>You Can’t Sacrifice Partition Tolerance. https://codahale.com/you-cant-sacrifice-partition-tolerance/</li>
+</ul>
+
+<hr/>
+</div> -->
+
+Spanner是Google的高可用的全球SQL数据库[CDE+12]。它管理着大规模的多副本数据。大规模既指数据体量，又指交易数量。它为写入其中的每项数据分配全局一致的物理时间戳（real-time timestamps），客户端可以在整个数据库上执行全局一致的读操作，而无需使用锁。
+
+CAP定理[Bre12]说，下面三个期望的属性中，最多只能同时实现两个：
+
+- C (Consistency)：一致性，本文中我们可以认为这是指顺序一致性（Serializability）；
+
+- A (Availability)：100%可用的读取和更新操作；
+
+- P (Partitions)：对网络分区的容忍。
+
+舍弃其中一个字母，可以得到三种系统：CA，CP和AP。请注意，并非自然就会获得这三个属性中的某两个，有许多系统只具有其中的一个属性，甚至一个也没有。
+
+对于“广域”的分布系统，通常认为网络分区是不可避免的，尽管不常见[BK14]。一旦认为网络分区是不可避免的，任何分布系统必须准备好放弃一致性（剩下AP）或可用性（剩下CP），这不是人们想做的选择。事实上，CAP定理的初衷是让设计者认真对待这种权衡。有两个重要的警告：首先，只需要在实际发生网络分区时才会放弃某些东西，即便那时也有许多缓解措施（参见文章“CAP理论12年回顾”[Bre12]）。其次，CAP定理关注的是100%可用性，而本文是关于实际的**高**可用性所涉及的权衡。
+
+# Spanner声称一致且高可用（CA）
+
+尽管是一个全球分布系统，Spanner却声称一致且高可用，这意味着没有网络分区，因此很多人表示怀疑<sup>1</sup>。这是否意味着Spanner是CAP定义的CA系统？简短的答案是：技术上“不是”，但效果上“是”，用户可以并确实认为它是CA系统。
+
+<p class="note">1. 虽然我在谷歌工作，但除了推动把Spanner和TrueTime提供给我们的云平台客户之外，我并没有参与这两个项目。我的初衷是提供一个局外人对Spanner的客观看法。因为我喜欢这个系统，又在Google工作，所以我承认会存在偏见。</p>
+
+纯粹主义的答案是“否”，因为网络分区总是可能发生，事实上在Google也确实发生过。网络分区时，Spanner选择C而放弃了A。因此技术上说，它是一个CP系统。我们下面探讨网络分区的影响。
+
+考虑到始终提供一致性（C），Spanner声称为CA的真正问题是，它的核心用户是否认可它的可用性（A）。如果实际可用性高到用户可以忽略服务中断的程度，那么 Spanner 声称“实际上是CA”就是合理的。这并不意味着100％的可用性（Spanner目前和将来也不会提供），而是如5个或更多个“9”（即$10^{- 5}$或更少的失效）。反过来，真正的试金石，是那些希望自身服务高可用的用户是否会编写处理运行中断的代码：如果他们没有编写这些代码，那么他们已经假设Spanner高可用了。基于大量的Spanner内部用户，我们知道他们认为Spanner是高可用的。
+
+第二点是还有许多其它运行中断的原因，除了“生死与共”的Spanner之外，其它原因也会让用户的服务失效。我们实际上关心的是**差异化可用性**，即用户自身处于可用状态（并正在发起请求）从而感知到 Spanner 不可用的情况。**差异化**可用性比Spanner的**实际**可用性还要高。也就是说，必须真的听到大树倒下的声音，才算是出了麻烦。
+
+第三个问题是运行中断是否是由网络分区造成的。如果Spanner运行中断的主要原因不是网络分区，那么声称CA就更充分了。例如，任何数据库在所有副本都脱机的情况下都不能提供可用性，这与网络分区无关。这种多副本情况下的运行中断应该是非常罕见的，但如果网络分区的概率显著的更小，那么就可以有效地忽略网络分区对可用性的影响。对于Spanner，这意味着可用性中断的发生，实际并非是由于网络分区，而是由其他类型的多重故障所致。
+
+# 可用性的数据
+
+在深入Spanner之前，值得先讨论一下Chubby的演进。Chubby是另一个提供CA的广域分布系统。在Chubby的论文[Bur06]中提到700天中发生了9次30 s或更长时间的运行中断，其中6次与网络相关（如[BK14]中讨论的）。这对应的可用性不超过5个9。如果我们更实际些，假设每次中断平均有10 min，那么就只有4个9；如果每次中断有几个小时的话，就只有3个9了。
+
+对于锁和一致读/写操作，随着多项网络、架构和运维的改进，**广域分布的Chubby集群目前能提供99.99958％的平均可用性**（即仅约30 s的运行中断）。从2009年开始，由于可用性“超额”，Chubby的站点可靠性工程师（SRE）开始人为地强制定期中断服务，以确保我们能发现Chubby故障可能造成的影响。
+
+在内部，Spanner提供与Chubby相当的可靠性，优于5个9。云版本与内部版本有相同的基础，但添加了一些新的部分，所以短期内它的可靠性可能稍低一些。
+
+<figure><img src="Fig.svg" width="400px"/></figure>
+
+上面的饼图显示了内部Spanner意外事故的原因。事故是意外的，但并非所有都严重到中断服务。一些事故可以轻易地处理掉。图中的数值是事故发生的频率而不是造成的后果。大量的事故（**用户事故**）是由于用户错误，例如超载或配置错误，并且大多只影响该用户，然而其它类别则可能影响区域中的所有用户。**集群事故**反映除网络外的底层基础架构问题，如服务器和电源的问题。Spanner通过使用其它副本自动地处理这些事故，但有时需要SRE参与修复不完整的副本。**运维事故**是由SRE引起的事故，例如配置错误。**Bug事故**意味着软件错误触发的问题，这可能导致或大或小不同范围的运行中断。两个最大的中断都是由同时影响了数据库所有副本的软件bug造成的。**其它事故**是各种偶发问题。
+
+**网络事故**类别（占比低于8%）涵盖了网络分区和网络配置问题。还没有发生过较大集群的网络分区事故，也没有发生过一个分区的少数一方超过Spanner的Quorum的情况。我们确实看到个别数据中心或区域与其它网络断开。我们还有一些错误配置，短时调低了带宽，还有一些与硬件故障相关的暂时的延迟。曾经有一个事故，其中单个方向的网络中断，导致一个奇怪的分区，必须通过关闭一些节点才能解决。到目前为止，网络事故没有造成过大规模的运行中断。
+
+总而言之，要声称“有效CA”，系统必须处于这种相对概率状态：（1）至少它在实践中必须具有非常高的可用性，以便用户可以忽略异常；（2）由网络分区造成的运行中断应只占很小一部分。Spanner同时满足两者。
+
+# 这就是网络
+
+许多人认为，Spanner通过使用TrueTime可以绕过CAP。TrueTime是提供全局同步时钟的服务。TrueTime是不同寻常的，但为实现CA，TrueTime的作用并不显著。后面的小节会介绍TrueTime。如果说 Spanner 有什么特别之处，那其实是 Google 的广域网以及多年的运维改进，它们在实践中极大地减少了网络分区，从而实现了高可用性。
+
+首先，Google运行自己的私有全球网络。Spanner并非在公共的互联网上运行——实际上，Spanner的每个数据包只流过Google控制的路由器和链路（不包括到远程客户端的任何边缘链路）。此外，每个数据中心通常至少有三路独立的光纤将其连接到私有的全球网络。因此确保任何两个数据中心之间有多条网络通路<sup>2</sup>。类似的，数据中心内的设备和链路也是冗余的。因此，通常的灾难性事故，如光纤被挖断，不会导致网络分区或运行中断。
+
+<p class="note">2. 真正的需求是链接目标的可用性，而不是多链接本身。</p>
+
+因此，网络分区的真正风险不是某条链路中断，而是某些大范围的配置或软件升级同时破坏了多个链路。这是一个真正的风险，并且Google持续地努力防止和缓解这一风险。一般的策略是限制任何更新的影响范围（“爆炸半径”），以便我们不可避免地推送一个错误的变更后，它只破坏一部分链路或副本。我们在修复问题之前不会尝试任何其它变更。
+
+虽然网络分区大大减少了，但光速是有限的。广域上的一致操作的往返时间（RTT）下限仍比较大，洲际约有几十毫秒或更长。（光速约0.5 ft/ns，若洲际为1 000 mile的距离，约合5 000 000 ft，则最少需要10 ms <span class="ynote">译注：光在光纤中的速率比在真空中慢</span>）。Google将一个“区域”的范围限制在RTT 2 ms之内，以在延迟和容灾之间达到平衡。Spanner 通过广泛的事务流水线（pipelining）来缓解延迟，但这无助于降低单笔事务的延迟。对于读操作，延迟通常较低，这是由于全局时间戳和仅使用本地副本（见下节）。
+
+具有较弱一致性的模型可能具有较低的更新延迟。虽然缓解了远距离往返延迟，但是引入了低持久性窗口。因为在数据被复制到另一个站点之前，如果本地站点遭受了灾害，所有的数据都可能被彻底破坏掉<span class="ynote">译注：强一致要求同步复制，而弱一致性是异步复制。弱一致性协议在收到副本的确认消息之前，就答复客户端完成了数据复制 。如果这时发生了严重事故，但是客户端误认为数据写入成功，不再重试，那么将导致数据丢失</span>。
+
+# 网络分区时会发生什么
+
+为了理解分区，我们需要更深入了解Spanner的工作原理。和大多数ACID数据库一样，Spanner事务使用两阶段提交（2PC）和严格的两阶段锁（2PL），以确保隔离和强一致。2PC被称为“反可用性”协议[Hel16]，因为事务期间所有成员必须正常工作。为缓解这一问题，Spanner的每个事务成员实际是一个Paxos组，即便Paxos组中某个节点宕机了，每个2PC“成员”也是高可用的。每个组也是数据放置和复制的基本单元。
+
+前面提到，一般来说当发生网络分区时，Spanner会选择C而非A。在实践中，这是考虑到：
+
+- 使用Paxos组来达成关于某个更新的共识；若 Paxos 主员由于网络分区不能维持Quorum，则更新被暂停，且系统不可用（由CAP的定义）。如果大多数Paxos成员可用的话，最终新的主员仍能选出来；
+
+- 对跨组事务使用2PC意味着事务成员间的网络分区可以阻止提交。
+
+在实践中最可能的结果是，Paxos组内的网络分区，一侧仍满足Quorum，并将继续运行，也许需要重新选举主员。因此，服务继续可用，但是另一侧分区的成员数较少，不满足Quorum，它们的用户无法访问该服务。这个例子说明了差异化可用性的重要性：那些无法访问服务的用户可能会有其它更严重的问题，例如连接中断，也可能已经宕机了。这意味着构建在Spanner之上的多区域服务，即使在网络分区时也能相对良好地运行。Spanner中多个分组不可用的可能性比较小。
+
+只要事务相关的所有组都有Quorum选举的主员，并位于分区的同一侧，Spanner中的事务就会正常执行。这意味着一些事务能正常提交，有些事务则会超时，但它们总是一致的。Spanner的一个特性是，任何正常返回的读操作都是一致的，即使事务稍后中止了（由于超时在内的任何原因）。
+
+除了常规事务之外，Spanner还支持快照读，即读取过去特定时刻的数据。Spanner维护多个时间版本的值，每个版本都有一个时间戳，因此可以为快照读操作返回正确的版本。特别地，每个副本都知道生成快照的时间，并且任何副本能基于本地数据直接回复该时间点之前的读操作（除非它太旧了或已经被作为垃圾回收了）。类似地，很容易同时跨多个组异步读取。快照读完全不需要锁。事实上，**只读事务**被实现为在当前时刻（在任何最新的副本上）的**快照读**。
+
+因此，快照读更能容忍网络分区。特别的，快照读能在以下情况正常工作：
+
+1.  对于发起读操作的一侧网络分区，每个组至少存在一个副本，并且
+
+2.  对于这些副本，读时间戳是过去的。
+
+如果主员由于网络分区而暂停（这可能一直持续到网络分区结束），那么第2种情况可能就不成立了。因为这一侧的网络分区上可能无法选出新的主员。在网络分区期间，时间戳早于分区开始的读操作很可能在分区的两侧都能成功，因为任何可达的副本中有待读取的数据就可以了。
+
+# 关于TrueTime
+
+通常，同步时钟可以用于避免分布系统中的通信。Barbara Liskov提供了不错的介绍和多个示例[Lis91]<sup>3</sup>。对于我们的目的，TrueTime是一个偏差有界但非0的全局同步时钟：它返回的是一个时间区间，能保证执行调用的物理时刻落在这个区间内。因此，如果两个区间不重叠，我们能明确地将调用按物理时间排序。但如果区间存在重叠，我们就无法给出这两个调用的顺序了。
+
+Spanner的一个精妙的之处是它用锁来实现顺序一致性（Serializability），但它用TrueTime来实现外部一致性（External Consistency，接近线性一致性，Linearizability）。Spanner的外部一致性不变式（Invariant）是：对任何两个事务$T_1$和$T_2$（即使在地球两端），
+
+<p class="kai" style="margin-left:6em">若$T_2$在$T_1$提交之后才开始提交，则$T_2$的时间戳大于$T_1$的时间戳<span class="ynote">译注：两个时间戳均指提交时刻</span>。</p>
+
+引自Liskov [Lis91，第7节]：
+
+<blockquote>
+<p>“同步时钟可以用来降低违反外部一致性的可能。主员（Primary）持有租约（Lease），由整个副本组承认。从员（Backup）发送到主员的每条消息都顺延了对主员的租约。若主员持有一个来自 <strong>次多数</strong>（Sub-majority <sup>4</sup>）从员的未到期租约，则主员能单方面（即基于自身数据）响应读操作。</p>
+
+<p>... ...</p>
+
+<p>该系统中的不变式是：每当主员响应读操作时，它总是持有来自次多数从员的一个有效租约。如果时钟不同步，这个不变式将不再成立。”</p>
+</blockquote>
+
+Spanner使用TrueTime，以确保不变式成立。具体地，在提交期间，主员必须等待，直到它确定提交时间已经过去（基于偏差区间）。实践中，这种“提交等待”的时间并不太长，而且与（内部）事务通信并行地进行。一般来说，外部一致性需要单调增加的时间戳，“等待不确定性结束”也是一种常见的模式。
+
+<p class="note">3. Spanner论文的作者中，Wilson Hsieh和Sanjay Ghemawat，在20世纪90年代初都是Barbara Liskov的研究生。本文作者也是<span class="ynote">Barbara Liskov是2008年度图灵奖得主</span>。<br/>
+4. Sub-majority是${\rm majority}-1$，即将主员也计算在内的majority。</p>
+
+Spanner旨在通过对当选的主员使用可顺延的租约，来延长主员的在任时间（通常为10 s）。如Liskov所述，每次Quorum达成共识时，租约就会被顺延，因为参与者刚刚验证了主员是有效的。当主员失效时，有两个选项：（1）等待租约过期，然后选举新的主员；或（2）重启旧的主员，这可能更快些。对于一些故障，主员可以发出一个“临终”UDP数据包主动释放租约，这是一个优化，以使租约尽快到期。由于计划外故障在Google的数据中心中很少见，所以长期的租约是合理的。租约还确保，对不同任期的主员，时间戳都是单调增长的，并且在没有主员的情况下，从员组成的Quorum能够在租约有效期内继续响应读操作。
+
+然而，TrueTime的真正价值在于它在一致快照方面的作用。回顾一下，多版本并发控制系统（Multi-version Concurrency-Control，MVCC）[Ree78]有很长的历史，它分别保留旧版本，从而允许读取过时的版本，而不受当前的事务活动影响。这是一个非常有用却被低估的特性：具体到Spanner上，快照是一致的（在获取快照时），因此如果系统中的某个不变式成立，它在快照中也会成立。即使你不知道是什么不变式！基本上，快照是在接连不断的多个事务之间获取的，并且反映截至此时的所有内容。若没有事务一致的快照，则很难从过去的时刻重新开始，因为可能有未完成的事务，可能违反一些不变式或完整性约束。正是缺乏一致性，导致有时难以从备份数据中恢复。特别是，表现为需要手动修复的数据损坏<sup>5</sup>。
+
+<p class="note">5. 作为比较，ARIES [MHL+92]中，快照是有意乱序（Fuzzy）的，但是可以在每个页面上重放日志以使该页恢复到期望的被中断的事务（和逻辑时间）。这对恢复很有效，但不适合在快照上运行分析（因为它是乱序的）。</p>
+
+例如，考虑使用MapReduce对数据库执行大规模的分析查询。BigTable存储着旧版本的数据，时间在数据分片上是“锯齿状”的，这使得结果不可预测，有时不一致（特别是对于较新的数据）。在Spanner上，MapReduce可以选择精确的时间戳，并获得可重复和一致的结果。
+
+TrueTime还使得跨多个独立系统获取快照成为可能，只要它们使用（单调增加的）TrueTime时间戳提交，对获取快照的时间达成一致，并存储多个时间版本的数据（通常在日志中）。这不仅限于Spanner：你可以实现自己的事务系统，然后确保在两个系统（或甚至$k$个系统）上一致的快照。一般来说，在这些系统上需要执行2PC事务（同时持有锁）以就获取快照的时间达成一致，并**确认成功**，但系统不需要对其它事项达成一致，甚至这些系统可能会有很大的差异。
+
+还可以使用时间戳作为工作流传递的令牌。例如，若对系统进行了更新，则可以将此更新事件的时间戳传递到工作流的下一个阶段，这样下一阶段就能够判断自己的状态是否已经反映了该更新事件。在网络分区的情况下，这可能不成立，在这种情况下，如果想要一致性，下一个阶段就应该等待（如果想要可用性，就继续执行）。没有时间令牌，很难知道是否需要等待。使用时间戳不是解决这个问题的唯一方法，但这种方法是优雅且健壮的，能够保证最终一致（Eventual Consistency）。当不同的阶段没有约定规则且管理员不同时，这是特别有用的——因为双方可以在没有通信的情况下对时间达成一致<sup>6</sup>。
+
+<p class="note">6. 注意，时钟同步需要后台通信，包括GPS和定期校正。</p>
+
+快照是关于过去的，但也可以对未来达成一致。Spanner的一项特性是，为实现表模式变更，可以就未来的某个时刻达成一致。这允许暂存对新模式的变更，以便能够同时提供新旧两个版本。一旦就绪，就可以选择一个时刻，在所有副本上以原子的方式切换到新的表模式上（也可以选择暂存之前的时刻，但那时可能还没有准备好）。至少理论上，可以执行一些未来的操作，如计划删除或更改可见性。
+
+TrueTime本身可能受到网络分区的影响。时间的来源是GPS接收机和原子钟的组合，两者都可以通过它们自身保持精确的时间（但也有微小的漂移）。由于每个数据中心都有冗余的“Time Master”，因此网络分区的两侧很可能继续获取准确的时间。然而，各个节点需要与Time Master的网络连接，否则它们自己的时钟将偏移。因此，在网络分区期间，它们与Time Master的偏差会逐渐地增长，取决于本地时钟漂移的速率。基于TrueTime的操作，例如 Paxos 主员选举或事务提交，必须等待更长时间，但操作仍能够完成（假设2PC及Quorum通信正常）。
+
+# 结论
+
+Spanner有理由声称是一个“有效CA”系统。尽管广域运行，但它总是一致的，并达到了优于5个9的可用性。与Chubby一样，同时实现CA在实践中是可能的，前提是像Google那样能控制整个网络，但这在广域范围很少见。此外，还需要大量冗余的网络链路、处理相关故障的架构规划、以及非常细致的运维，尤其是升级。即使这样也会发生运行中断，这种情况下，Spanner会选择一致性而不是可用性。
+
+Spanner使用两阶段提交（2PC）来实现顺序一致；它使用TrueTime实现外部一致、无锁的一致读以及一致快照。
+
+# 致谢
+
+<p class="s">特别感谢Spanner 和TrueTime的专家：Andrew Fikes，Wilson Hsieh，和Peter Hochschild。 另外还要感谢 Brian Cooper，Kurt Rosenfeld，Chris Taylor，Susan Shepard，Sunil Mushran，Steve Middlekauff，Cliff Frey，Cian Cullinan，Robert Kubis，Deepti Srivastava，Sean Quinlan，Mike Burrows，和Sebastian Kanthak。</p>
+
+<h1>参考文献</h1>
+
+<style>dd {line-height: 1.5em; padding-left:7em} dt {float: left; line-height: 1.5em;} dd{text-indent:-2em;}</style>
+<dl class="s">
+<dt>[BK14]</dt> <dd> P. Bailis and K. Kingsbury. <a href="https://cacm.acm.org/magazines/2014/9/177925-the-network-is-reliable/fulltext" target="_blank">The Network is Reliable</a>, <i>Communications of the ACM</i>. Vol. 57 No. 9, Pages 48-55. September 2014.
+Also: https://aphyr.com/posts/288-the-network-is-reliable</dd>
+<dt>[Bre12]</dt> <dd> E. Brewer. <a href="https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed" target="_blank">CAP Twelve Years Later: How the "Rules" Have Changed</a>, <i>IEEE Computer</i>, Vol. 45, Issue 2, February 2012. pp. 23-29.<br/> <a href="https://www.infoq.cn/article/cap-twelve-years-later-how-the-rules-have-changed/" target="_blank">CAP理论十二年回顾：“规则”变了</a><span class="ynote">译注：这是本文作者之前的一篇文章</dd>
+<dt>[Bur06]</dt> <dd> M. Burrows. <a href="https://static.googleusercontent.com/media/research.google.com/en//archive/chubby-osdi06.pdf" target="_blank">The Chubby Lock Service for Loosely-coupled Distributed Systems</a>.
+<i>Proceedings of OSDI '06: Fourth Symposium on Operating System Design and Implementation</i>, Seattle, WA, November 2006.</dd>
+<dt>[CDE+12]</dt> <dd> J. Corbett, J. Dean, et. al. <a href="https://research.google/pubs/pub39966/" target="_blank">Spanner: Google's Globally-Distributed Database</a>. <i>Proceedings of OSDI'12: Tenth Symposium on Operating System Design and Implementation</i>, Hollywood, CA, October, 2012. <span class="ynote">译注：<a href="/time/2013-spanner-cn/" target="_blank"><b>译文</b></a>.</span></dd>
+<dt>[Hel16]</dt> <dd> P. Helland. <a href="http://queue.acm.org/detail.cfm?id=2953944" target="_blank">Standing on Giant Distributed Shoulders: Farsighted Physicists of Yore were Danged Smart!</a> <i>ACM Queue</i>, Vol. 14, Issue 2, March-April 2016.</dd>
+<dt>[Lis91]</dt> <dd> B. Liskov. <a href="https://dl.acm.org/doi/10.1145/112600.112601" target="_blank">Practical Uses of Synchronized Clocks in Distributed Systems</a>. <i>ACM Principles of Distributed Computing (PODC)</i>. Montreal, Canada, August 1991. <span class="ynote">译注：<a href="/time/1991-liskov.html" target="_blank"><b>原文 html</b></a>.</span></dd>
+<dt>[MHL+92]</dt> <dd> C. Mohan, D. Haderle, B. Lindsay, H. Pirahesh and P. Schwartz. <a href="https://dl.acm.org/doi/10.1145/128765.128770" target="_blank">ARIES: A
+Transaction Recovery Method Supporting Fine-Granularity Locking and
+Partial Rollbacks Using Write-Ahead Logging</a>. <i>ACM Transactions on Database Systems</i>, Vol. 17, No. 1, March 1992, pp. 94-162.</dd>
+<dt>[Ree78]</dt> <dd> D. Reed. <a href="https://dspace.mit.edu/handle/1721.1/16279" target="_blank">Naming and Synchronization in a Decentralized Computer System</a>. PhD Dissertation, MIT Laboratory for Computer Science, Technical Report MIT-LCS-TR-205.
+October 1978 [See Section 6.3 for list of versions with timestamps]</dd>
+</dl>

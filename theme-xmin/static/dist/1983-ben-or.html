@@ -1,0 +1,126 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/style.css">
+<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+<script> MathJax = {tex: {inlineMath: [['$', '$']]}}; </script>
+<title>Another Advantage of Free Choice: Completely Asynchronous Agreement Protocols - PODC 1983</title>
+</head><body lang="en-us">
+<header> <a href="/">Home</a> </header>
+<button id="btn">☀️</button>
+<script src="/dark.js" ></script>
+
+<style>
+  .step>li::marker { content: "Step "counter(list-item)". "; }
+  .step {margin-left: 1.25rem;}
+</style>
+
+<div class="title">
+<h1>Another Advantage of Free Choice:<br/>
+Completely Asynchronous Agreement Protocols<br/>(Extended Abstract)</h1>
+<p><span id="url">https://ying-zhang.cn/dist/1983-ben-or.html</span></p>
+<p>Michael Ben-Or<br/>
+Laboratory for Computer Science,<br/>
+Massachusetts Institute of Technology,<br/>
+Cambridge, Massachusetts 02139</p>
+<p><a href="/dist/1983-ben-or.pdf"><b>Original PDF</b></a></p>
+<p><a href="https://www.podc.org/dijkstra/2015-dijkstra-prize/" target="_blank"><b>2015 Dijkstra Prize</b></a></p>
+</div>
+
+<p class="copyright">
+Research supported by a Weizmann Postdoctoral fellowship and by NSF grant MCS-8006938.<br/>
+Permission to copy without fee all or part of this material is granted provided that the copies are not made or distributed for direct commercial advantage, the ACM copyright notice and the title of the publication and its date appear, and notice is given that copying is by permission of the Association for Computing Machinery. To copy otherwise, or to republish, requires a fee and/or specific permission.<br/>
+&copy; 1983 ACM 0-89791-110-5/83/008/0027 \$00.75<br/>
+Proceedings of <i>the Second Annual ACM Symposium on Principles of Distributed Computing (PODC)</i>, August 1983, Pages 27–30.<br/>
+DOI: <a href="https://doi.org/10.1145/800221.806707" target="_blank">10.1145/800221.806707</a>
+</p>
+
+<h1>1. Introduction</h1>
+<p>Recently, Fischer, Lynch and Paterson [3] proved that no completely asynchronous consensus protocol can tolerate even a single unannounced process death. We exhibit here a probabilistic solution for this problem, which guarantees that as long as a majority of the processes continues to operate, a decision will be made (Theorem 1). Our solution is completely asynchronous and is rather strong: As in [4], it is guaranteed to work with probability 1 even against an adversary scheduler who knows all about the system.</p>
+<p>We apply the same ideas to the "Byzantine" type of failure. Here, if the number of faulty processes, $t$, satisfies $5t &lt; N$, where $N$ is the total number of the processes, then completely asynchronous agreement is possible (Theorem 2).</p>
+<p>Our protocols provide the first example of a synchronization problem that has a probabilistic solution which is always guaranteed to work, but cannot be solved at all by any deterministic protocol. Previous examples required the processes to be symmetric.</p>
+<p>The protocols presented here are not necessarily efficient. However, if the number of faulty processes, $t$, is $O(\sqrt{N})$, then when running the processes synchronously, the expected time to reach agreement is constant (Theorem 3). This result shows another advantage of probabilistic protocols, since any deterministic solution to the "Byzantine Generals" problem cannot reach agreement in less than $t +1$ rounds, (see [1, 2]).</p>
+
+<h1>2. The Consensus Problem</h1>
+<p>A set of $N$ asynchronous processes wish to agree about a binary value. Each process $P$ starts with a binary input $x_P$, and they all must decide on a common value. The trivial solution, say, 0 is always chosen, is ruled out by the following correctness criterion:</p>
+<p class="c">(C1) If for all $P$, $x_P = v$, then the decision must be $v$.</p>
+<p>A process "decides" by setting a "write-once" output register to be 0 or 1. Thus after deciding, a process may no longer change its decision.</p>
+<p>To reach agreement processes communicate by means of messages. A <i>message</i> is a pair $(P, m)$, where $P$ is the name of the destination of the message and $m$ is its content. The message system maintains a <i>message buffer</i> $M$ that contains all the messages send but not yet delivered.</p>
+<p>A process $P$ can send the message $m$ to process $Q$ by performing $send(Q, m)$. This operation adds the message $(Q, m)$ to the message buffer. Process $P$ can attempt to receive a message by performing $receive(P)$. This operation can delete some $(P, m) \in M$, in which case we say that $(P, m)$ was delivered, or returns a special null message $\phi$, and leaves the buffer $M$ unchanged.</p>
+<p>Thus the message space acts non-deterministically, subject only to the condition that if $receive(P)$ is performed infinitely many times, then every message $(P, m)$ in the message buffer is eventually delivered.</p>
+<p>A <i>configuration</i> of the system consists of the internal state of each process together with the contents of the message buffer. An <i>initial configuration</i> is one in which each process starts at an initial state and the message buffer is empty.</p>
+<p>A <i>step</i> of a single process takes one configuration to another. In this primitive step process $P$ first performs $receive(P)$. This may be either a message $m$ from the message buffer that was addressed to $P$, or the null message $\phi$. Then, depending on $P$'s internal state and on the value received, $P$ performs some computation (including perhaps some probabilistic choices) ending in a new internal state, and sends a finite number of messages to other processes.</p>
+<p>The processes are completely asynchronous, that is, we make no assumptions about their relative speed nor about the delay time in delivering a message. Thus a solution for this consensus problem must work correctly even against an adversary schedule. We allow such schedule to choose the next process $P$ to make a step, and to control the message system. The schedule choice may depend on the current configuration as well as on all the past history of the computation.</p>
+<p>Thus starting from an initial configuration, the schedule chooses the first process to make a step. This step may end in many different configurations. Once $P$ made its step, some possible configuration has been reached. Knowing this, the schedule now chooses the next process to step and what his <i>receive</i> operation will return. This process completes his step leaving the system in some configuration, and so on, producing an infinite <i>run</i> of the system.</p>
+<p>A schedule is <i>$t$-correct</i> if on any infinite run at most $t$ processes make a finite number of steps and any message is eventually delivered if the receiving process makes an infinite number of steps. Thus the only failure allowed is a process death. It is clear, however, that other processes cannot determine whether a process has died or is just operating very slowly.</p>
+
+<h1>3. A Consensus Protocol</h1>
+<p>In this section we present a simple probabilistic, consensus protocol. In this protocol the processes perform "rounds" of exchange of information. On each round, if some process decides $v$, then by the next round all the other operating processes will decide the same value $v$. If no process decides then with some bounded positive probability all the operating processes will reach agreement on the next round. The round number $r$ is attached to the messages of round $r$, so the processes can distinguish between messages from different rounds.</p>
+
+<h2>A - Consensus Protocol</h2>
+<p><b>Process</b> $P$: Initial value $x_P$.</p>
+<ol class="step" start="0">
+<li>Set $r := 1$.</li>
+<li>Send the message $(1, r, x_P)$ to all the processes.</li>
+<li>Wait till $N-t$ messages of type $(1, r, *)$ are received. If more than $N/2$ messages have the same value $v$, then send the message $(2, r, v, D)$ to all processes. Else send the message $(2, r, ?)$ to all processes.</li>
+<li>Wait till $N-t$ messages of type $(2, r, *)$ arrive.
+  <ol style="list-style-type: lower-alpha">
+  <li>If there is one $D$-message $(2, r, v, D)$ then set $x_P:= v$.</li>
+  <li>If there are more than $t$ $D$-messages, then decide $v$.</li>
+  <li>Else set $x_P = 1$ or $0$ each with probability $1/2$.</li>
+  </ol>
+</li>
+<li>Set $r := r+1$ and go to step 1.</li>
+</ol>
+
+<p><b>Theorem 1.</b> <i>Let $N &gt; 2t$. For any $t$-correct schedule and any initial values of the processes, the above protocol guarantees, with probability 1, that:
+<ol style="list-style-type: lower-roman">
+<li>all the processes will eventually decide on the same value $v$;</li>
+<li>if all processes start with the value $v$, then within one round they will all decide $v$; and</li>
+<li>if for some round $r$, some process decides $v$ in step 3(b), then all other processes will decide $v$ within the next round.</li>
+</ol></i></p>
+
+<p><b>Remark:</b> If $N \leq 2t$ then consensus is certainly impossible, since the schedule can then simulate a network partition.</p>
+
+<h1>4. Byzantine Agreement</h1>
+<p>Here faulty processes might go completely haywire, perhaps even sending messages according to some malevolent plan. The following completely distributed protocol can reach agreement even in the presence of such faults. We assume that a process can determine the originator of a message he has received. This is necessary since otherwise no solution is possible.</p>
+<p>In this setting the schedule takes care for the message system, determines when each process will make a step, and determines what the faulty processes do. A schedule is $t$-correct if it allows at most $t$ faulty process and eventually delivers all the messages to any correct process that makes an infinite number of steps.</p>
+
+<h2>B - Byzantine Protocol</h2>
+<p><b>Process</b> $P$: Initial value $x_P$.</p>
+<ol class="step" start="0">
+<li>Set $r := 1$.</li>
+<li>Send the message $(1, r, x_P)$ to all the processes.</li>
+<li>Wait till messages of type $(1, r, *)$ are received from $N-t$ processes. If more than $(N+t)/2$ messages have the same value $v$, then send the message $(2, r, v, D)$ to all processes. Else send the message $(2, r, ?)$ to all processes.</li>
+<li>Wait till messages of type $(2, r, *)$ arrive from $N-t$ processes.<br/>
+If there are at least $t+1$ $D$-messages $(2, r, v, D)$, then set $x_P := v$.<br/>
+If there are more than $(N+t)/2$ $D$-messages then decide $v$.<br/>
+Else set $x_P = 1$ or $0$ each with probability $1/2$
+</li>
+<li>Set $r := r+1$ and go to step 1.</li>
+</ol>
+
+<p><b>Theorem 2.</b> <i>Let $N &gt; 5t$. For any $t$-correct schedule and any initial values of the processes, the above protocol guarantees, with probability 1, that:
+<ol style="list-style-type: lower-roman">
+<li>all the correct processes will eventually decide on the same value $v$;</li>
+<li>if all correct processes start with the value $v$, then within one round they will all decide $v$; and</li>
+<li>if for some round $r$, some correct process decides $v$ in step 3(b), then all other correct processes will decide $v$ within the next round.</li>
+</ol></i></p>
+
+<p><b>Remark:</b> We do not know whether $N &gt; 5t$ is the best possible bound to reach distributed Byzantine agreement.</p>
+
+<h1>5. Efficiency</h1>
+<p>The protocols above are not very efficient, and in particular the expected number of rounds to reach agreement may be exponential. However if the number of faulty processes is $O(\sqrt{N})$ then the following theorem shows that the expected number of rounds to reach agreement is constant.</p>
+<p><b>Theorem 3.</b> <i>If $t = O(\sqrt{N})$ then the expected number of rounds to reach agreement in protocols A and B is constant, (i.e. does not depend on $N$).</i></p>
+<p>This last result is especially interesting since for deterministic protocols it is known that Byzantine agreement is impossible in less than $t+1$ rounds of exchange of information [1, 2].</p>
+
+<h1>Acknowledgment</h1>
+<p>The author would like to thank Nancy Lynch for many helpful discussions.</p>
+
+<h1>References</h1>
+<ol class="bib">
+<li>Dolev, D. and Strong, R. Polynomial Algorithms for Byzantine Agreement. <i>Proc. 14th ACM Symp. on Theory of Computing (STOC)</i> (1982), 401-407.</li>
+<li>Fischer, M. and Lynch, N. A Lower Bound for the Time to Assure Interactive Consistency. <i>Information Processing Letters</i>, 1-4, 4 (1982), 182-186.</li>
+<li>Fischer, M., Lynch, N. and Paterson, M. <a href="/dist/1985-flp.html" target="_blank">Impossibility of Distributed Consensus with One Faulty Process</a>. MIT/LCS/TR-282.</li>
+<li>Lehman, D. and Rabin, M. On the Advantages of Free Choice: A Symmetric and Fully Distributed Solution to the Dining Philosophers Problem. <i>to appear</i>. The extended abstract was published at <i>POPL</i>, 1981.</li>
+</ol>
+</body></html>
