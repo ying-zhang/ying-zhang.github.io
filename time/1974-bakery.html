@@ -1,0 +1,124 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="/style.css"/>
+<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+<script> MathJax = {tex: {inlineMath: [['$', '$']]}}; </script>
+<style type="text/css">pre {page-break-inside:avoid}</style>
+<title>A New Solution of Dijkstra's Concurrent Programming Problem - CACM 1974</title>
+</head><body lang="en-us">
+<header> <a href="/">Home</a> </header>
+<button id="btn">☀️</button>
+<script src="/dark.js" ></script>
+
+<div class="title">
+<h1>A New Solution of Dijkstra's Concurrent Programming Problem</h1>
+<p><span id="url">https://ying-zhang.cn/time/1974-bakery.html</span></p>
+<p>Leslie Lamport<br/>
+Massachusetts Computer Associates, Inc.<br/>
+<i>Concurrency: the Works of Leslie Lamport</i>. 171–178. Oct. 2019. <a href="https://doi.org/10.1145/3335772.3335782">doi.org/10.1145/3335772.3335782</a><br/>
+Originally published in <i>Communications of the ACM</i>, 17(8), Aug. 1974, pp 453–455. <a href="https://doi.org/10.1145/361082.361093">doi.org/10.1145/361082.361093</a><br/>
+<a href="https://lamport.azurewebsites.net/pubs/bakery.pdf">https://lamport.azurewebsites.net/pubs/bakery.pdf</a><br/></p>
+</div>
+
+<p class="copyright">Copyright © 1974, Association for Computing Machinery, Inc. General permission to republish, but not for profit, all or part of this material is granted provided that ACM's copyright notice is given and that reference is made to the publication, to its date of issue, and to the fact that reprinting privileges were granted by permission of the Association for Computing Machinery.<br/>
+This research was supported by the Advanced Research Projects Agency of the Department of Defense and was monitored by U.S. Army Research Office–Durham, under Contract No. DAHC04-70-C-0023. Author's address: Massachusetts Computer Associates, Inc., Lakeside Office Park, Wakefield, MA 01880.</p>
+
+<hr/>
+
+<div class="s" style="width: 80%; margin: 0 auto;">
+<h2 class="c">My Writings</h2>
+<p class="c">Leslie Lamport<br/>
+<a href="https://lamport.azurewebsites.net/pubs/pubs.html#bakery">https://lamport.azurewebsites.net/pubs/pubs.html#bakery</a></p>
+
+<p><b>12. <i>A New Solution of Dijkstra's Concurrent Programming Problem.</i></b><br/>
+<i>Communications of the ACM</i>, 17, 8 (August 1974), 453-455.</p>
+
+<p>This paper describes the bakery algorithm for implementing mutual exclusion. I have invented many concurrent algorithms. I feel that I did not invent the bakery algorithm, I discovered it. Like all shared-memory synchronization algorithms, the bakery algorithm requires that one process be able to read a word of memory while another process is writing it. (Each memory location is written by only one process, so concurrent writing never occurs.)</p>
+<p>Unlike any previous algorithm, and almost all subsequent algorithms, the bakery algorithm works regardless of what value is obtained by a read that overlaps a write. If the write changes the value from 0 to 1, a concurrent read could obtain the value 7456 (assuming that 7456 is a value that could be in the memory location). The algorithm still works. I didn't try to devise an algorithm with this property. I discovered that the bakery algorithm had this property after writing a proof of its correctness and noticing that the proof did not depend on what value is returned by a read that overlaps a write.</p>
+<p>I don't know how many people realize how remarkable this algorithm is. Perhaps the person who realized it better than anyone is Anatol Holt, a former colleague at Massachusetts Computer Associates. When I showed him the algorithm and its proof and pointed out its amazing property, he was shocked. He refused to believe it could be true. He could find nothing wrong with my proof, but he was certain there must be a flaw. He left that night determined to find it. I don't know when he finally reconciled himself to the algorithm's correctness.</p>
+<p>Several books have included emasculated versions of the algorithm in which reading and writing are atomic operations, and called those versions "the bakery algorithm". I find that deplorable. There's nothing wrong with publishing a simplified version, as long as it's called a simplified version.</p>
+<p>What is significant about the bakery algorithm is that it implements mutual exclusion without relying on any lower-level mutual exclusion. Assuming that reads and writes of a memory location are atomic actions, as previous mutual exclusion algorithms had done, is tantamount to assuming mutually exclusive access to the location. So a mutual exclusion algorithm that assumes atomic reads and writes is assuming lower-level mutual exclusion. Such an algorithm cannot really be said to solve the mutual exclusion problem. Before the bakery algorithm, people believed that the mutual exclusion problem was unsolvable--that you could implement mutual exclusion only by using lower-level mutual exclusion. Brinch Hansen said exactly this in a 1972 paper. Many people apparently still believe it. (See [91].)</p>
+<p>The paper itself does not state that it is a "true" mutual exclusion algorithm. This suggests that I didn't realize the full significance of the algorithm until later, but I don't remember.</p>
+<p>For a couple of years after my discovery of the bakery algorithm, everything I learned about concurrency came from studying it. Papers like [25], [33], and [70] were direct results of that study. The bakery algorithm was also where I introduced the idea of variables belonging to a process--that is, variables that could be read by multiple processes, but written by only a single process. I was aware from the beginning that such algorithms had simple distributed implementations, where the variable resides at the owning process, and other processes read it by sending messages to the owner. Thus, the bakery algorithm marked the beginning of my study of distributed algorithms.</p>
+<p>The paper contains one small but significant error. In a footnote, it claims that we can consider reads and writes of a single bit to be atomic. It argues that a read overlapping a write must get one of the two possible values; if it gets the old value, we can consider the read to have preceded the write, otherwise to have followed it. It was only later, with the work eventually described in [70] (<i>On Interprocess Communication--Part I: Basic Formalism, Part II: Algorithms</i>), that I realized the fallacy in this reasoning.</p>
+</div>
+
+<hr/>
+
+<p>&nbsp;</p>
+
+<p>A simple solution to the mutual exclusion problem is presented which allows the system to continue to operate despite the failure of any individual component.<br/>
+<b>Key Words and Phrases:</b> critical section, concurrent programming, multiprocessing, semaphores<br/>
+<b>CR Categories:</b> 4.32</p>
+
+<h1>Introduction</h1>
+<p>Knuth [1], deBruijn [2], and Eisenberg and McGuire [3] have given solutions to a concurrent programming problem originally proposed and solved by Dijkstra [4]. A simpler solution using semaphores has also been implemented [5]. These solutions have one drawback for use in a true multicomputer system (rather than a time-shared multiprocessor system): the failure of a single unit will halt the entire system. We present a simple solution which allows the system to continue to operate despite the failure of any individual component.</p>
+
+<h1>The Algorithm</h1>
+<p>Consider $N$ asynchronous computers communicating with each other only via shared memory. Each computer runs a cyclic program with two parts—a <i>critical section</i> and a <i>noncritical section</i>. Dijkstra's problem, as extended by Knuth, is to write the programs so that the following conditions are satisfied:</p>
+<ol>
+<li>At any time, at most one computer may be in its critical section.</li>
+<li>Each computer must eventually be able to enter its critical section (unless it halts).</li>
+<li>Any computer may halt in its noncritical section.</li>
+</ol>
+<p>Moreover, no assumptions can be made about the running speeds of the computers.</p>
+<p>The solutions of [1-4] had all $N$ processors set and test the value of a single variable $k$. Failure of the memory unit containing $k$ would halt the system. The use of semaphores also implies reliance upon a single hardware component.</p>
+<p>Our solution assumes $N$ processors, each containing its own memory unit. A processor may read from any other processor's memory, but it need only write into its own memory. The algorithm has the remarkable property that if a read and a write operation to a single memory location occur simultaneously, then only the write operation must be performed correctly. The read may return <i>any</i> arbitrary value!</p>
+<p>A processor may fail at any time. We assume that when it fails, it immediately goes to its noncritical section and halts. There may then be a period when reading from its memory gives arbitrary values. Eventually, any read from its memory must give a value of zero. (In practice, a failed computer might be detected by its failure to respond to a read request within a specified length of time.)</p>
+<p>Unlike the solutions of [1-4], ours is a first-come-first-served method in the following sense. When a processor wants to enter its critical section, it first executes a loop-free block of code—i.e. one with a fixed number of execution steps. It is then guaranteed to enter its critical section before any other processor which later requests service.</p>
+<p>The algorithm is quite simple. It is based upon one commonly used in bakeries, in which a customer receives a number upon entering the store. The holder of the lowest number is the next one served. In our algorithm, each processor chooses its own number. The processors are named $1,...,N$. If two processors choose the same number, then the one with the lowest name goes first.</p>
+<p>The common store consists of<br/>
+${\bf integer\ array}\ choosing[1:N],\ number[1:N]$</p>
+<p>Words $choosing[i]$ and $number[i]$ are in the memory of processor $i$, and are initially zero. The range of value of $number[i]$ is unbounded. This will be discussed below.</p>
+<p>The following is the program for processor $i$. Execution must begin inside the noncritical section. The arguments of the maximum function can be read in any order. The relation "less than" on ordered pairs of integers is defined by $(a, b) &lt; (c, d)$ if $a &lt; c$, or if $a = c$ and $b &lt; d$.</p>
+
+<pre><code><b>begin integer</b> 𝑗;
+  L1:   choosing[𝑖] := 1;
+        number[𝑖]   := 1 + maximum(number[1], ..., number[𝑁]);
+        choosing[𝑖] := 0;
+        <b>for</b> 𝑗 = 1 <b>step</b> 1 <b>until</b> 𝑁 <b>do</b>
+          <b>begin</b>
+            L2:  <b>if</b> choosing[𝑗] ≠ 0 <b>then goto</b> L2;
+            L3:  <b>if</b> number[𝑗]   ≠ 0 <b>and</b> (number[𝑗], 𝑗) &lt; (number[𝑖], 𝑖)
+                 <b>then goto</b> L3;
+          <b>end;</b>
+        ⟨critical section⟩;
+        number[𝑖] := 0;
+        ⟨noncritical section⟩;
+        <b>goto</b> L1;
+<b>end</b></code></pre>
+
+<p>We allow process $i$ to fail at any time, and then to be restarted in its noncritical sections (with $choosing[i] = number[i] = 0$). However, if a processor keeps failing and restarting, then it can deadlock the system.</p>
+
+<h1>Proof of Correctness</h1>
+<p>To prove the correctness of the algorithm, we first make the following definitions. Processor $i$ is said to be <i>in the doorway</i> while $choosing[i] = 1$. It is said to be <i>in the bakery</i> from the time it resets $choosing[i]$ to zero until it either fails or leaves its critical section. The correctness of the algorithm is deduced from the following assertions. Note that the proofs make no assumptions about the value read during an overlapping read and write to the same memory location.</p>
+<p><b>Assertion 1.</b> If processor $i$ and $k$ are in the bakery and $i$ entered the bakery before $k$ entered the doorway, then $number[i] &lt; number[k]$.</p>
+<p><b>Proof.</b> By hypothesis, $number[i]$ had its current value while $k$ was choosing the current value of $number[k]$. Hence, $k$ must have chosen $number[k] ≥ 1 + number[i]$. □</p>
+<p><b>Assertion 2.</b> If processor $i$ is in its critical section, processor $k$ is in the bakery, and $k ≠ i$, then $(number[i], i) &lt; (number[k], k)$.</p>
+<p><b>Proof.</b> Since $choosing[k]$ has essentially just two values—zero and nonzero—we can assume that from processor $i$'s point of view, reading or writing it is done instantaneously, and a simultaneous read and write does not occur. For example, if $choosing[k]$ is being changed from zero to one while it is also being read by processor $i$, then the read is considered to happen first if it obtains a value of zero; otherwise the write is said to happen first. All times defined in the proof are from processor $i$'s viewpoint.</p>
+<p>Let $t_{L2}$ be the time at which processor $i$ read $choosing[k]$ during its last execution of L2 for $j = k$, and let $t_{L3}$ be the time at which $i$ began its last execution of L3 for $j = k$, so $t_{L2} &lt; t_{L3}$. When processor $k$ was choosing its current value of $number[k]$, let $t_e$ be the time at which it entered the doorway, $t_w$ the time at which it finished writing the value of $number[k]$, and $t_c$ the time at which it left the doorway. Then $t_e &lt; t_w &lt; t_c$.</p>
+<p>Since $choosing[k]$ was equal to zero at time $t_{L2}$, we have either (a) $t_{L2} &lt; t_e$ or (b) $t_c &lt; t_{L2}$. In case (a), Assertion 1 implies that $number[i] &lt; number[k]$, so the assertion holds.</p>
+<p>In case (b), we have $t_w &lt; t_c &lt; t_{L2} &lt; t_{L3}$, so $t_w &lt; t_{L3}$. Hence, during the execution of statement L3 begun at time $t_{L3}$, processor $i$ read the current value of $number[k]$. Since $i$ did not execute L3 again for $j = k$, it must have found $(number[i], i) &lt; (number[k], k)$. Hence, the assertion holds in this case, too. □</p>
+<p><b>Assertion 3.</b> Assume that only a bounded number of processor failures may occur. If no processor is in its critical section and there is a processor in the bakery which does not fail, then some processor must eventually enter its critical section.</p>
+<p><b>Proof.</b> Assume that no processor ever enters its critical section. Then there will be some time after which no more processors enter or leave the bakery. At this time, assume that processor $i$ has the minimum value of $(number[i], i)$ among all processors in the bakery. Then processor $i$ must eventually complete the $\bf for$ loop and enter its critical section. This is the required contradiction. □</p>
+<p>Assertion 2 implies that at most one processor can be in its critical section at any time. Assertions 1 and 2 prove that processors enter their critical sections on a first-come-first-served basis. Hence, an individual processor cannot be blocked unless the entire system is deadlocked. Assertion 3 implies that the system can only be deadlocked by a processor halting in its critical section, or by an unbounded sequence of processor failures and re-entries. The latter can tie up the system as follows. If processor $j$ continually fails and restarts, then with bad luck processor $i$ could always find $choosing[j] = 1$, and loop forever at L2.</p>
+
+<h1>Further Remarks</h1>
+<p>If there is always at least one processor in the bakery, then the value of $number[i]$ can become arbitrarily large. This problem cannot be solved by any simple scheme of cycling through a finite set of integers. For example, given any numbers $r$ and $s$, if $N ≥ 4$, then it is possible to have simultaneously $number[i] = r$ and $number[j] = s$ for some $i$ and $j$.</p>
+<p>Fortunately, practical considerations will place an upper bound on the value of $number[i]$ in any real application. For example, if processors enter the doorway at the rate of at most one per msec, then after a year of operation we will have $number[i] &lt; 2^{35}$—assuming that a read of $number[i]$ can never obtain a value larger than one which has been written there.</p>
+<p>The unboundedness of $number[i]$ does raise an interesting theoretical question: can one find an algorithm for finite processors such that processors enter their critical sections on a first-come-first-served basis, and no processor may write into another processor's memory? The answer is not known. <span class="note">We have recently found such an algorithm, but it is quite complicated.</span></p>
+<p>The algorithm can be generalized in two ways: (1) under certain circumstances, to allow two processors simultaneously to be in their critical sections; and (2) to modify the first-come-first-served property so that higher priority processors are served first. This will be described in a future paper.</p>
+
+<h1>Conclusion</h1>
+<p>Our algorithm provides a new, simple solution ot the mutual exclusion problem. Since it does not depend upon any form of central control, it is less sensitive to component failure than previous solutions.</p>
+
+<p class="s">Received September 1973; revised January 1974</p>
+
+<h1>References</h1>
+<ol class="bib">
+<li>Knuth, D.E. Additional comments on a problem in concurrent programming control. <i>Comm. ACM 9,</i> 5 (May 1966), 321–322.</li>
+<li>deBruijn, N.G. Additional comments on a problem in concurrent programming control. <i>Comm. ACM 10,</i> 3 (Mar. 1967), 137–138.</li>
+<li>Eisenberg, M.A., and McGuire, M.R. Further comments on Dijkstra's concurrent programming control problem. <i>Comm. ACM 15,</i> 11 (Nov. 1972), 999.</li>
+<li>Dijkstra, E.W. Solution of a problem in concurrent programming control. <i>Comm. ACM 8,</i> 9 (Sept. 1965), 569.</li>
+<li>Dijstra, E.W. The structure of THE multiprogramming system. <i>Comm. ACM 11,</i> 5 (May 1968), 341–346.</li>
+</ol>
+</body></html>

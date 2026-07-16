@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css">
+<title>微软双拼在线练习 >> Ying ZHANG</title>
+<style>
+:root {
+  --key-bg: #f5f5f5;
+  --key-border: #d9d9d9;
+  --key-char-color: #404040;
+  --initial-color: #f95700;
+  --final-color: #0072c6;
+  --mono: Consolas, 'Courier New', monospace;
+}
+
+@media screen {
+  body {
+    width: 100%;
+    max-width: 66rem;
+    margin: 1rem auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    background-color: #eee;
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  body.dark {
+    background-color: #25292E;
+    color: #eee;
+  }
+}
+
+header { text-align: center; font-size: 0.8em; margin-top: 0.5em; }
+header a { padding: 0 0.5em; text-decoration: none; color: inherit; }
+
+h1 { text-align: center; margin: 0.5rem 0 1rem; font-size: 1.5rem; }
+
+.main-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.left-panel {
+  flex: 1;
+  min-width: 0;
+}
+.right-panel {
+  flex-shrink: 0;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.hint-row {
+  flex-basis: 100%;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+#controls select, #controls button {
+  font-size: 1rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+#controls select {
+  width: 18rem;
+  max-width: 100%;
+}
+#controls button {
+  cursor: pointer;
+  background: #fff;
+}
+#controls button.active {
+  background: #2f6f9f;
+  border-color: #2f6f9f;
+  color: #fff;
+}
+#controls label {
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+body.dark #controls select, body.dark #controls button {
+  background: #3e4248;
+  color: #eee;
+  border-color: #666;
+}
+body.dark #controls button.active {
+  background: #4da6ff;
+  border-color: #4da6ff;
+  color: #111;
+}
+
+#poem-display {
+  line-height: 2.2;
+  margin-bottom: 1rem;
+}
+#poem-display .line { margin: 0.1rem 0; }
+.char {
+  display: inline-block;
+  font-size: 1.3rem;
+  padding: 0.1rem 0.15rem;
+  border-radius: 3px;
+  transition: background-color 0.15s, color 0.15s;
+}
+.char.current {
+  background-color: #fff3cd;
+  border-bottom: 2px solid var(--initial-color);
+  font-weight: bold;
+}
+.char.completed { color: #aaa; }
+.char.punct { color: #999; }
+body.dark .char.current { background-color: #5a4d2a; }
+body.dark .char.completed { color: #888; }
+body.dark .char.punct { color: #777; }
+
+#stats {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+body.dark #stats { color: #bbb; }
+
+#completion {
+  padding: 0.8rem 0;
+}
+#completion h2 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+#completion p { margin: 0.3rem 0; font-size: 0.95rem; color: #555; }
+body.dark #completion p { color: #ccc; }
+#completion .next-hint { color: #888; font-size: 0.9rem; margin-top: 0.5rem; }
+body.dark #completion .next-hint { color: #aaa; }
+#completion button {
+  margin-top: 0.8rem;
+  padding: 0.35rem 1rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+#completion button:hover { background: #f0f0f0; }
+body.dark #completion button {
+  background: #3e4248;
+  border-color: #666;
+  color: #eee;
+}
+body.dark #completion button:hover { background: #4a4d52; }
+
+#focus-area {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+}
+body.dark #focus-area {
+  background: #2e3340;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+#progress {
+  font-size: 0.85rem;
+  color: #999;
+  margin-bottom: 0.3rem;
+}
+body.dark #progress { color: #aaa; }
+
+#pinyin-display {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 0.2rem;
+  font-family: var(--mono);
+}
+body.dark #pinyin-display { color: #ccc; }
+
+#current-char {
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+#decomposition {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+.decomp-item {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: background-color 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+.decomp-item.active {
+  background: #fff3cd;
+  box-shadow: 0 0 0 1px rgba(249,87,0,0.28);
+  opacity: 1;
+}
+.decomp-item[data-phase="1"].active {
+  background: #e8f3ff;
+  box-shadow: 0 0 0 1px rgba(0,114,198,0.28);
+}
+body.dark .decomp-item.active {
+  background: #4a3f25;
+  box-shadow: 0 0 0 1px rgba(255,119,51,0.35);
+}
+body.dark .decomp-item[data-phase="1"].active {
+  background: #22384d;
+  box-shadow: 0 0 0 1px rgba(77,166,255,0.35);
+}
+.decomp-label { color: #888; font-size: 0.85rem; }
+body.dark .decomp-label { color: #aaa; }
+.decomp-pinyin {
+  font-family: var(--mono);
+  font-weight: bold;
+}
+.decomp-pinyin.is-initial { color: var(--initial-color); }
+.decomp-pinyin.is-final { color: var(--final-color); }
+body.dark .decomp-pinyin.is-initial { color: #ff7733; }
+body.dark .decomp-pinyin.is-final { color: #4da6ff; }
+.decomp-arrow { color: #bbb; margin: 0 0.15rem; }
+body.dark .decomp-arrow { color: #999; }
+kbd.decomp-key {
+  display: inline-block;
+  min-width: 1.5rem;
+  padding: 0.15rem 0.4rem;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: bold;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  text-align: center;
+}
+body.dark kbd.decomp-key {
+  background: #3e4248;
+  border-color: #666;
+  color: #eee;
+}
+
+#input-area {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 0.6rem 0 0.3rem;
+}
+.slot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  font-size: 1.4rem;
+  font-family: var(--mono);
+  font-weight: bold;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  transition: border-color 0.15s, background-color 0.15s, color 0.15s;
+}
+body.dark .slot { background: #33363b; border-color: #666; color: #eee; }
+.slot.active { border-color: var(--initial-color); }
+.slot.correct { border-color: #4caf50; color: #4caf50; background: #e8f5e9; }
+.slot.wrong { border-color: #f44336; color: #f44336; background: #ffebee; }
+body.dark .slot.correct { background: #1b3a1b; color: #6fcf6f; }
+body.dark .slot.wrong { background: #3a1b1b; color: #f77; }
+
+#feedback {
+  font-size: 0.9rem;
+  min-height: 1.5em;
+  color: #f44336;
+  margin-top: 0.3rem;
+}
+.feedback-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  max-width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #f4a6a0;
+  border-radius: 6px;
+  background: #fff4f3;
+  color: #6f1d16;
+  text-align: left;
+  box-sizing: border-box;
+}
+.feedback-title {
+  font-weight: bold;
+  color: #b3261e;
+}
+.feedback-details {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.feedback-details span {
+  white-space: nowrap;
+}
+.feedback-details kbd {
+  display: inline-block;
+  min-width: 1.4rem;
+  padding: 0.08rem 0.35rem;
+  margin-left: 0.15rem;
+  font-family: var(--mono);
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #d08a84;
+  border-radius: 3px;
+  background: #fff;
+  color: #b3261e;
+}
+.feedback-code {
+  font-family: var(--mono);
+  font-weight: bold;
+}
+body.dark .feedback-card {
+  background: #3a1b1b;
+  border-color: #8a3d38;
+  color: #f5c7c2;
+}
+body.dark .feedback-title,
+body.dark .feedback-details kbd {
+  color: #ff9b91;
+}
+body.dark .feedback-details kbd {
+  background: #2d1414;
+  border-color: #9b4d47;
+}
+
+.kb-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: fit-content;
+  user-select: none;
+}
+.kb-row { display: flex; gap: 6px; }
+.kb-row:nth-child(2) { margin-left: 20px; }
+.kb-row:nth-child(3) { margin-left: 45px; }
+
+.key {
+  background-color: var(--key-bg);
+  border: 1px solid var(--key-border);
+  border-radius: 5px;
+  width: 52px;
+  height: 52px;
+  padding: 4px 5px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: background-color 0.12s, box-shadow 0.12s;
+  cursor: default;
+}
+body.dark .key {
+  background-color: #3e4248;
+  border-color: #555;
+}
+
+.key-char {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--key-char-color);
+}
+body.dark .key-char { color: #eee; }
+
+.pinyin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.pinyin .initial { color: var(--initial-color); }
+.pinyin .final { color: var(--final-color); }
+body.dark .pinyin .initial { color: #ff7733; }
+body.dark .pinyin .final { color: #4da6ff; }
+
+.ae { background-color: #f957001a; }
+.o  { background-color: #36f90033; }
+.zcs { background-color: #00a2f922; }
+body.dark .ae { background-color: #f9570030; }
+body.dark .o  { background-color: #36f90050; }
+body.dark .zcs { background-color: #00a2f940; }
+
+.key.hint-initial {
+  box-shadow: 0 0 0 2.5px var(--initial-color);
+  background-color: #f957001a;
+}
+.key.hint-final {
+  box-shadow: 0 0 0 2.5px var(--final-color);
+  background-color: #0072c61a;
+}
+body.dark .key.hint-initial { background-color: #f957002a; }
+body.dark .key.hint-final { background-color: #0072c62a; }
+.key.flash-correct {
+  background-color: #c8e6c9 !important;
+  box-shadow: 0 0 0 2px #4caf50;
+}
+.key.flash-wrong {
+  background-color: #ffcdd2 !important;
+  box-shadow: 0 0 0 2px #f44336;
+}
+body.dark .key.flash-correct { background-color: #2e5a2e !important; }
+body.dark .key.flash-wrong { background-color: #5a2e2e !important; }
+
+#ime-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #e65100;
+  display: none;
+  margin: 0.5rem 0;
+}
+
+.ime-mode-note {
+  background-color: #fff3cd;
+  color: #5c4100;
+  border: 1px solid #e6c56f;
+  border-radius: 4px;
+  padding: 0.45rem 0.7rem;
+}
+.ime-mode-note b {
+  color: #b3261e;
+}
+body.dark .ime-mode-note {
+  background-color: #666;
+  color: #f2f2f2;
+  border-color: #777;
+}
+body.dark .ime-mode-note b {
+  color: #ffd166;
+}
+
+@media (max-width: 960px) {
+  .main-layout { flex-direction: column; }
+  .right-panel { width: 100%; }
+  .kb-container { margin: 0 auto; }
+  #focus-area { max-width: 28rem; margin-left: auto; margin-right: auto; }
+}
+@media (max-width: 680px) {
+  .kb-container { transform: scale(0.75); transform-origin: top center; margin-bottom: -2rem; }
+  #current-char { font-size: 2.5rem; }
+  #decomposition { gap: 1rem; font-size: 0.85rem; }
+}
+</style>
+</head>
+<body>
+<header><a href="https://ying-zhang.cn/">Home</a></header>
+<button id="btn" type="button" aria-label="toggle dark mode"></button>
+<script src="/dark.js" ></script>
+
+<h1>微软双拼在线练习</h1>
+
+<p class="c" style="font-family: 'Times New Roman', 宋体"><a href="https://ying-zhang.cn/misc/udpnlmxi.html">https://ying-zhang.cn/misc/udpnlmxi.html</a></p>
+<hr/>
+<p>&nbsp;</p>
+
+<div class="main-layout">
+  <div class="left-panel">
+    <div id="controls">
+      <button type="button" id="poem-tab" class="active">诗词</button>
+      <button type="button" id="set-tab">专项</button> <a href="https://ying-zhang.cn/misc/udpn.html">微软双拼输入教程</a>
+      <select id="text-selector"></select>
+      <select id="set-selector" style="display:none"></select>
+      <div class="hint-row">
+        <label><input type="checkbox" id="hint-pinyin" checked> 拼音</label>
+        <label><input type="checkbox" id="hint-decomp" checked> 拆解</label>
+        <label><input type="checkbox" id="hint-keyboard" checked> 键位</label>
+      </div>
+    </div>
+    <div id="poem-display"></div>
+    <div id="stats">
+      <span>正确: <strong id="correct-count">0</strong></span>
+      <span>错误: <strong id="wrong-count">0</strong></span>
+      <span>准确率: <strong id="accuracy">--</strong></span>
+    </div>
+    <div id="completion" style="display:none"></div>
+  </div>
+
+  <div class="right-panel">
+    <div id="focus-area">
+      <div id="progress"></div>
+      <div id="pinyin-display"></div>
+      <div id="current-char"></div>
+      <div id="decomposition"></div>
+      <div id="input-area">
+        <span class="slot" id="slot0">_</span>
+        <span class="slot" id="slot1">_</span>
+      </div>
+      <div id="feedback"></div>
+    </div>
+    <div id="ime-hint">请切换到<b>英文输入模式</b>再进行练习</div>
+    <div class="kb-container" id="keyboard">
+      <div class="kb-row">
+        <div class="key" data-key="q"><span class="key-char">Q</span><div class="pinyin"><span class="initial">q</span><span class="final">iu</span></div></div>
+        <div class="key" data-key="w"><span class="key-char">W</span><div class="pinyin"><span class="initial">w</span><span class="final">ua</span><span class="final">ia</span></div></div>
+        <div class="key ae" data-key="e"><span class="key-char">E</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">e</span></div></div>
+        <div class="key" data-key="r"><span class="key-char">R</span><div class="pinyin"><span class="initial">r</span><span class="final">uan</span><span class="final">er</span></div></div>
+        <div class="key" data-key="t"><span class="key-char">T</span><div class="pinyin"><span class="initial">t</span><span class="final">ue</span></div></div>
+        <div class="key" data-key="y"><span class="key-char">Y</span><div class="pinyin"><span class="initial">y</span><span class="final">uai</span><span class="final">v</span></div></div>
+        <div class="key zcs" data-key="u"><span class="key-char">U</span><div class="pinyin"><span class="initial">sh</span><span class="final">u</span></div></div>
+        <div class="key zcs" data-key="i"><span class="key-char">I</span><div class="pinyin"><span class="initial">ch</span><span class="final">i</span></div></div>
+        <div class="key o" data-key="o"><span class="key-char">O</span><div class="pinyin"><span class="initial">·</span><span class="final">o</span><span class="final">uo</span></div></div>
+        <div class="key" data-key="p"><span class="key-char">P</span><div class="pinyin"><span class="initial">p</span><span class="final">un</span></div></div>
+      </div>
+      <div class="kb-row">
+        <div class="key ae" data-key="a"><span class="key-char">A</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">a</span></div></div>
+        <div class="key" data-key="s"><span class="key-char">S</span><div class="pinyin"><span class="initial">s</span><span class="final">iong</span><span class="final">ong</span></div></div>
+        <div class="key" data-key="d"><span class="key-char">D</span><div class="pinyin"><span class="initial">d</span><span class="final">iang</span><span class="final">uang</span></div></div>
+        <div class="key" data-key="f"><span class="key-char">F</span><div class="pinyin"><span class="initial">f</span><span class="final">en</span></div></div>
+        <div class="key" data-key="g"><span class="key-char">G</span><div class="pinyin"><span class="initial">g</span><span class="final">eng</span></div></div>
+        <div class="key" data-key="h"><span class="key-char">H</span><div class="pinyin"><span class="initial">h</span><span class="final">ang</span></div></div>
+        <div class="key" data-key="j"><span class="key-char">J</span><div class="pinyin"><span class="initial">j</span><span class="final">an</span></div></div>
+        <div class="key" data-key="k"><span class="key-char">K</span><div class="pinyin"><span class="initial">k</span><span class="final">ao</span></div></div>
+        <div class="key" data-key="l"><span class="key-char">L</span><div class="pinyin"><span class="initial">l</span><span class="final">ai</span></div></div>
+        <div class="key" data-key=";"><span class="key-char">;</span><div class="pinyin"><span class="initial">&nbsp;</span><span class="final">ing</span></div></div>
+      </div>
+      <div class="kb-row">
+        <div class="key" data-key="z"><span class="key-char">Z</span><div class="pinyin"><span class="initial">z</span><span class="final">ei</span></div></div>
+        <div class="key" data-key="x"><span class="key-char">X</span><div class="pinyin"><span class="initial">x</span><span class="final">ie</span></div></div>
+        <div class="key" data-key="c"><span class="key-char">C</span><div class="pinyin"><span class="initial">c</span><span class="final">iao</span></div></div>
+        <div class="key zcs" data-key="v"><span class="key-char">V</span><div class="pinyin"><span class="initial">zh</span><span class="final">ve</span><span class="final">ui</span></div></div>
+        <div class="key" data-key="b"><span class="key-char">B</span><div class="pinyin"><span class="initial">b</span><span class="final">ou</span></div></div>
+        <div class="key" data-key="n"><span class="key-char">N</span><div class="pinyin"><span class="initial">n</span><span class="final">in</span></div></div>
+        <div class="key" data-key="m"><span class="key-char">M</span><div class="pinyin"><span class="initial">m</span><span class="final">ian</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const INITIAL_MAP = {
+  b:'b',p:'p',m:'m',f:'f',d:'d',t:'t',n:'n',l:'l',
+  g:'g',k:'k',h:'h',j:'j',q:'q',x:'x',r:'r',
+  z:'z',c:'c',s:'s',y:'y',w:'w',
+  zh:'v',ch:'i',sh:'u',
+  '':'o'
+};
+
+const FINAL_MAP = {
+  a:'a',ai:'l',an:'j',ang:'h',ao:'k',
+  e:'e',ei:'z',en:'f',eng:'g',er:'r',
+  i:'i',ia:'w',ian:'m',iang:'d',iao:'c',ie:'x',in:'n',ing:';',iong:'s',iu:'q',
+  o:'o',ong:'s',ou:'b',
+  u:'u',ua:'w',uai:'y',uan:'r',uang:'d',ue:'t',ui:'v',un:'p',uo:'o',
+  v:'y',ve:'t'
+};
+
+const UMLAUT_FINALS = {
+  u: 'v',
+  ue: 've',
+  uan: 'uan',
+  un: 'un'
+};
+
+function normalizePinyin(py) {
+  return py.toLowerCase().replace(/ü/g, 'v');
+}
+
+function splitPinyin(py) {
+  py = normalizePinyin(py);
+  let initial = '', final_ = py;
+  if (py.startsWith('zh')) { initial = 'zh'; final_ = py.slice(2); }
+  else if (py.startsWith('ch')) { initial = 'ch'; final_ = py.slice(2); }
+  else if (py.startsWith('sh')) { initial = 'sh'; final_ = py.slice(2); }
+  else if (py.length > 0 && 'bpmfdtnlgkhjqxrzcsyw'.includes(py[0])) {
+    initial = py[0]; final_ = py.slice(1);
+  }
+  if ('jqxy'.includes(initial) && UMLAUT_FINALS[final_]) {
+    final_ = UMLAUT_FINALS[final_];
+  }
+  return { initial, final: final_ };
+}
+
+function pinyinToShuangpin(py) {
+  const { initial, final: f } = splitPinyin(py);
+  const k1 = INITIAL_MAP[initial];
+  const k2 = FINAL_MAP[f];
+  if (k1 === undefined || k2 === undefined) return null;
+  return [k1, k2];
+}
+
+function displayPinyin(py) {
+  const { initial, final: f } = splitPinyin(py);
+  const displayFinal = f.replace(/v/g, 'ü');
+  return initial + displayFinal;
+}
+
+const TEXTS = [
+  {
+    title: "咏鹅", author: "骆宾王",
+    lines: [
+      { chars:["鹅","，","鹅","，","鹅","，"], pinyin:["e",null,"e",null,"e",null] },
+      { chars:["曲","项","向","天","歌","。"], pinyin:["qu","xiang","xiang","tian","ge",null] },
+      { chars:["白","毛","浮","绿","水","，"], pinyin:["bai","mao","fu","lv","shui",null] },
+      { chars:["红","掌","拨","清","波","。"], pinyin:["hong","zhang","bo","qing","bo",null] }
+    ]
+  },
+  {
+    title: "静夜思", author: "李白",
+    lines: [
+      { chars:["床","前","明","月","光","，"], pinyin:["chuang","qian","ming","yue","guang",null] },
+      { chars:["疑","是","地","上","霜","。"], pinyin:["yi","shi","di","shang","shuang",null] },
+      { chars:["举","头","望","明","月","，"], pinyin:["ju","tou","wang","ming","yue",null] },
+      { chars:["低","头","思","故","乡","。"], pinyin:["di","tou","si","gu","xiang",null] }
+    ]
+  },
+  {
+    title: "春晓", author: "孟浩然",
+    lines: [
+      { chars:["春","眠","不","觉","晓","，"], pinyin:["chun","mian","bu","jue","xiao",null] },
+      { chars:["处","处","闻","啼","鸟","。"], pinyin:["chu","chu","wen","ti","niao",null] },
+      { chars:["夜","来","风","雨","声","，"], pinyin:["ye","lai","feng","yu","sheng",null] },
+      { chars:["花","落","知","多","少","。"], pinyin:["hua","luo","zhi","duo","shao",null] }
+    ]
+  },
+  {
+    title: "悯农", author: "李绅",
+    lines: [
+      { chars:["锄","禾","日","当","午","，"], pinyin:["chu","he","ri","dang","wu",null] },
+      { chars:["汗","滴","禾","下","土","。"], pinyin:["han","di","he","xia","tu",null] },
+      { chars:["谁","知","盘","中","餐","，"], pinyin:["shei","zhi","pan","zhong","can",null], alternates:[["shui"],[],[],[],[],[]] },
+      { chars:["粒","粒","皆","辛","苦","。"], pinyin:["li","li","jie","xin","ku",null] }
+    ]
+  },
+  {
+    title: "登鹳雀楼", author: "王之涣",
+    lines: [
+      { chars:["白","日","依","山","尽","，"], pinyin:["bai","ri","yi","shan","jin",null] },
+      { chars:["黄","河","入","海","流","。"], pinyin:["huang","he","ru","hai","liu",null] },
+      { chars:["欲","穷","千","里","目","，"], pinyin:["yu","qiong","qian","li","mu",null] },
+      { chars:["更","上","一","层","楼","。"], pinyin:["geng","shang","yi","ceng","lou",null] }
+    ]
+  },
+  {
+    title: "绝句", author: "杜甫",
+    lines: [
+      { chars:["两","个","黄","鹂","鸣","翠","柳","，"], pinyin:["liang","ge","huang","li","ming","cui","liu",null] },
+      { chars:["一","行","白","鹭","上","青","天","。"], pinyin:["yi","hang","bai","lu","shang","qing","tian",null] },
+      { chars:["窗","含","西","岭","千","秋","雪","，"], pinyin:["chuang","han","xi","ling","qian","qiu","xue",null] },
+      { chars:["门","泊","东","吴","万","里","船","。"], pinyin:["men","bo","dong","wu","wan","li","chuan",null] }
+    ]
+  },
+  {
+    title: "望庐山瀑布", author: "李白",
+    lines: [
+      { chars:["日","照","香","炉","生","紫","烟","，"], pinyin:["ri","zhao","xiang","lu","sheng","zi","yan",null] },
+      { chars:["遥","看","瀑","布","挂","前","川","。"], pinyin:["yao","kan","pu","bu","gua","qian","chuan",null] },
+      { chars:["飞","流","直","下","三","千","尺","，"], pinyin:["fei","liu","zhi","xia","san","qian","chi",null] },
+      { chars:["疑","是","银","河","落","九","天","。"], pinyin:["yi","shi","yin","he","luo","jiu","tian",null] }
+    ]
+  },
+  {
+    title: "回乡偶书", author: "贺知章",
+    lines: [
+      { chars:["少","小","离","家","老","大","回","，"], pinyin:["shao","xiao","li","jia","lao","da","hui",null] },
+      { chars:["乡","音","无","改","鬓","毛","衰","。"], pinyin:["xiang","yin","wu","gai","bin","mao","shuai",null] },
+      { chars:["儿","童","相","见","不","相","识","，"], pinyin:["er","tong","xiang","jian","bu","xiang","shi",null] },
+      { chars:["笑","问","客","从","何","处","来","。"], pinyin:["xiao","wen","ke","cong","he","chu","lai",null] }
+    ]
+  },
+  {
+    title: "村居", author: "高鼎",
+    lines: [
+      { chars:["草","长","莺","飞","二","月","天","，"], pinyin:["cao","zhang","ying","fei","er","yue","tian",null], alternates:[[],["chang"],[],[],[],[],[],[]] },
+      { chars:["拂","堤","杨","柳","醉","春","烟","。"], pinyin:["fu","di","yang","liu","zui","chun","yan",null] },
+      { chars:["儿","童","散","学","归","来","早","，"], pinyin:["er","tong","san","xue","gui","lai","zao",null] },
+      { chars:["忙","趁","东","风","放","纸","鸢","。"], pinyin:["mang","chen","dong","feng","fang","zhi","yuan",null] }
+    ]
+  },
+  {
+    title: "元日", author: "王安石",
+    lines: [
+      { chars:["爆","竹","声","中","一","岁","除","，"], pinyin:["bao","zhu","sheng","zhong","yi","sui","chu",null] },
+      { chars:["春","风","送","暖","入","屠","苏","。"], pinyin:["chun","feng","song","nuan","ru","tu","su",null] },
+      { chars:["千","门","万","户","曈","曈","日","，"], pinyin:["qian","men","wan","hu","tong","tong","ri",null] },
+      { chars:["总","把","新","桃","换","旧","符","。"], pinyin:["zong","ba","xin","tao","huan","jiu","fu",null] }
+    ]
+  }
+];
+
+function makeItems(chars, pinyin, alternates = {}) {
+  return [...chars].map((char, idx) => ({
+    char,
+    pinyin: pinyin[idx],
+    alternates: alternates[idx] || []
+  }));
+}
+
+const PRACTICE_SETS = [
+  {
+    id: 'zhchsh',
+    title: '专项: zh/ch/sh',
+    items: makeItems(
+      '中重种忠钟终众州周舟祝主住朱竹者这真镇知纸只志至吃迟持池尺赤师诗十石时事是上水手少书说收睡',
+      ['zhong','zhong','zhong','zhong','zhong','zhong','zhong','zhou','zhou','zhou','zhu','zhu','zhu','zhu','zhu','zhe','zhe','zhen','zhen','zhi','zhi','zhi','zhi','zhi','chi','chi','chi','chi','chi','chi','shi','shi','shi','shi','shi','shi','shi','shang','shui','shou','shao','shu','shuo','shou','shui']
+    )
+  },
+  {
+    id: 'umlaut',
+    title: '专项: ü 系列',
+    items: makeItems(
+      '居局举句聚巨具区曲取去趣趋须虚许序续徐女绿律旅吕驴略掠月越悦约跃院愿远园员云运群军均俊裙寻',
+      ['ju','ju','ju','ju','ju','ju','ju','qu','qu','qu','qu','qu','qu','xu','xu','xu','xu','xu','xu','nv','lv','lv','lv','lv','lv','lve','lve','yue','yue','yue','yue','yue','yuan','yuan','yuan','yuan','yuan','yun','yun','qun','jun','jun','jun','qun','xun']
+    )
+  },
+  {
+    id: 'zero-initial',
+    title: '专项: 零声母',
+    items: makeItems(
+      '阿啊爱安岸昂奥饿鹅额恩而二欧偶藕一衣医因音银英应樱有又右优油由无五午物屋外为未问王网往云运',
+      ['a','a','ai','an','an','ang','ao','e','e','e','en','er','er','ou','ou','ou','yi','yi','yi','yin','yin','yin','ying','ying','ying','you','you','you','you','you','you','wu','wu','wu','wu','wu','wai','wei','wei','wen','wang','wang','wang','yun','yun']
+    )
+  },
+  {
+    id: 'e-er',
+    title: '专项: e/er/o',
+    items: makeItems(
+      '饿鹅额恶俄讹蛾扼遏厄鄂愕鳄噩哦和何河合喝贺盒核荷赫鹤个各歌哥割革隔格阁而儿二耳尔饵洱贰迩珥',
+      ['e','e','e','e','e','e','e','e','e','e','e','e','e','e','o','he','he','he','he','he','he','he','he','he','he','he','ge','ge','ge','ge','ge','ge','ge','ge','ge','er','er','er','er','er','er','er','er','er','er']
+    )
+  },
+  {
+    id: 'ai-ei',
+    title: '专项: ai/ei',
+    items: makeItems(
+      '爱矮挨哀碍艾癌埃唉蔼白百败摆拜猜才菜财彩杯悲背北倍贝被备碑卑飞非肥费肺黑嘿雷类累泪美每妹眉',
+      ['ai','ai','ai','ai','ai','ai','ai','ai','ai','ai','bai','bai','bai','bai','bai','cai','cai','cai','cai','cai','bei','bei','bei','bei','bei','bei','bei','bei','bei','bei','fei','fei','fei','fei','fei','hei','hei','lei','lei','lei','lei','mei','mei','mei','mei']
+    )
+  },
+  {
+    id: 'i-u',
+    title: '专项: i/u',
+    items: makeItems(
+      '知只纸志至吃迟池尺赤师诗十石时日子字自此次四寺丝思不布步补部读度堵独都土吐图突徒路录陆鹿卢',
+      ['zhi','zhi','zhi','zhi','zhi','chi','chi','chi','chi','chi','shi','shi','shi','shi','shi','ri','zi','zi','zi','ci','ci','si','si','si','si','bu','bu','bu','bu','bu','du','du','du','du','du','tu','tu','tu','tu','tu','lu','lu','lu','lu','lu']
+    )
+  },
+  {
+    id: 'ao-ou',
+    title: '专项: ao/ou',
+    items: makeItems(
+      '奥傲熬袄凹包饱报抱刀倒到导高告搞稿好号考靠老猫毛欧偶藕呕鸥口扣抠后厚候猴楼漏陋搂谋某否狗够',
+      ['ao','ao','ao','ao','ao','bao','bao','bao','bao','dao','dao','dao','dao','gao','gao','gao','gao','hao','hao','kao','kao','lao','mao','mao','ou','ou','ou','ou','ou','kou','kou','kou','hou','hou','hou','hou','lou','lou','lou','lou','mou','mou','fou','gou','gou']
+    )
+  },
+  {
+    id: 'anang',
+    title: '专项: an/ang',
+    items: makeItems(
+      '安按暗岸班半办搬餐残参单但担丹干敢感赶看砍堪南男难盘盼判然燃染三散伞山闪善商伤上长当党荡方',
+      ['an','an','an','an','ban','ban','ban','ban','can','can','can','dan','dan','dan','dan','gan','gan','gan','gan','kan','kan','kan','nan','nan','nan','pan','pan','pan','ran','ran','ran','san','san','san','shan','shan','shan','shang','shang','shang','zhang','dang','dang','dang','fang'],
+      { 40: ['chang'] }
+    )
+  },
+  {
+    id: 'eneneng',
+    title: '专项: en/eng',
+    items: makeItems(
+      '恩本奔笨岑陈沉尘晨臣分粉份芬根跟更亘很恨肯啃门们闷盆喷人认忍森身深神甚腾疼能冷等灯风封峰锋',
+      ['en','ben','ben','ben','cen','chen','chen','chen','chen','chen','fen','fen','fen','fen','gen','gen','geng','gen','hen','hen','ken','ken','men','men','men','pen','pen','ren','ren','ren','sen','shen','shen','shen','shen','teng','teng','neng','leng','deng','deng','feng','feng','feng','feng']
+    )
+  },
+  {
+    id: 'in-ing',
+    title: '专项: in/ing',
+    items: makeItems(
+      '因音银引印宾彬斌民敏您林临邻金今斤近尽新心信辛英应影硬并兵病冰明名命宁凝平评凭青清情听停亭',
+      ['yin','yin','yin','yin','yin','bin','bin','bin','min','min','nin','lin','lin','lin','jin','jin','jin','jin','jin','xin','xin','xin','xin','ying','ying','ying','ying','bing','bing','bing','bing','ming','ming','ming','ning','ning','ping','ping','ping','qing','qing','qing','ting','ting','ting']
+    )
+  },
+  {
+    id: 'ian-iang',
+    title: '专项: ian/iang',
+    items: makeItems(
+      '边扁变便编点电店典甸见间件简剪前钱千浅签先线现闲鲜两亮量粮良凉强抢墙枪腔想向响香箱将讲奖降',
+      ['bian','bian','bian','bian','bian','dian','dian','dian','dian','dian','jian','jian','jian','jian','jian','qian','qian','qian','qian','qian','xian','xian','xian','xian','xian','liang','liang','liang','liang','liang','liang','qiang','qiang','qiang','qiang','qiang','xiang','xiang','xiang','xiang','xiang','jiang','jiang','jiang','jiang']
+    )
+  },
+  {
+    id: 'uan-uang',
+    title: '专项: uan/uang',
+    items: makeItems(
+      '关管官馆观欢换环缓还宽款完晚弯玩万传船穿川串专转砖赚庄装状壮桩双霜爽窗床创闯光广逛黄慌皇荒',
+      ['guan','guan','guan','guan','guan','huan','huan','huan','huan','huan','kuan','kuan','wan','wan','wan','wan','wan','chuan','chuan','chuan','chuan','chuan','zhuan','zhuan','zhuan','zhuan','zhuang','zhuang','zhuang','zhuang','zhuang','shuang','shuang','shuang','chuang','chuang','chuang','chuang','guang','guang','guang','huang','huang','huang','huang']
+    )
+  },
+  {
+    id: 'un-uo',
+    title: '专项: un/uo',
+    items: makeItems(
+      '春纯唇蠢准屯吞豚囤轮论伦仑孙损村寸存尊遵蹲盾多朵躲夺堕拖脱托妥锅国果过郭火或活货获阔扩落罗',
+      ['chun','chun','chun','chun','zhun','tun','tun','tun','tun','lun','lun','lun','lun','sun','sun','cun','cun','cun','zun','zun','dun','dun','duo','duo','duo','duo','duo','tuo','tuo','tuo','tuo','guo','guo','guo','guo','guo','huo','huo','huo','huo','huo','kuo','kuo','luo','luo']
+    )
+  },
+  {
+    id: 'ia-ua',
+    title: '专项: ia/ua',
+    items: makeItems(
+      '家加夹价架嘉甲佳假嫁下夏吓霞峡侠虾牙呀压亚雅鸭芽崖花华话化画划滑哗挂瓜刮寡卦跨夸垮挎娃瓦袜',
+      ['jia','jia','jia','jia','jia','jia','jia','jia','jia','jia','xia','xia','xia','xia','xia','xia','xia','ya','ya','ya','ya','ya','ya','ya','ya','hua','hua','hua','hua','hua','hua','hua','hua','gua','gua','gua','gua','gua','kua','kua','kua','kua','wa','wa','wa']
+    )
+  },
+  {
+    id: 'iao-uai',
+    title: '专项: iao/uai',
+    items: makeItems(
+      '标表彪飙膘雕吊调掉钓叫交脚角觉校小笑晓效消桥巧俏瞧敲苗秒妙庙描坏怀淮槐踝快块筷会怪乖拐甩帅',
+      ['biao','biao','biao','biao','biao','diao','diao','diao','diao','diao','jiao','jiao','jiao','jiao','jiao','xiao','xiao','xiao','xiao','xiao','qiao','qiao','qiao','qiao','qiao','miao','miao','miao','miao','miao','huai','huai','huai','huai','huai','kuai','kuai','kuai','kuai','guai','guai','guai','guai','shuai','shuai']
+    )
+  },
+  {
+    id: 'ie-ue',
+    title: '专项: ie/ue',
+    items: makeItems(
+      '别憋鳖瘪爹跌叠蝶碟节结解接姐且切窃茄妾写谢斜鞋些灭蔑咩乜列烈裂猎劣虐疟略掠月越约跃乐学雪血',
+      ['bie','bie','bie','bie','die','die','die','die','die','jie','jie','jie','jie','jie','qie','qie','qie','qie','qie','xie','xie','xie','xie','xie','mie','mie','mie','mie','lie','lie','lie','lie','lie','nue','nue','lve','lve','yue','yue','yue','yue','le','xue','xue','xue']
+    )
+  },
+  {
+    id: 'iu-ui',
+    title: '专项: iu/ui',
+    items: makeItems(
+      '丢纠九久旧酒就救秋球求丘囚修休秀袖羞牛扭纽妞刘留流柳六水睡谁税说追坠吹锤垂归贵鬼柜亏灰悔惠',
+      ['diu','jiu','jiu','jiu','jiu','jiu','jiu','jiu','qiu','qiu','qiu','qiu','qiu','xiu','xiu','xiu','xiu','xiu','niu','niu','niu','niu','liu','liu','liu','liu','liu','shui','shui','shei','shui','shuo','zhui','zhui','chui','chui','chui','gui','gui','gui','gui','kui','hui','hui','hui'],
+      { 29: ['shui'] }
+    )
+  },
+  {
+    id: 'iongong',
+    title: '专项: iong/ong',
+    items: makeItems(
+      '炯窘迥穷琼熊兄胸凶雄永泳勇拥用庸佣臃中终钟忠肿种众重冲虫充宠崇从聪葱丛总宗棕纵送宋松颂同童',
+      ['jiong','jiong','jiong','qiong','qiong','xiong','xiong','xiong','xiong','xiong','yong','yong','yong','yong','yong','yong','yong','yong','zhong','zhong','zhong','zhong','zhong','zhong','zhong','zhong','chong','chong','chong','chong','chong','cong','cong','cong','cong','zong','zong','zong','zong','song','song','song','song','tong','tong']
+    )
+  }
+];
+
+function flattenText(text) {
+  const items = [];
+  for (const line of text.lines) {
+    for (let i = 0; i < line.chars.length; i++) {
+      items.push({
+        char: line.chars[i],
+        pinyin: line.pinyin[i],
+        alternates: line.alternates ? line.alternates[i] || [] : []
+      });
+    }
+  }
+  return items;
+}
+
+function makeTextFromItems(title, author, items) {
+  return {
+    title,
+    author,
+    lines: items.length > 0
+      ? [{
+          chars: items.map(it => it.char),
+          pinyin: items.map(it => it.pinyin),
+          alternates: items.map(it => it.alternates || [])
+        }]
+      : [{ chars: ['无', '可', '练', '习'], pinyin: [null, null, null, null] }]
+  };
+}
+
+function shuffledItems(items) {
+  const result = items.map(item => ({
+    char: item.char,
+    pinyin: item.pinyin,
+    alternates: [...(item.alternates || [])]
+  }));
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function makePracticeText(set) {
+  return makeTextFromItems(set.title, `${set.items.length} 字`, shuffledItems(set.items));
+}
+
+const PRACTICE_TEXTS = PRACTICE_SETS.map(makePracticeText);
+
+function getPractice() {
+  if (state.mode === 'set') {
+    return PRACTICE_TEXTS[state.setIdx];
+  }
+  return TEXTS[state.textIdx];
+}
+
+function getTypeableItems(items) {
+  return items.map((item, idx) => ({ ...item, flatIdx: idx })).filter(it => it.pinyin !== null);
+}
+
+let state = {
+  mode: 'poem', textIdx: 0, setIdx: 0, items: [], typeable: [], typeIdx: 0,
+  inputPhase: 0, expected: null, accepted: null,
+  correctCount: 0, wrongCount: 0,
+  hints: { pinyin: true, decomp: true, keyboard: true },
+  completed: false
+};
+
+let globalStats = { totalCorrect: 0, totalWrong: 0, poemsCompleted: 0 };
+let autoAdvanceTimer = null;
+
+function validateTexts() {
+  const errors = [];
+  TEXTS.forEach((text, textIdx) => {
+    text.lines.forEach((line, lineIdx) => {
+      if (line.chars.length !== line.pinyin.length) {
+        errors.push({
+          type: 'length-mismatch',
+          text: text.title,
+          textIdx,
+          line: lineIdx + 1,
+          chars: line.chars.length,
+          pinyin: line.pinyin.length
+        });
+      }
+      line.chars.forEach((char, charIdx) => {
+        const py = line.pinyin[charIdx];
+        if (py !== null && !pinyinToShuangpin(py)) {
+          errors.push({
+            type: 'unmapped-pinyin',
+            text: text.title,
+            textIdx,
+            line: lineIdx + 1,
+            char,
+            pinyin: py
+          });
+        }
+      });
+    });
+  });
+  PRACTICE_SETS.forEach((set, idx) => {
+    if (PRACTICE_TEXTS[idx].lines[0].pinyin.every(py => py === null)) {
+      errors.push({ type: 'empty-practice-set', set: set.title });
+    }
+  });
+  if (errors.length > 0) {
+    console.warn('微软双拼练习数据校验发现问题:', errors);
+  }
+  return errors;
+}
+
+function cancelAutoAdvance() {
+  if (autoAdvanceTimer) {
+    clearInterval(autoAdvanceTimer);
+    autoAdvanceTimer = null;
+  }
+}
+
+function selectPractice(value) {
+  cancelAutoAdvance();
+  const [mode, rawIdx] = String(value).split(':');
+  setMode(mode === 'set' ? 'set' : 'poem');
+  if (state.mode === 'set') state.setIdx = Number(rawIdx) || 0;
+  else state.textIdx = Number(rawIdx) || 0;
+  if (state.mode === 'set') {
+    PRACTICE_TEXTS[state.setIdx] = makePracticeText(PRACTICE_SETS[state.setIdx]);
+  }
+  const practice = getPractice();
+  state.items = flattenText(practice);
+  state.typeable = getTypeableItems(state.items);
+  state.typeIdx = 0;
+  state.inputPhase = 0;
+  state.correctCount = 0;
+  state.wrongCount = 0;
+  state.completed = false;
+  state.expected = null;
+  state.accepted = null;
+  $('text-selector').value = `poem:${state.textIdx}`;
+  $('set-selector').value = `set:${state.setIdx}`;
+  $('completion').style.display = 'none';
+  $('focus-area').style.display = '';
+  updateCurrent();
+  renderPoem();
+  renderStats();
+}
+
+function selectPoem(idx) {
+  selectPractice(`poem:${idx}`);
+}
+
+function setMode(mode) {
+  state.mode = mode;
+  $('poem-tab').classList.toggle('active', mode === 'poem');
+  $('set-tab').classList.toggle('active', mode === 'set');
+  $('text-selector').style.display = mode === 'poem' ? '' : 'none';
+  $('set-selector').style.display = mode === 'set' ? '' : 'none';
+}
+
+function renderPoem() {
+  const container = $('poem-display');
+  container.replaceChildren();
+  const practice = getPractice();
+  let tIdx = 0;
+  for (const line of practice.lines) {
+    const lineDiv = document.createElement('div');
+    lineDiv.className = 'line';
+    for (let i = 0; i < line.chars.length; i++) {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = line.chars[i];
+      if (line.pinyin[i] === null) {
+        span.classList.add('punct');
+      } else {
+        if (tIdx < state.typeIdx) span.classList.add('completed');
+        else if (tIdx === state.typeIdx && !state.completed) span.classList.add('current');
+        tIdx++;
+      }
+      lineDiv.appendChild(span);
+    }
+    container.appendChild(lineDiv);
+  }
+}
+
+function buildDecompItem(label, pinyinText, pinyinCls, keyText) {
+  const span = document.createElement('span');
+  span.className = 'decomp-item';
+  span.dataset.phase = pinyinCls === 'is-initial' ? '0' : '1';
+  const lbl = document.createElement('span');
+  lbl.className = 'decomp-label';
+  lbl.textContent = label;
+  const py = document.createElement('span');
+  py.className = `decomp-pinyin ${pinyinCls}`;
+  py.textContent = pinyinText;
+  const arrow = document.createElement('span');
+  arrow.className = 'decomp-arrow';
+  arrow.textContent = '→';
+  const kbd = document.createElement('kbd');
+  kbd.className = 'decomp-key';
+  kbd.textContent = keyText;
+  span.append(lbl, py, arrow, kbd);
+  return span;
+}
+
+function renderHints() {
+  const decomp = $('decomposition');
+  if (!state.expected || state.completed) {
+    decomp.replaceChildren();
+    updateKeyboardHints();
+    return;
+  }
+
+  const item = state.typeable[state.typeIdx];
+  const { initial, final: f } = splitPinyin(item.pinyin);
+  const [k1, k2] = state.expected;
+
+  if (state.hints.pinyin) {
+    $('pinyin-display').textContent = displayPinyin(item.pinyin);
+  } else {
+    $('pinyin-display').textContent = '';
+  }
+
+  if (state.hints.decomp) {
+    const initLabel = initial === '' ? '零声母' : initial;
+    decomp.replaceChildren(
+      buildDecompItem('声母', initLabel, 'is-initial', k1),
+      buildDecompItem('韵母', displayPinyin(f), 'is-final', k2)
+    );
+    decomp.style.display = '';
+  } else {
+    decomp.style.display = 'none';
+    decomp.replaceChildren();
+  }
+  updateKeyboardHints();
+}
+
+function updateCurrent() {
+  if (state.typeIdx >= state.typeable.length) {
+    showCompletion();
+    return;
+  }
+  const item = state.typeable[state.typeIdx];
+  const sp = pinyinToShuangpin(item.pinyin);
+  if (!sp) return;
+  const { final: f } = splitPinyin(item.pinyin);
+  state.expected = sp;
+  const acceptedPinyins = [item.pinyin, ...(item.alternates || [])];
+  state.accepted = [
+    [...new Set(acceptedPinyins.map(py => pinyinToShuangpin(py)).filter(Boolean).map(code => code[0]))],
+    [...new Set(acceptedPinyins.flatMap(py => {
+      const code = pinyinToShuangpin(py);
+      if (!code) return [];
+      return splitPinyin(py).final === 'v' ? [code[1], 'u'] : [code[1]];
+    }))]
+  ];
+  if (f === 'v') state.accepted[1] = [...new Set([...state.accepted[1], 'u'])];
+
+  $('current-char').textContent = item.char;
+  $('progress').textContent = `${state.typeIdx + 1} / ${state.typeable.length}`;
+
+  state.inputPhase = 0;
+  $('slot0').textContent = '_';
+  $('slot0').className = 'slot active';
+  $('slot1').textContent = '_';
+  $('slot1').className = 'slot';
+  clearFeedback();
+
+  renderHints();
+}
+
+function updateKeyboardHints() {
+  document.querySelectorAll('.decomp-item').forEach(item => {
+    item.classList.toggle('active', item.dataset.phase === String(state.inputPhase));
+  });
+
+  document.querySelectorAll('.key').forEach(k => {
+    k.classList.remove('hint-initial', 'hint-final');
+  });
+  if (!state.hints.keyboard || !state.expected || state.completed) return;
+
+  const [k1, k2] = state.expected;
+  if (state.inputPhase === 0) {
+    const el = document.querySelector(`.key[data-key="${CSS.escape(k1)}"]`);
+    if (el) el.classList.add('hint-initial');
+  } else {
+    const el = document.querySelector(`.key[data-key="${CSS.escape(k2)}"]`);
+    if (el) el.classList.add('hint-final');
+  }
+}
+
+function flashKey(key, cls) {
+  const el = document.querySelector(`.key[data-key="${CSS.escape(key)}"]`);
+  if (!el) return;
+  el.classList.add(cls);
+  setTimeout(() => el.classList.remove(cls), 300);
+}
+
+function keyTag(key) {
+  return el_('kbd', null, key);
+}
+
+function clearFeedback() {
+  $('feedback').replaceChildren();
+}
+
+function renderErrorFeedback(actualKey, expectedKey) {
+  const item = state.typeable[state.typeIdx];
+  if (!item) return;
+
+  const phase = state.inputPhase;
+  const { initial, final: f } = splitPinyin(item.pinyin);
+  const phaseName = phase === 0 ? '声母' : '韵母';
+  const pinyinPart = phase === 0
+    ? (initial === '' ? '零声母' : initial)
+    : f.replace(/v/g, 'ü');
+  const acceptedKeys = state.accepted && state.accepted[phase]
+    ? state.accepted[phase]
+    : [expectedKey];
+  const alternateKeys = acceptedKeys.filter(key => key !== expectedKey);
+  const details = [
+    el_('span', null, `${phaseName}: `, el_('span', { className: 'feedback-code' }, pinyinPart)),
+    el_('span', null, '按键为 ', keyTag(expectedKey))
+  ];
+
+  if (alternateKeys.length > 0) {
+    details.push(el_('span', null, '也可按 ', ...alternateKeys.map(keyTag)));
+  }
+
+  $('feedback').replaceChildren(
+    el_('div', { className: 'feedback-card' },
+      el_('div', { className: 'feedback-details' }, ...details)
+    )
+  );
+}
+
+function handleInput(key) {
+  if (state.completed || !state.expected) return;
+
+  $('ime-hint').style.display = 'none';
+
+  const [k1, k2] = state.expected;
+  const [a1, a2] = state.accepted || [[k1], [k2]];
+
+  if (state.inputPhase === 0) {
+    if (a1.includes(key)) {
+      $('slot0').textContent = key;
+      $('slot0').className = 'slot correct';
+      $('slot1').className = 'slot active';
+      flashKey(key, 'flash-correct');
+      state.inputPhase = 1;
+      clearFeedback();
+      updateKeyboardHints();
+    } else {
+      state.wrongCount++;
+      $('slot0').className = 'slot wrong';
+      flashKey(key, 'flash-wrong');
+      flashKey(k1, 'flash-correct');
+      renderErrorFeedback(key, k1);
+      setTimeout(() => { $('slot0').className = 'slot active'; }, 400);
+      renderStats();
+    }
+  } else {
+    if (a2.includes(key)) {
+      $('slot1').textContent = key;
+      $('slot1').className = 'slot correct';
+      flashKey(key, 'flash-correct');
+      state.correctCount++;
+      renderStats();
+      setTimeout(() => {
+        state.typeIdx++;
+        updateCurrent();
+        renderPoem();
+      }, 250);
+    } else {
+      state.wrongCount++;
+      $('slot1').className = 'slot wrong';
+      flashKey(key, 'flash-wrong');
+      flashKey(k2, 'flash-correct');
+      renderErrorFeedback(key, k2);
+      setTimeout(() => { $('slot1').className = 'slot active'; }, 400);
+      renderStats();
+    }
+  }
+}
+
+function renderStats() {
+  $('correct-count').textContent = state.correctCount;
+  $('wrong-count').textContent = state.wrongCount;
+  const total = state.correctCount + state.wrongCount;
+  $('accuracy').textContent = total > 0
+    ? (state.correctCount / total * 100).toFixed(1) + '%' : '--';
+}
+
+function el_(tag, props, ...children) {
+  const e = document.createElement(tag);
+  if (props) for (const [k, v] of Object.entries(props)) {
+    if (k === 'id') e.id = v;
+    else if (k === 'className') e.className = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+  }
+  for (const c of children) e.append(typeof c === 'string' ? c : c);
+  return e;
+}
+
+function strong_(text) { return el_('strong', null, text); }
+
+function statsLine(prefix, correct, wrong, acc) {
+  return el_('p', null,
+    `${prefix} — 正确: `, strong_(String(correct)),
+    `　错误: `, strong_(String(wrong)),
+    `　准确率: `, strong_(acc));
+}
+
+function showCompletion() {
+  state.completed = true;
+  $('current-char').textContent = '-';
+  $('pinyin-display').textContent = '-';
+  $('progress').textContent = `${state.typeable.length} / ${state.typeable.length}`;
+  $('decomposition').replaceChildren();
+  $('slot0').textContent = '-';
+  $('slot0').className = 'slot';
+  $('slot1').textContent = '-';
+  $('slot1').className = 'slot';
+  clearFeedback();
+  updateKeyboardHints();
+
+  if (state.mode === 'poem') {
+    globalStats.totalCorrect += state.correctCount;
+    globalStats.totalWrong += state.wrongCount;
+    globalStats.poemsCompleted++;
+  }
+
+  const total = state.correctCount + state.wrongCount;
+  const acc = total > 0 ? (state.correctCount / total * 100).toFixed(1) + '%' : '--';
+
+  const el = $('completion');
+  const practice = getPractice();
+  if (state.mode === 'set') {
+    const nextSetIdx = (state.setIdx + 1) % PRACTICE_SETS.length;
+    const isLastSet = state.setIdx === PRACTICE_SETS.length - 1;
+    const countdown = el_('span', { id: 'countdown' }, '3');
+    const hint = el_('p', { className: 'next-hint' },
+      `${isLastSet ? '下一轮' : '下一项'}: ${PRACTICE_SETS[nextSetIdx].title}`, countdown, ' 秒后开始');
+    el.replaceChildren(
+      el_('h2', null, `${practice.title} 完成`),
+      statsLine('本次', state.correctCount, state.wrongCount, acc),
+      hint,
+      el_('button', { onclick: () => { cancelAutoAdvance(); selectPractice(`set:${nextSetIdx}`); } }, '立即开始'),
+      el_('button', { onclick: () => { cancelAutoAdvance(); selectPractice(`set:${state.setIdx}`); } }, '重练专项'),
+      el_('button', { onclick: () => { cancelAutoAdvance(); selectPoem(state.textIdx); } }, '练习诗词')
+    );
+    el.style.display = '';
+
+    let count = 3;
+    autoAdvanceTimer = setInterval(() => {
+      count--;
+      countdown.textContent = count;
+      if (count <= 0) {
+        cancelAutoAdvance();
+        selectPractice(`set:${nextSetIdx}`);
+      }
+    }, 1000);
+
+    renderPoem();
+    return;
+  }
+
+  const nextIdx = state.textIdx + 1;
+
+  if (nextIdx < TEXTS.length) {
+    const countdown = el_('span', { id: 'countdown' }, '3');
+    const hint = el_('p', { className: 'next-hint' },
+      `下一篇: 《${TEXTS[nextIdx].title}》`, countdown, ' 秒后开始');
+    el.replaceChildren(
+      el_('h2', null, `《${practice.title}》完成 (${globalStats.poemsCompleted}/${TEXTS.length})`),
+      statsLine('本篇', state.correctCount, state.wrongCount, acc),
+      hint,
+      el_('button', { onclick: () => { cancelAutoAdvance(); selectPoem(nextIdx); } }, '立即开始'),
+      el_('button', { onclick: () => {
+        cancelAutoAdvance();
+        globalStats.totalCorrect -= state.correctCount;
+        globalStats.totalWrong -= state.wrongCount;
+        globalStats.poemsCompleted--;
+        selectPoem(state.textIdx);
+      } }, '重练本篇')
+    );
+    el.style.display = '';
+
+    let count = 3;
+    autoAdvanceTimer = setInterval(() => {
+      count--;
+      countdown.textContent = count;
+      if (count <= 0) {
+        cancelAutoAdvance();
+        selectPoem(nextIdx);
+      }
+    }, 1000);
+  } else {
+    const gTotal = globalStats.totalCorrect + globalStats.totalWrong;
+    const gAcc = gTotal > 0 ? (globalStats.totalCorrect / gTotal * 100).toFixed(1) + '%' : '--';
+    el.replaceChildren(
+      el_('h2', null, '全部练习完成'),
+      statsLine(`共 ${TEXTS.length} 篇`, globalStats.totalCorrect, globalStats.totalWrong, gAcc),
+      el_('button', { onclick: () => {
+        globalStats = { totalCorrect: 0, totalWrong: 0, poemsCompleted: 0 };
+        selectPoem(0);
+      } }, '重新开始')
+    );
+    el.style.display = '';
+  }
+
+  renderPoem();
+}
+
+function init() {
+  validateTexts();
+
+  const textSel = $('text-selector');
+  TEXTS.forEach((t, i) => {
+    const opt = document.createElement('option');
+    opt.value = `poem:${i}`;
+    opt.textContent = `${i + 1}. ${t.title} — ${t.author}`;
+    textSel.appendChild(opt);
+  });
+
+  const setSel = $('set-selector');
+  PRACTICE_SETS.forEach((set, i) => {
+    const text = PRACTICE_TEXTS[i];
+    const count = getTypeableItems(flattenText(text)).length;
+    const opt = document.createElement('option');
+    opt.value = `set:${i}`;
+    opt.textContent = set.title;
+    opt.disabled = count === 0;
+    setSel.appendChild(opt);
+  });
+
+  textSel.addEventListener('change', () => selectPractice(textSel.value));
+  setSel.addEventListener('change', () => selectPractice(setSel.value));
+  $('poem-tab').addEventListener('click', () => selectPractice(`poem:${state.textIdx}`));
+  $('set-tab').addEventListener('click', () => selectPractice(`set:${state.setIdx}`));
+
+  ['pinyin', 'decomp', 'keyboard'].forEach(name => {
+    const el = $(`hint-${name}`);
+    const saved = localStorage.getItem(`hint-${name}`);
+    if (saved !== null) {
+      state.hints[name] = saved === 'true';
+      el.checked = state.hints[name];
+    }
+    el.addEventListener('change', () => {
+      state.hints[name] = el.checked;
+      localStorage.setItem(`hint-${name}`, state.hints[name]);
+      renderHints();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.isComposing || e.keyCode === 229) {
+      $('ime-hint').style.display = '';
+      return;
+    }
+    const key = e.key.toLowerCase();
+    if (key.length === 1 && ((key >= 'a' && key <= 'z') || key === ';')) {
+      e.preventDefault();
+      handleInput(key);
+    }
+  });
+
+  selectPractice('poem:0');
+}
+
+init();
+</script>
+
+<p>&nbsp;</p>
+<p class="c ime-mode-note">请切换到<b>英文输入模式</b>再进行练习。<br/>
+注：<b><code>ü</code></b> 对应按键为 <b><code>y</code></b>，但敲 <b><code>u</code></b> 一般也可正常识别。</p>
+<footer style="font-family: 'Times New Roman', 宋体">
+
+  <hr/>
+  <img src="https://ying-zhang.cn/up.png" style="height: 120px; border-radius: 59px"/><br/>
+  <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
+  由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
+  主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
+  源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
+  <p><a href="https://ying-zhang.cn/misc/udpn.html">双拼是什么？</a> | <a href="https://ying-zhang.cn/misc/udpnlmxi.html">双拼在线练习</a></p>
+  </footer><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"dd1092e2b66844a393233cd8cf3b729d","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>

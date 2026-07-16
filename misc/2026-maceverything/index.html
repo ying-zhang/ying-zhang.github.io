@@ -1,0 +1,51 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../../style.css">
+  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
+  <script>MathJax = {tex: {inlineMath: [['$', '$']]}};</script>
+  <title>MacEverything：macOS 快速文件搜索工具（fork自joshua-wu） >> Ying ZHANG</title>
+</head><body>
+  <header> <a href="../../">Home</a> </header>
+  <button id="btn">☀️</button>
+  <script src="../../dark.js" ></script>
+  <article>
+    <div class="title">
+      <h1>MacEverything：macOS 快速文件搜索工具（fork自joshua-wu）</h1>
+      <p><time>2026-05-21</time><span id="url">https://ying-zhang.cn/misc/2026-maceverything/</span></p>
+    </div>
+    <p><a href="https://github.com/ying-zhang/MacEverything">MacEverything</a> 是我从 <a href="https://github.com/joshua-wu/MacEverything">joshua-wu/MacEverything</a> fork 的 macOS 快速文件搜索工具。原项目参照了 Windows 经典搜索工具 —— <a href="https://www.voidtools.com/zh-cn/downloads/">Everything</a>。在 Everything 中，输入几个字符就能从海量文件中快速找到目标。macOS 上也有 Spotlight 搜索和一些免费或付费的第三方工具，但在“快速按文件名或路径搜索文件”的场景，还是希望有一个更好的工具。</p>
+<p>原版 MacEverything 已经奠定了搜索算法的基础框架，提供了优秀的搜索性能。Fork 的直接原因是 <code>origin</code> v1.2 dmg 存在RE2 正则库依赖库缺失问题，导致应用启动失败。修复dmg包之后，继续开发——增加了中文界面，改进交互，如支持中文拼音首字母搜索；对大量文件/目录场景，更好地控制内存索引的容量等。</p>
+<ol>
+<li>
+<p><strong>搜索</strong> 在原有基础上增加拼音首字母搜索（输入 <code>dl</code> 找到「电力」等）、CJK 字符 Bigram 索引、多词独立 Trigram 交集等。优化大量文件索引时内存的消耗，曾加了内存消耗统计、可选的拼音搜索和路径加速索引。<b>原项目已经支持索引文本文件内容，以及丰富的搜索选项。</b></p>
+</li>
+<li>
+<p><strong>交互</strong> 增加了简体中文界面、多搜索窗口（Cmd+N）、可拖动列宽、右键菜单（预览、改名等）、文件改名等。索引范围、排除规则、隐藏文件/系统文件等都可以配置。</p>
+</li>
+</ol>
+<!-- > 注意：“改名”居然一直被称为“重命名”！ -->
+<p>开发过程中，问题定位、代码实现和构建发布是由 Codex 和 Claude Code 完成的。在GitHub Actions 完成构建。</p>
+<h1 id="下载-2026-07-构建的新-v1531-版">下载 2026-07 构建的新 v1.5.31 版</h1>
+<ul>
+<li>本站下载 <a href="./MacEverything-arm64-1.5.31.dmg">MacEverything-1.5.31.dmg</a></li>
+<li>GitHub 源码： <a href="https://github.com/ying-zhang/MacEverything">ying-zhang/MacEverything</a></li>
+<li>GitHub Release： <a href="https://github.com/ying-zhang/MacEverything/releases">ying-zhang/MacEverything 1.5.31</a></li>
+</ul>
+<p style="font-family:楷体; text-align:center">
+欢迎下载试用<br/>
+感谢 <a href="https://github.com/joshua-wu/MacEverything">原版作者 joshua-wu</a>，他的贡献是最大的<br/>
+感谢我的同事帮助设计了托盘图标<img src="icon1.svg" style="width: 25px; background-color: #233"/><br/>
+↓↓↓欢迎扫描页面底部的赞赏码，请我喝杯咖啡↓↓↓</p>
+
+  </article>
+  <footer>
+  <hr/>
+  <img src="../../up.png" style="height: 120px; border-radius: 59px"/><br/>
+  <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
+  由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
+  主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
+  源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
+  <p><a href="../../misc/udpn.html">双拼是什么？</a> | <a href="../../misc/udpnlmxi.html">双拼在线练习</a></p>
+  </footer></body>
+</html>
+
