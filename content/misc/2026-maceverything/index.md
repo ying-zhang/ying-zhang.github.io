@@ -15,14 +15,14 @@ date: 2026-05-21T11:00:00+0800
 
 开发过程中，问题定位、代码实现和构建发布是由 Codex 和 Claude Code 完成的。在GitHub Actions 完成构建。
 
-# 下载 v1.7.50 版
+# 下载 v1.9.27 版
 
-- 本站下载 Apple Silicon： [MacEverything-arm64-1.7.50.dmg](./MacEverything-arm64-1.7.50.dmg)
-- 本站下载 Intel： [MacEverything-x86_64-1.7.50.dmg](./MacEverything-x86_64-1.7.50.dmg)
+- 本站下载 Apple Silicon： [MacEverything-arm64-1.9.27.dmg](./MacEverything-arm64-1.9.27.dmg)
+- 本站下载 Intel： [MacEverything-x86_64-1.9.27.dmg](./MacEverything-x86_64-1.9.27.dmg)
 - Homebrew 安装： `brew install --cask maceverything`
-- GitHub Release： [ying-zhang/MacEverything v1.7.50](https://github.com/ying-zhang/MacEverything/releases/tag/v1.7.50)
-- SHA256（arm64）： `bd7f17bbe1be4949ff723ce4d61059cccce7ef15f86f31a9b4519cd20ccf1a78`
-- SHA256（x86_64）： `ace40d119dccfed4785639ebb9074df50fdcc7a83eea7f838fe901f91162d5f8`
+- GitHub Release： [ying-zhang/MacEverything v1.9.27](https://github.com/ying-zhang/MacEverything/releases/tag/v1.9.27)
+- SHA256（arm64）： `b0d525407c25aa375b76852a4db19d608e00dd784410ed6d775aaff9cf0059c6`
+- SHA256（x86_64）： `52b571b44ce6b2821f925f261120e3c5badd4f60b1f0606b34fa653e6547b01a`
 - GitHub 源码： https://github.com/ying-zhang/MacEverything ； https://github.com/joshua-wu/MacEverything
 - 知乎相关问题：[Mac 下有没有和 Everything 一样的快速索引工具？](https://www.zhihu.com/question/20549498)；[为何windows自带的文件搜索这么慢，而Everything的这么快？](https://www.zhihu.com/question/25280685/answer/2036216672059643593)
 
@@ -32,4 +32,3 @@ date: 2026-05-21T11:00:00+0800
 感谢 <a href="https://github.com/joshua-wu/MacEverything">原版作者 joshua-wu</a>，他的贡献是最大的<br/>
 感谢我的同事帮助设计了托盘图标<img src="icon1.svg" style="width: 25px; background-color: #233"/><br/>
 ↓↓↓欢迎扫描页面底部的赞赏码，请我喝杯咖啡↓↓↓</p>
-
