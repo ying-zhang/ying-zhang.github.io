@@ -26,17 +26,13 @@
 <!-- > 注意：“改名”居然一直被称为“重命名”！ -->
 <p>开发过程中，问题定位、代码实现和构建发布是由 Codex 和 Claude Code 完成的。当前使用本地 Xcode 构建，GitHub Actions 用于自动验证。</p>
 <h1 id="下载">下载</h1>
-<p><strong>v1.10.20 已正式发布（2026-10-21，构建号 14）</strong>，支持 macOS 15 及以上系统。RE2/Abseil 改为静态链接，修复安装后启动闪退，保留 Hardened Runtime 和库验证；修复启动问题的测试包已通过异机验证。此前有问题的安装包已撤下，v1.5.30 保留为历史正式版本。</p>
-<p>此版本还汇总了自 v1.5.30 以来的搜索和索引优化、中文与拼音搜索、信息面板与批量操作、CSV/TXT 导出、MCP/CLI/HTTP 自动化，以及外置盘和 NAS 生命周期保护。完整内容见 <a href="https://github.com/ying-zhang/MacEverything/releases/tag/v1.10.20">中文发布说明</a>。</p>
+<p><strong>v1.10.20 已撤回，停止下载。</strong>此前发布的构建存在增量索引问题，修复版尚在验证。当前仍可下载 v1.5.30（macOS 15 及以上）。</p>
 <ul>
-<li>Apple Silicon： <a href="MacEverything-arm64-1.10.20.dmg">MacEverything-arm64-1.10.20.dmg</a>（<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.10.20/MacEverything-arm64.dmg">GitHub 下载</a>）</li>
-<li>Intel： <a href="MacEverything-x86_64-1.10.20.dmg">MacEverything-x86_64-1.10.20.dmg</a>（<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.10.20/MacEverything-x86_64.dmg">GitHub 下载</a>）</li>
-<li>Homebrew 安装：先执行 <code>brew tap ying-zhang/maceverything</code>，再执行 <code>brew install --cask maceverything</code>；更新已有安装：<code>brew update &amp;&amp; brew upgrade --cask maceverything</code></li>
-<li>GitHub Release： <a href="https://github.com/ying-zhang/MacEverything/releases/tag/v1.10.20">ying-zhang/MacEverything v1.10.20</a></li>
-<li>SHA256（arm64）： <code>0252a210abeba01ff1f424ad9777742cf678d64d787fbc0f3151d0646ccea987</code></li>
-<li>SHA256（x86_64）： <code>6dc51796c9fd5ebced90741464f71766e79bad98e830e06c8e6fa4ea047255a7</code></li>
-<li>GitHub 源码： <a href="https://github.com/ying-zhang/MacEverything">https://github.com/ying-zhang/MacEverything</a> ； <a href="https://github.com/joshua-wu/MacEverything">https://github.com/joshua-wu/MacEverything</a></li>
-<li>知乎相关问题：<a href="https://www.zhihu.com/question/20549498">Mac 下有没有和 Everything 一样的快速索引工具？</a>；<a href="https://www.zhihu.com/question/25280685/answer/2036216672059643593">为何windows自带的文件搜索这么慢，而Everything的这么快？</a></li>
+<li>Apple Silicon：<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-arm64.dmg">MacEverything-arm64.dmg（v1.5.30）</a></li>
+<li>Intel：<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-x86_64.dmg">MacEverything-x86_64.dmg（v1.5.30）</a></li>
+<li>GitHub Release：<a href="https://github.com/ying-zhang/MacEverything/releases/tag/v1.5.30">ying-zhang/MacEverything v1.5.30</a></li>
+<li>SHA256（arm64）：<code>350cedf80226057549d0ee007c382d58f776aadc1a3b7f6accf13c30b816daed</code></li>
+<li>SHA256（x86_64）：<code>3cebba7edf42117272be58cc5c2b09fa25579a4b45cd1c985bd0fecefce9371d</code></li>
 </ul>
 <p>应用采用 ad-hoc 签名；若首次启动被 macOS 阻止，请先尝试打开一次，再前往“系统设置 → 隐私与安全性”选择“仍要打开”。</p>
 <p style="font-family:楷体; text-align:center">
