@@ -1,54 +1,167 @@
-<!DOCTYPE html><html><head><meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MacEverything：为 macOS 打造的快速本地文件搜索。按文件名、路径和内容搜索，支持中文拼音、正则、筛选与自动化。">
   <link rel="stylesheet" href="../../style.css">
-  <script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full.min.js"></script>
-  <script>MathJax = {tex: {inlineMath: [['$', '$']]}};</script>
-  <title>MacEverything：macOS 快速文件搜索工具（fork自joshua-wu） >> Ying ZHANG</title>
-</head><body>
-  <header> <a href="../../">Home</a> </header>
-  <button id="btn">☀️</button>
-  <script src="../../dark.js" ></script>
-  <article>
-    <div class="title">
-      <h1>MacEverything：macOS 快速文件搜索工具（fork自joshua-wu）</h1>
-      <p><time>2026-10-21</time><span id="url">https://ying-zhang.cn/misc/2026-maceverything/</span></p>
-    </div>
-    <p><a href="https://github.com/ying-zhang/MacEverything">MacEverything</a> 是我从 <a href="https://github.com/joshua-wu/MacEverything">joshua-wu/MacEverything</a> fork 的 macOS 快速文件搜索工具。原项目参照了 Windows 经典搜索工具 —— <a href="https://www.voidtools.com/zh-cn/downloads/">Everything</a>。在 Everything 中，输入几个字符就能从海量文件中快速找到目标。macOS 上也有 Spotlight 搜索和一些免费或付费的第三方工具，但在“快速按文件名或路径搜索文件”的场景，还是希望有一个更好的工具。</p>
-<p>原版 MacEverything 已经奠定了搜索算法的基础框架，提供了优秀的搜索性能。Fork 的直接原因是上游安装包存在 RE2 正则库依赖缺失问题，导致应用启动失败。修复安装包之后继续开发——增加了中文界面，改进交互，如支持中文拼音首字母搜索；对大量文件/目录场景，更好地控制内存索引的容量等。</p>
-<ol>
-<li>
-<p><strong>搜索</strong> 在原有基础上增加拼音首字母搜索（输入 <code>dl</code> 找到「电力」等）、CJK 字符 Bigram 索引、多词独立 Trigram 交集等。优化大量文件索引时的内存消耗，曾加了内存消耗统计、可选的拼音搜索和路径加速索引。<b>（原项目已经支持索引文本文件内容，以及丰富的搜索选项。）</b></p>
-</li>
-<li>
-<p><strong>交互</strong> 增加了简体中文界面、多搜索窗口（Cmd+N）、可拖动列宽、右键菜单、改名、预览等。索引范围、排除规则、隐藏文件/系统文件等都可以配置。</p>
-</li>
-</ol>
-<!-- > 注意：“改名”居然一直被称为“重命名”！ -->
-<p>开发过程中，问题定位、代码实现和构建发布是由 Codex 和 Claude Code 完成的。当前使用本地 Xcode 构建，GitHub Actions 用于自动验证。</p>
-<h1 id="下载">下载</h1>
-<p><strong>v1.10.20 已撤回，停止下载。</strong>此前发布的构建存在增量索引问题，修复版尚在验证。当前仍可下载 v1.5.30（macOS 15 及以上）。</p>
-<ul>
-<li>Apple Silicon：<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-arm64.dmg">MacEverything-arm64.dmg（v1.5.30）</a></li>
-<li>Intel：<a href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-x86_64.dmg">MacEverything-x86_64.dmg（v1.5.30）</a></li>
-<li>GitHub Release：<a href="https://github.com/ying-zhang/MacEverything/releases/tag/v1.5.30">ying-zhang/MacEverything v1.5.30</a></li>
-<li>SHA256（arm64）：<code>350cedf80226057549d0ee007c382d58f776aadc1a3b7f6accf13c30b816daed</code></li>
-<li>SHA256（x86_64）：<code>3cebba7edf42117272be58cc5c2b09fa25579a4b45cd1c985bd0fecefce9371d</code></li>
-</ul>
-<p>应用采用 ad-hoc 签名；若首次启动被 macOS 阻止，请先尝试打开一次，再前往“系统设置 → 隐私与安全性”选择“仍要打开”。</p>
-<p style="font-family:楷体; text-align:center">
-欢迎下载使用<br/>
-感谢 <a href="https://github.com/joshua-wu/MacEverything">原版作者 joshua-wu</a>，他的贡献是最大的<br/>
-感谢我的同事帮助设计了托盘图标<img src="icon1.svg" style="width: 25px; background-color: #233"/><br/>
-↓↓↓欢迎扫描页面底部的赞赏码，请我喝杯咖啡↓↓↓</p>
+  <title>MacEverything：快速找到 Mac 上的文件 >> Ying ZHANG</title>
+  <style>
+    body:has(.mce-product), body.dark:has(.mce-product) {
+      width: 100%; font-size: 16px; background: #f5f7f8; color: #20272b;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+    body.dark:has(.mce-product) { background: #161b1f; color: #edf1f2; }
+    body:has(.mce-product) header, body.dark:has(.mce-product) header {
+      position: absolute; z-index: 3; top: 20px; left: max(24px, calc((100vw - 1200px)/2));
+      margin: 0; font-size: 14px;
+    }
+    body:has(.mce-product) header a, body.dark:has(.mce-product) header a {
+      padding: 8px 12px; border: 1px solid #ffffff55; border-radius: 4px;
+      background: #ffffff14; color: inherit;
+    }
+    body:has(.mce-product) #btn { z-index: 3; top: 18px; right: max(24px, calc((100vw - 1200px)/2)); left: auto; border-radius: 4px; }
+    .mce-product { --ink: #20272b; --muted: #66747a; --line: #d9e0e2; --paper: #f5f7f8; --accent: #087f8c; color: var(--ink); }
+    body.dark .mce-product { --ink: #edf1f2; --muted: #a7b3b7; --line: #364247; --paper: #161b1f; --accent: #61c7c8; color: var(--ink); }
+    .mce-product *, .mce-product *::before, .mce-product *::after { box-sizing: border-box; }
+    .mce-product a { color: inherit; opacity: 1; }
+    .mce-product a:hover { opacity: .82; }
+    .mce-product .hero { padding: 88px 24px 42px; background: #e8eff0; }
+    body.dark .mce-product .hero { background: #202a2e; }
+    .mce-product .inner { width: min(1120px, 100%); margin: 0 auto; }
+    .mce-product .eyebrow { margin: 0 0 12px; color: var(--accent); font: 600 12px/1.4 -apple-system, sans-serif; }
+    .mce-product h1 { margin: 0; color: var(--ink); font: 650 42px/1.08 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .mce-product .tagline { max-width: 720px; margin: 14px 0 8px; font-size: 23px; line-height: 1.35; font-weight: 550; }
+    .mce-product .intro { max-width: 680px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+    .mce-product .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 30px; }
+    .mce-product .action { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 0 16px; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; font-size: 14px; font-weight: 600; }
+    .mce-product .action.primary { border-color: #087f8c; background: #087f8c; color: #fff; }
+    body.dark .mce-product .action.primary { border-color: #61c7c8; background: #61c7c8; color: #142326; }
+    .mce-product figure { width: min(1120px, 100%); margin: 0 auto; text-align: left; }
+    .mce-product figure img { display: block; width: 100%; border: 1px solid #aeb9bc; border-radius: 6px; background: #202326; box-shadow: 0 16px 42px #1021261c; }
+    .mce-product figcaption { margin-top: 9px; color: var(--muted); font-size: 12px; }
+    .mce-product .value-line { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+    .mce-product .value-line p { margin: 0; padding: 18px 20px 18px 0; text-align: left; font-size: 14px; line-height: 1.5; }
+    .mce-product .value-line strong { display: block; margin-bottom: 2px; color: var(--ink); font-size: 15px; }
+    .mce-product .section { padding: 54px 24px; border-bottom: 1px solid var(--line); }
+    .mce-product h2 { margin: 0; color: var(--ink); font: 620 27px/1.25 -apple-system, sans-serif; }
+    .mce-product .section-lead { max-width: 660px; margin: 10px 0 26px; color: var(--muted); font-size: 15px; line-height: 1.7; text-align: left; }
+    .mce-product .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .mce-product .feature { padding-top: 15px; border-top: 2px solid var(--accent); }
+    .mce-product .feature h3 { margin: 0 0 8px; color: var(--ink); font: 600 17px/1.4 -apple-system, sans-serif; }
+    .mce-product .feature p { margin: 0; color: var(--muted); text-align: left; font-size: 14px; line-height: 1.75; }
+    .mce-product .automation { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .mce-product .automation p { margin: 10px 0 0; color: var(--muted); text-align: left; line-height: 1.75; }
+    .mce-product .code-list { margin: 0; padding: 0; list-style: none; }
+    .mce-product .code-list li { padding: 10px 0; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; }
+    .mce-product .code-list code { display: inline-block; min-width: 70px; color: var(--accent); background: transparent; }
+    .mce-product .download { padding: 46px 24px 52px; background: #e8eff0; }
+    body.dark .mce-product .download { background: #202a2e; }
+    .mce-product .download-note { margin: 10px 0 20px; color: var(--muted); line-height: 1.7; text-align: left; }
+    .mce-product .withdrawn { padding: 12px 14px; border-left: 3px solid #b96a3c; background: #b96a3c12; color: var(--ink); font-size: 14px; line-height: 1.65; }
+    .mce-product .downloads { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0 0; }
+    .mce-product .checksum { margin: 16px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; text-align: left; }
+    body:has(.mce-product) footer { margin-top: 0; padding: 24px 16px; font-size: 13px; }
+    @media (max-width: 700px) {
+      body:has(.mce-product) header { top: 14px; left: 16px; }
+      body:has(.mce-product) #btn { top: 12px; right: 16px; }
+      .mce-product .hero { padding: 76px 18px 28px; }
+      .mce-product h1 { font-size: 34px; }
+      .mce-product .tagline { font-size: 20px; }
+      .mce-product .intro { font-size: 15px; }
+      .mce-product figure img { border-radius: 4px; }
+      .mce-product .value-line { grid-template-columns: 1fr; }
+      .mce-product .value-line p { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .mce-product .section { padding: 38px 18px; }
+      .mce-product h2 { font-size: 24px; }
+      .mce-product .features, .mce-product .automation { grid-template-columns: 1fr; gap: 22px; }
+      .mce-product .download { padding: 36px 18px; }
+      .mce-product .action { flex: 1 1 auto; }
+    }
+  </style>
+</head>
+<body>
+  <header><a href="../../">Home</a></header>
+  <button id="btn" aria-label="切换深浅色">☀️</button>
+  <script src="../../dark.js"></script>
+  <main class="mce-product">
+    <section class="hero">
+      <div class="inner">
+        <p class="eyebrow">macOS 本地文件搜索</p>
+        <h1>MacEverything</h1>
+        <p class="tagline">文件名、路径与内容，输入即得。</p>
+        <p class="intro">把散落在 Mac 和外接磁盘里的文件快速找回来。搜索在本机完成，从常用关键词到正则、全文与结构化筛选，都在一个轻巧的原生应用里。</p>
+        <div class="actions">
+          <a class="action primary" href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-arm64.dmg">下载 Apple Silicon 版 · v1.5.30</a>
+          <a class="action" href="https://github.com/ying-zhang/MacEverything">查看项目源码</a>
+        </div>
+        <figure>
+          <img src="maceverything-search.jpg" alt="MacEverything 搜索界面，展示文件筛选、列表、预览与文件操作">
+          <figcaption>文件列表、内容预览与常用操作集中在同一窗口。</figcaption>
+        </figure>
+        <div class="value-line">
+          <p><strong>为大量文件设计</strong>增量索引与 Trigram 检索，让常见查询保持灵敏。</p>
+          <p><strong>中文搜索友好</strong>支持拼音首字母、文件名、路径与全文内容。</p>
+          <p><strong>搜索后直接处理</strong>预览、定位、批量操作与导出连在一起。</p>
+        </div>
+      </div>
+    </section>
 
-  </article>
+    <section class="section">
+      <div class="inner">
+        <h2>从一个词，到你要的文件</h2>
+        <p class="section-lead">搜索保持直接；需要更精确时，再逐步加上类型、路径、时间、大小或正则条件。</p>
+        <div class="features">
+          <div class="feature">
+            <h3>文件名与路径一起搜</h3>
+            <p>按名称或目录快速缩小范围。支持拼音首字母、通配符、正则表达式和多种结构化条件。</p>
+          </div>
+          <div class="feature">
+            <h3>需要时搜索文件内容</h3>
+            <p>为常见文本建立全文索引，用 <code>infile:</code> 找回记得内容、却忘了文件名的资料。</p>
+          </div>
+          <div class="feature">
+            <h3>结果就是下一步</h3>
+            <p>预览文件，查看信息，在访达中显示，批量选择并导出列表；减少搜索与处理之间的来回切换。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner automation">
+        <div>
+          <h2>也为日常工作流准备好了</h2>
+          <p>MacEverything 除了图形界面，也提供本机命令行与自动化接口。可以在终端、脚本和支持 MCP 的 AI 工具里复用同一份索引。</p>
+        </div>
+        <ul class="code-list">
+          <li><code>mace</code>终端快速查询</li>
+          <li><code>HTTP API</code>本机脚本与自动化</li>
+          <li><code>MCP</code>连接 Codex、Claude Code 等工具</li>
+          <li><code>本机索引</code>搜索数据由你的 Mac 管理</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="download">
+      <div class="inner">
+        <p class="eyebrow">下载</p>
+        <h2>从 MacEverything 开始</h2>
+        <p class="download-note">兼容 macOS 15 及以上。Apple Silicon 与 Intel 分别提供安装包。</p>
+        <p class="withdrawn"><strong>版本说明：</strong>1.10.20 已撤回，暂不提供下载。修复版仍在验证；目前可下载的正式版本为 1.5.30。</p>
+        <div class="downloads">
+          <a class="action primary" href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-arm64.dmg">Apple Silicon · v1.5.30</a>
+          <a class="action" href="https://github.com/ying-zhang/MacEverything/releases/download/v1.5.30/MacEverything-x86_64.dmg">Intel · v1.5.30</a>
+          <a class="action" href="https://github.com/ying-zhang/MacEverything/releases/tag/v1.5.30">发布说明</a>
+        </div>
+        <p class="checksum">SHA-256　Apple Silicon：<code>350cedf80226057549d0e007c382d58f776aadc1a3b7f6accf13c30b816daed</code><br>Intel：<code>3cebba7edf42117272be58cc5c2b09fa25579a4b45cd1c985bd0fecefce9371d</code></p>
+      </div>
+    </section>
+  </main>
   <footer>
-  <hr/>
-  <img src="../../up.png" style="height: 120px; border-radius: 59px"/><br/>
-  <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html" target="_blank">Ying ZHANG</a><br/>
-  由<a href="https://gohugo.io/" target="_blank">Hugo</a>生成；
-  主题修改自<a href="https://themes.gohugo.io/themes/hugo-xmin/" target="_blank">XMin</a>；
-  源文件在<a href="https://github.com/ying-zhang/ying-zhang.github.io" target="_blank">Github</a></p>
-  <p><a href="../../misc/udpn.html">双拼是什么？</a> | <a href="../../misc/udpnlmxi.html">双拼在线练习</a></p>
-  </footer></body>
+    <p>MacEverything · <a href="https://github.com/ying-zhang/MacEverything">GitHub 源码</a></p>
+    <p>感谢 <a href="https://github.com/joshua-wu/MacEverything">原版项目作者</a>，以及帮助设计托盘图标的同事。</p>
+    <p>&copy; <a href="https://ics.nju.edu.cn/people/yingzhang/index.html">Ying ZHANG</a> · 由 Hugo 生成 · <a href="https://github.com/ying-zhang/ying-zhang.github.io">博客源码</a></p>
+  </footer>
+</body>
 </html>
